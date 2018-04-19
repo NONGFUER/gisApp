@@ -1,0 +1,627 @@
+@charset "UTF-8";
+.page_home .icon_agent,
+.page_home .icon_app,
+.page_home .icon_b_baike,
+.page_home .icon_b_daikuan,
+.page_home .icon_b_fangjia,
+.page_home .icon_b_gujia,
+.page_home .icon_b_jingjiren,
+.page_home .icon_b_kefu,
+.page_home .icon_b_lanmu,
+.page_home .icon_b_lanrenzhaofang,
+.page_home .icon_b_shoufu,
+.page_home .icon_b_shuifei,
+.page_home .icon_b_wenda,
+.page_home .icon_b_xiaoqu,
+.page_home .icon_chengjiao,
+.page_home .icon_ditie,
+.page_home .icon_ershoufang,
+.page_home .icon_goufang,
+.page_home .icon_gujia,
+.page_home .icon_haiwai,
+.page_home .icon_linshen,
+.page_home .icon_lvju,
+.page_home .icon_maifang,
+.page_home .icon_redian,
+.page_home .icon_wenda,
+.page_home .icon_wiki,
+.page_home .icon_xiaoqu,
+.page_home .icon_xinfang,
+.page_home .icon_xuequfang,
+.page_home .icon_zhinan,
+.page_home .icon_zufang {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	margin: 11px;
+	background-repeat: no-repeat;
+	background-image: url("../../img/common/sprite.svg");
+	-moz-background-size: 32px 1472px;
+	-o-background-size: 32px 1472px;
+	background-size: 32px 1472px;
+	-webkit-transform: scale(1.6875);
+	-moz-transform: scale(1.6875);
+	-ms-transform: scale(1.6875);
+	-o-transform: scale(1.6875);
+	transform: scale(1.6875)
+}
+
+.page_home .icon_b_huanjing,
+.page_home .icon_huanjing {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	margin: 11px;
+	background-size: 100%
+}
+
+.page_home .icon_agent {
+	background-position: 0 0
+}
+
+.page_home .icon_chengjiao {
+	background-position: 0 -42px
+}
+
+.page_home .icon_ditie {
+	background-position: 0 -84px
+}
+
+.page_home .icon_ershoufang {
+	background-position: 0 -126px
+}
+
+.page_home .icon_maifang {
+	background-position: 0 -168px
+}
+
+.page_home .icon_wiki {
+	background-position: 0 -210px
+}
+
+.page_home .icon_xinfang {
+	background-position: 0 -252px
+}
+
+.page_home .icon_xuequfang {
+	background-position: 0 -294px
+}
+
+.page_home .icon_wenda {
+	background-position: 0 -336px
+}
+
+.page_home .icon_zufang {
+	background-position: 0 -378px
+}
+
+.page_home .icon_haiwai {
+	background-position: 0 -420px
+}
+
+.page_home .icon_zhinan {
+	background-position: 0 -672px
+}
+
+.page_home .icon_gujia {
+	background-position: 0 -714px
+}
+
+.page_home .icon_huanjing {
+	background-image: url("../../../images/home/icon_huanjing.svg?id=201707201730007&version=f08cdb1glx");
+	background-position: 0 0.8px;
+	-webkit-transform: scale(1.6875);
+	-moz-transform: scale(1.6875);
+	-ms-transform: scale(1.6875);
+	-o-transform: scale(1.6875);
+	transform: scale(1.6875)
+}
+
+.page_home .icon_b_huanjing {
+	background-image: url("../../../images/home/icon_b_huanjing.svg?id=201707201730007&version=f08cdb1glx");
+	-webkit-transform: scale(1.6875);
+	-moz-transform: scale(1.6875);
+	-ms-transform: scale(1.6875);
+	-o-transform: scale(1.6875);
+	transform: scale(1.6875)
+}
+
+.page_home .icon_b_wenda {
+	background-position: 0 -756px
+}
+
+.page_home .icon_b_baike {
+	background-position: 0 -798px
+}
+
+.page_home .icon_b_lanmu {
+	background-position: 0 -840px
+}
+
+.page_home .icon_b_fangjia {
+	background-position: 0 -882px
+}
+
+.page_home .icon_b_gujia {
+	background-position: 0 -924px
+}
+
+.page_home .icon_b_xiaoqu {
+	background-position: 0 -966px
+}
+
+.page_home .icon_b_jingjiren {
+	background-position: 0 -1008px
+}
+
+.page_home .icon_b_shuifei {
+	background-position: 0 -1050px
+}
+
+.page_home .icon_b_daikuan {
+	background-position: 0 -1092px
+}
+
+.page_home .icon_b_kefu {
+	background-position: 0 -1134px
+}
+
+.page_home .icon_xiaoqu {
+	background-position: 0 -1176px
+}
+
+.page_home .icon_app {
+	background-position: 0 -1218px
+}
+
+.page_home .icon_linshen {
+	background-position: 0 -1260px
+}
+
+.page_home .icon_goufang {
+	background-position: 0 -1302px
+}
+
+.page_home .icon_b_shoufu {
+	background-position: 0 -1344px
+}
+
+.page_home .icon_b_lanrenzhaofang {
+	background-position: 0 -1386px
+}
+
+.tool_list_wrap {
+	margin-left: -19.2px;
+	padding: 20px 0 0
+}
+
+.tool_list_wrap .link {
+	margin-bottom: 20px
+}
+
+.page_home .icon_lvju {
+	background-position: 0 -1429px;
+	transform: scale(1.5) translateY(1px);
+	-webkit-transform: scale(1.5) translateY(1px);
+	-moz-transform: scale(1.5) translateY(1px);
+	-o-transform: scale(1.5) translateY(1px)
+}
+
+.channel_box .icon {
+	-webkit-transform: scale(.78125);
+	-moz-transform: scale(.78125);
+	-ms-transform: scale(.78125);
+	-o-transform: scale(.78125);
+	transform: scale(.78125);
+	margin: 0
+}
+
+.home_header {
+	width: 100%;
+	height: 225px;
+	line-height: 225px;
+	background: url("../../../images/home/head_bg.jpg?id=201607141919&version=f08cdb1glx") center center no-repeat;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	color: #fff
+}
+
+.home_header .top {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: -moz-box;
+	display: flex;
+	height: 45px;
+	line-height: 45px;
+	padding: 0 4px 0 15px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box
+}
+
+.home_header .box_col {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	-moz-box-flex: 1;
+	flex: 1
+}
+
+.home_header .logo {
+	display: inline-block
+}
+
+.home_header .switch_city {
+	display: inline-block;
+	padding: 0 8px;
+	height: 24px;
+	line-height: 24px;
+	background: rgba(0, 0, 0, .5);
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	vertical-align: middle;
+	text-align: center
+}
+
+.home_header .switch_city * {
+	vertical-align: middle
+}
+
+.home_header .switch_city .city {
+	font-size: 13px;
+	color: #fff
+}
+
+.home_header .opt_box {
+	height: 100%
+}
+
+.home_header .app,
+.home_header .my {
+	display: inline-block;
+	width: 40px;
+	height: 100%;
+	line-height: 1em;
+	padding-top: 8px;
+	font-size: 12px;
+	color: #fff;
+	text-align: center;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box
+}
+
+.home_header .app span,
+.home_header .my span {
+	display: block;
+	margin-top: 4px;
+	-webkit-transform: scale(.917);
+	-moz-transform: scale(.917);
+	-ms-transform: scale(.917);
+	-o-transform: scale(.917);
+	transform: scale(.917)
+}
+
+.home_header .content {
+	position: absolute;
+	width: 100%;
+	height: 180px
+}
+
+.home_header .slogan {
+	position: absolute;
+	width: 202px;
+	height: 62px;
+	background: url("../../../images/home/head_slogan.png?id=201607141919&version=f08cdb1glx") center center no-repeat;
+	-moz-background-size: 100%;
+	-o-background-size: 100%;
+	background-size: 100%;
+	font-size: 0;
+	top: 16px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%)
+}
+
+.home_header .search_box {
+	position: absolute;
+	width: auto;
+	bottom: 4px;
+	left: 15px;
+	right: 15px;
+	background: #fff;
+	border: 0;
+	margin: 12px 0
+}
+
+.home_header .search_box .icon_search_gray {
+	position: absolute;
+	-webkit-transform: scale(.5);
+	-moz-transform: scale(.5);
+	-ms-transform: scale(.5);
+	-o-transform: scale(.5);
+	transform: scale(.5);
+	left: 6.4px;
+	top: 7.2px
+}
+
+.home_header .icon_user {
+	width: 28.8px;
+	height: 28.8px;
+	background-size: 28.8px;
+	background-position: 0 -239.4px;
+	margin: 0
+}
+
+.channel_nav {
+	padding: 5px 10px 20px;
+	margin-top: 0
+}
+
+.channel_nav .box_col {
+	margin: 15px 0 0
+}
+
+.channel_nav .box_col>a {
+	display: block
+}
+
+.channel_nav .name {
+	margin-top: 0;
+	color: #222
+}
+
+.data_channel {
+	padding: 0 0 0 20px
+}
+
+.data_channel .title {
+	position: relative;
+	height: 55px;
+	line-height: 55px;
+	border-bottom: 0.0625rem solid #e5e5e5
+}
+
+.data_channel .title a {
+	display: block;
+	color: #333;
+	font-size: 16px;
+	font-weight: 600
+}
+
+.data_channel .data {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: -moz-box;
+	display: flex;
+	padding: 20px 0
+}
+
+.data_channel .data .link {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	-moz-box-flex: 1;
+	flex: 1;
+	height: 48px;
+	border-right: 0.0625rem solid #e5e5e5;
+	display: block
+}
+
+.data_channel .data .link:last-child {
+	border-right: 0
+}
+
+.data_channel .data h4 {
+	margin-bottom: 10px;
+	color: #adadad;
+	font-size: 12px;
+	line-height: 1em
+}
+
+.data_channel .data small {
+	padding-left: 6px;
+	font-size: 14px;
+	color: #333;
+	font-weight: 600;
+	line-height: 1em
+}
+
+.data_channel .data strong {
+	font-size: 30px;
+	line-height: 30px
+}
+
+.data_channel .data .price_link strong {
+	color: #ff7326
+}
+
+.data_channel .data .amount_link {
+	padding-left: 20px
+}
+
+.data_channel .data .amount_link strong {
+	color: #00ae66
+}
+
+.sell_helper .data {
+	margin-left: -20px
+}
+
+.sell_helper .data .link {
+	text-align: center
+}
+
+.sell_helper .title a>span {
+	font-size: 13px;
+	color: #999;
+	font-weight: 400;
+	position: relative;
+	top: 1.6px;
+	margin-left: 11px
+}
+
+.sell_helper .icon {
+	margin: -4.8px 0 0
+}
+
+#page_home {
+	display: block
+}
+
+.banner .ullists {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%
+}
+
+.banner .ullists .li {
+	height: 100%
+}
+
+.banner .ullists .li>a {
+	display: block;
+	position: relative;
+	height: 100%
+}
+
+.mod_lanmu {
+	margin-top: 0;
+	padding-left: 0;
+	background-color: #f5f5f5;
+	border: none
+}
+
+.mod_lanmu h3.mod_tit {
+	border-bottom: none;
+	margin-left: 20px
+}
+
+.mod_lanmu .lanmu_more {
+	font-size: 13px;
+	color: #9c9fa1;
+	float: right;
+	margin-right: 32px;
+	font-weight: 400
+}
+
+.mod_lanmu .lanmu_scroll {
+	height: 145px;
+	width: auto;
+	overflow: scroll
+}
+
+.mod_lanmu .lanmu_scroll::-webkit-scrollbar {
+	display: none
+}
+
+.mod_lanmu .lanmu_ul {
+	height: 100%;
+	overflow: hidden;
+	min-width: 100%
+}
+
+.mod_lanmu .lanmu_li {
+	height: 100%;
+	float: left;
+	width: 290px;
+	overflow: hidden;
+	margin-right: 10px;
+	position: relative
+}
+
+.mod_lanmu .lanmu_li:first-child {
+	margin-left: 20px
+}
+
+.mod_lanmu .lanmu_li a {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	height: 100%;
+	color: #fff
+}
+
+.mod_lanmu .lanmu_li .lanmu_img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1
+}
+
+.mod_lanmu .lanmu_li .mengceng {
+	z-index: 2;
+	border-radius: 2px;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, .4)
+}
+
+.mod_lanmu .lanmu_li .lanmu_desc {
+	position: absolute;
+	z-index: 3;
+	left: 20px;
+	bottom: 16px
+}
+
+.mod_lanmu .lanmu_li .lanmu_name {
+	font-size: 20px;
+	top: 41px;
+	font-weight: 700;
+	vertical-align: bottom;
+	margin-left: -12px
+}
+
+.mod_lanmu .lanmu_li .lanmu_name .book_num {
+	font-size: 12px;
+	font-weight: 400;
+	position: relative;
+	top: 2px
+}
+
+.mod_lanmu .lanmu_li .lanmu_hint {
+	font-size: 13px;
+	margin-right: 58px;
+	line-height: 17px
+}
+
+.page_home .gray {
+	color: #9c9fa1
+}
+
+.page_home .mod_tit .gray {
+	font-size: 12px
+}
+
+.page_home .mod_tit .right {
+	float: right;
+	margin-right: 24px;
+	font-weight: 400
+}
+
+.page_home .mod_box .item_desc {
+	background-color: #f9f9f9;
+	font-size: 13px;
+	color: #9c9fa1;
+	padding: 4px 8px;
+	margin-top: 12px
+}
+
+.page_home .mod_box.no_border_mod_box {
+	border-top: none;
+	margin-top: 0
+}

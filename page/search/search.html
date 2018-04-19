@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>全家-基盘列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />   
+    <link rel="stylesheet" href="../../css/common/ljbase.css" />
+    <link rel="stylesheet" href="search.css" />
+</head>
+
+	<body>
+		<section class="page page_search">
+			<div class="content_area">
+				<div class="search_form flexbox">
+					<a class="back" href="javascript:history.back();"><span class="icon_fanhui"></span></a>
+					<div class="tab_tit" style="" data-mark="search_panel">
+						<span class="tit" data-mark="search_type">基盘</span>
+						<i class="icon_triangle_down"></i>
+						<ul class="dropdown" data-mark="dropdown_panel" style="display: block;">
+							<li data-act="action_select" data-query="channel_id=ershoufang&amp;city_id=310000">基盘</li>
+							<li data-act="action_select" data-query="channel_id=zufang&amp;city_id=310000">店铺</li>
+							<li data-act="action_select" data-query="channel_id=xinfang&amp;city_id=310000">竞争店</li>
+						</ul>
+					</div>
+					<div class="search_box search_a box_col">
+						<form action=""><input type="text" data-mark="search_input" class="input" placeholder="请输入小区或商圈名称"><span class="divide"></span><i class="icon_search" data-act="action_search"></i></form>
+					</div>
+				</div>
+				<div style="display: none;" class="history_title" data-mark="clearHistory_panel"><span class="">历史搜索</span>
+					<a href="javascript:void(0);" class="deleta_history" data-act="action_clearHistory"><i class="icon_delete"></i></a>
+				</div>
+				<div class="mod_box ">
+					<ul class="item_lists" data-mark="history_list"></ul>
+				</div>
+			</div>
+		</section>
+	</body>
+
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <title>全家-基盘列表</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <meta name="format-detection" content="telephone=no" />   	    
+	    <script>    	
+			;(function(f,i){var b=i.documentElement;var e=f.navigator.appVersion;var g=e.match(/android/gi);var c=e.match(/iphone/gi);var k=f.devicePixelRatio;var j=1,d=1;if(c){if(k>=3){j=3}else{if(k>=2){j=2}else{j=1}}}else{j=1}d=1/j;var h=i.querySelector('meta[name="viewport"]');if(!h){h=i.createElement("meta");h.setAttribute("name","viewport");if(b.firstElementChild){b.firstElementChild.appendChild(h)}else{var a=i.createElement("div");a.appendChild(h);i.write(a.innerHTML)}}if(j){h.setAttribute("content","initial-scale="+d+", maximum-scale="+d+", minimum-scale="+d+", user-scalable=no,uc-fitscreen=yes");b.style.fontSize=16*j+"px"}window.DPR=j})(window,document);	
+	    </script>
+	    <link rel="stylesheet" href="../../css/common/ljrem.css" />
+	    <link rel="stylesheet" href="addJP.css" />
+	</head>
+	<body>
+		<section class="page page_yezhu">
+		<div class="yezhu-wrapper">
+			<div class="list">
+				<div class="step stepon steps" data-page="step1">
+					<div class="header">
+						<span class="tips"><a href="/sh/"><i></i>返回</a></span>
+						<span class="title">基盘发布</span>
+					</div>
+					<ul class="stepChange">
+						<li class="change" id="xiaoqu" data-page="xiaoqu">
+							<div>基盘类别</div><i></i><span></span>
+						</li>
+						<li class="change" id="loudong" data-page="loudong">
+							<div>基盘区域</div><i></i><span></span>
+						</li>
+						<li class="change" id="danyuan" data-page="danyuan">
+							<div>基盘地址</div><i></i><span></span>
+						</li>
+						<li class="change" id="menpai" data-page="menpai">
+							<div>基盘街道</div><i></i><span></span>
+						</li>
+					</ul>
+					<div class="step1 next steps" data-page="step2">下一步</div>
+	
+					
+	
+					<div class="pic">
+						<div class="icon_picpng"></div>
+					</div>
+				</div>
+				<div class="step steps" data-page="xiaoqu">
+					<div class="header">
+						<span class="tips change" data-page="step1"><i></i>返回</span>
+						<span class="title">选择小区</span>
+					</div>
+					<div class="search inp">
+						<input type="text" value="" placeholder="请输入小区名称" class="autoSuggest searc-input sug" sug-data="xiaoqu">
+						<span class="searc-btn backs">完成</span>
+					</div>
+					<div class="xiaoquList sublist" data-mark="xiaoquList">
+					</div>
+				</div>
+				<div class="step steps" data-page="loudong">
+					<div class="header">
+						<span class="tips change" data-page="step1"><i></i>返回</span>
+						<span class="title">楼栋号</span>
+					</div>
+					<div class="inp">
+						<div class="name">
+							<span>楼栋号</span>
+							<input type="text" placeholder="请输入楼栋号" class="sug" sug-data="loudong">
+							<label class="backs">完成</label>
+						</div>
+					</div>
+					<div class="loudongList sublist" data-mark="loudongList">
+					</div>
+				</div>
+				<div class="step steps" data-page="danyuan">
+					<div class="header">
+						<span class="tips change" data-page="step1"><i></i>返回</span>
+						<span class="title">单元号</span>
+					</div>
+					<div class="inp">
+						<div class="name">
+							<span>单元号</span>
+							<input type="text" placeholder="请输入单元号" class="sug" sug-data="danyuan">
+							<label class="backs">完成</label>
+						</div>
+					</div>
+					<div class="danyuanList sublist" data-mark="danyuanList">
+					</div>
+				</div>
+				<div class="step steps" data-page="menpai">
+					<div class="header">
+						<span class="tips change" data-page="step1"><i></i>返回</span>
+						<span class="title">门牌号</span>
+					</div>
+					<div class="inp">
+						<div class="name">
+							<span>门牌号</span>
+							<input type="text" placeholder="请输入门牌号" class="sug" sug-data="menpai">
+							<label class="backs">完成</label>
+						</div>
+					</div>
+					<div class="menpaiList sublist" data-mark="menpaiList">
+					</div>
+				</div>
+			</div>
+			<div class="step" data-page="step2">
+				<div class="header">
+					<span class="tips changeStep" data-page="step1"><i></i>返回</span>
+					<span class="title">免费发布房源</span>
+				</div>
+				<div class="step2">
+					<div class="count ">
+						<p>您的期望售价</p>
+						<div class="step2-box">
+							<div><span>售价</span><input type="tel" class="pirce inp"><i class="ti">万</i></div>
+							<div style="border-bottom: none;" data-mark="price">
+							</div>
+						</div>
+						<p>您的联系信息</p>
+						<div class="step2-box">
+							<div><span>称呼</span><input type="text" class="txt-yezhu"></div>
+							<div><span>手机号</span><input type="tel" class="txt-mobile inp" placeholder="请输入手机号"><label class="yz yzm">获取验证码</label></div>
+							<div><span>验证码</span><input type="tel" class="txt-captcha inp"><label class="yz yz-yuyin">没有收到？</label></div>
+							<div><span>期望出售时间</span><i class="right"></i>
+								<select class="sl-times">
+									<option value="-1">请选择</option>
+									<option value="1">1个月内</option>
+									<option value="3">3个月内</option>
+									<option value="6">半年内</option>
+									<option value="0">观望</option>
+								</select>
+							</div>
+							<div class="next step3 steps" data-page="step3">提交</div>
+							<div class="down">
+								<a href="http://www.lianjia.com/zhuanti/mobile" target="_blank">已有房源在链家销售？下载APP管理委托。</a>
+							</div>
+							<div class="pic">
+								<div class="icon_picpng"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="step" data-page="step3" style="background:#fff;">
+				<div class="header">
+					<span class="title" style="margin-right:-3rem;">免费发布房源</span>
+					<a href="/sh/" class="site">完成</a>
+				</div>
+				<div id="step3">
+					<div class="sublist" data-mark="sublist">
+						<div class="suc">
+							<div class="icon_successpng"></div>
+							<p>30分钟内会有客服跟您联系核对房源。<br>房源上架完成实勘图片采集后，奖励300家基金；<br>签订速销协议后，奖励700家基金至链家app帐号</p>
+						</div>
+						<div>
+							<div class="next">
+								<a href="http://www.lianjia.com/zhuanti/mobile" target="_blank">下载掌上链家APP 轻松管理房源</a>
+							</div>
+							<div class="title"><span class="icon_step3"></span></div>
+							<ul>
+								<li>
+									<div class="icon_icon01 fl"></div>
+									<div class="fr">
+										<span class="tips01">委托进度查询</span>
+										<p>发布房源后，可以在APP上随时跟踪状态，房源上架，第一时间知道。</p>
+									</div>
+								</li>
+								<li>
+									<div class="icon_icon02 fl"></div>
+									<div class="fr">
+										<span class="tips02">销售动态管理</span>
+										<p>有买家看过房、调价生效，及时通知，不再错过关键信息。</p>
+									</div>
+								</li>
+								<li>
+									<div class="icon_icon03 fl"></div>
+									<div class="fr">
+										<span class="tips03">房源竞争力管理</span>
+										<p>我的房子好卖吗？如何调整销售策略？让链家房屋热度指数告诉你！</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="sublist_new" data-mark="sublist_new">
+						<div class="suc">
+							<!-- <img src="../../../images/yezhu/success.png" /> -->
+							<span class="icon_wait"></span>
+							<p class="wait_text">房源待审核</p>
+							<p>预计30分钟客服跟您联系，请保持手机畅通<br>工作时间：9:30 - 18:30</p>
+						</div>
+						<div class="title"><span class="icon_step3"></span></div>
+						<ul>
+							<li>
+								<div class="icon_icon01 fl"></div>
+								<div class="fr">
+									<span class="tips01">每天打卡曝光高</span>
+									<p>每天打卡一次，迅速提升房源在链家网的排序。</p>
+								</div>
+							</li>
+							<li>
+								<div class="icon_icon02 fl"></div>
+								<div class="fr">
+									<span class="tips02">业主评房卖相好</span>
+									<p>业主点评自己的房源，提高房源吸引力。</p>
+								</div>
+							</li>
+							<li>
+								<div class="icon_icon03 fl"></div>
+								<div class="fr">
+									<span class="tips03">定价靠谱成交快</span>
+									<p>实时查看相似房源成交与新上，及时调整房源价格。</p>
+								</div>
+							</li>
+						</ul>
+						<div class="next">
+							<a href="http://www.lianjia.com/zhuanti/mobile" target="_blank">下载链家APP登录业主中心</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>	
+	<script src="../../js/common/zepto.min.js" ></script>
+	<script src="addJP1.js" ></script>
+	</body>
+</html>
