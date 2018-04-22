@@ -708,3 +708,7 @@ html {
 	color: #9c9fa1;
 	font-size: .8125rem
 }
+.change input{
+	text-align: right;
+	border: 0;
+}

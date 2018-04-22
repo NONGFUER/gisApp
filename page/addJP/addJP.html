@@ -10,6 +10,7 @@
 	    </script>
 	    <link rel="stylesheet" href="../../css/common/ljrem.css" />
 	    <link rel="stylesheet" href="addJP.css" />
+	    <link rel="stylesheet" href="popup.css" />
 	</head>
 	<body>
 		<section class="page page_yezhu">
@@ -22,80 +23,23 @@
 					</div>
 					<ul class="stepChange">
 						<li class="change" id="xiaoqu" data-page="xiaoqu">
-							<div>基盘名称</div><input type="text"  style="width: 80%;">
+							<div>基盘名称</div><input type="text" placeholder="请输入基盘名称" style="width: 80%;">
 						</li>
-						<li class="change" id="xiaoqu" data-page="xiaoqu">
+						<li class="change" id="jpType" data-page="xiaoqu" onclick="JPTypeListShow()">
 							<div>基盘类别</div><i></i><span></span>
 						</li>
-						<li class="change" id="loudong" data-page="loudong">
+						<li class="change" id="jpArea" data-page="loudong">
 							<div>基盘区域</div><i></i><span></span>
 						</li>
-						<li class="change" id="danyuan" data-page="danyuan">
-							<div>基盘地址</div><input type="text"  style="width: 80%;">
+						<li class="change" id="jpAdress" data-page="danyuan">
+							<div>基盘地址</div><input type="text" placeholder="请输入基盘地址"  style="width: 80%;">
 						</li>
-						<li class="change" id="menpai" data-page="menpai">
-							<div>基盘街道</div><input type="text"  style="width: 80%;">
+						<li class="change" id="jpRoad" data-page="menpai">
+							<div>基盘街道</div><input type="text" placeholder="请输入基盘街道"  style="width: 80%;">
 						</li>
 					</ul>
 					<div class="step1 next steps" data-page="step2">下一步</div>					
-				</div>
-				<!--<div class="step steps" data-page="xiaoqu">
-					<div class="header">
-						<span class="tips change" data-page="step1"><i></i>返回</span>
-						<span class="title">选择小区</span>
-					</div>
-					<div class="search inp">
-						<input type="text" value="" placeholder="请输入小区名称" class="autoSuggest searc-input sug" sug-data="xiaoqu">
-						<span class="searc-btn backs">完成</span>
-					</div>
-					<div class="xiaoquList sublist" data-mark="xiaoquList">
-					</div>
-				</div>
-				<div class="step steps" data-page="loudong">
-					<div class="header">
-						<span class="tips change" data-page="step1"><i></i>返回</span>
-						<span class="title">楼栋号</span>
-					</div>
-					<div class="inp">
-						<div class="name">
-							<span>楼栋号</span>
-							<input type="text" placeholder="请输入楼栋号" class="sug" sug-data="loudong">
-							<label class="backs">完成</label>
-						</div>
-					</div>
-					<div class="loudongList sublist" data-mark="loudongList">
-					</div>
-				</div>
-				<div class="step steps" data-page="danyuan">
-					<div class="header">
-						<span class="tips change" data-page="step1"><i></i>返回</span>
-						<span class="title">单元号</span>
-					</div>
-					<div class="inp">
-						<div class="name">
-							<span>单元号</span>
-							<input type="text" placeholder="请输入单元号" class="sug" sug-data="danyuan">
-							<label class="backs">完成</label>
-						</div>
-					</div>
-					<div class="danyuanList sublist" data-mark="danyuanList">
-					</div>
-				</div>
-				<div class="step steps" data-page="menpai">
-					<div class="header">
-						<span class="tips change" data-page="step1"><i></i>返回</span>
-						<span class="title">门牌号</span>
-					</div>
-					<div class="inp">
-						<div class="name">
-							<span>门牌号</span>
-							<input type="text" placeholder="请输入门牌号" class="sug" sug-data="menpai">
-							<label class="backs">完成</label>
-						</div>
-					</div>
-					<div class="menpaiList sublist" data-mark="menpaiList">
-					</div>
-				</div>-->
+				</div>				
 			</div>
 			<div class="step" data-page="step2">
 				<div class="header">
@@ -111,21 +55,25 @@
 						</div>
 						<p>基盘分析</p>
 						<div class="step2-box">
-							<div><span>面积</span><input type="text" class="txt-yezhu"><i class="ti">m2</i></div>
-							<div><span>店宽</span><input type="text" class="txt-yezhu"><i class="ti">m</i></div>
-							<div><span>立地</span><input type="text" class="txt-yezhu"></div>
-							<div><span>视野</span><input type="text" class="txt-yezhu"></div>
-							<div><span>主商圈</span><input type="text" class="txt-yezhu"></div>
-							<div><span>副商圈</span><input type="text" class="txt-yezhu"></div>
-							<div><span>车辆停靠</span><input type="text" class="txt-yezhu"></div>
-							<div><span>路况类型</span><input type="text" class="txt-yezhu"></div>
+							<div><span>面积</span><input type="text" class="txt-yezhu pirce"><i class="ti">㎡</i></div>
+							<div><span>店宽</span><input type="text" class="txt-yezhu pirce"><i class="ti">m</i></div>
+							<div><span>立地</span><input type="text" class="txt-yezhu" placeholder="请选择" readonly></div>
+							<div><span>视野</span><input type="text" class="txt-yezhu" placeholder="请选择" readonly></div>
+							<div><span>主商圈</span><input type="text" class="txt-yezhu" placeholder="请选择" readonly></div>
+							<div><span>副商圈</span><input type="text" class="txt-yezhu" placeholder="请选择" readonly></div>
+							<div><span>车辆停靠</span><input type="text" class="txt-yezhu" placeholder="请选择" readonly></div>
+							<div><span>路况类型</span><input type="text" class="txt-yezhu" placeholder="请选择" readonly></div>
 							<div class="next step3 steps" data-page="step3">下一步</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="step" data-page="step3">
-				<div class="next step4 steps" data-page="step4">下一步</div>
+				<div class="header">
+						<span class="tips"><a href="/sh/"><i></i>返回</a></span>
+						<span class="title">基盘发布</span>
+					</div>
+				<div class="next step4 steps" data-page="step4">提交</div>
 			</div>
 			<div class="step" data-page="step4" style="background:#fff;">
 				<div class="header">
@@ -148,6 +96,18 @@
 				</div>
 			</div>
 		</div>
+		<!--弹窗-->
+		<div class="bottom_layer" data-mark="bottom_layer">
+	        <div class="title">
+	            <span class="cancle" data-act="bottom_cancle">取消</span>
+	            <p data-mark="bottom_layer_title" id="bottom_layer_title"></p>
+	        </div>
+	        <div class="option_wrap" data-mark="option_wrap">
+	            <ul data-mark="layer_list" id="layer_list" data-act="choose_option" option-list="" option-list-dom=""></ul>
+	        </div>
+    	</div>
+		<div class="layer_fixed" data-mark="layer_fixed" style="display: none;"></div>
+		<!--弹窗-->
 	</section>	
 	<script src="../../js/common/zepto.min.js" ></script>
 	<script src="addJP1.js" ></script>
