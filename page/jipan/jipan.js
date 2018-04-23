@@ -24,7 +24,5 @@ $(function(){
 	});
 });
 
-function scroll(obj){
-	var offset = $(obj).offset(); 
-	var scrollTop = (document.body.scrollTop || document.documentElement.scrollTop);
-}
+
+

@@ -1,0 +1,76 @@
+bpPropertyMaster.bpmCity = bpmCityid[1];
+			bpPropertyMaster.city = bpmCity[1];
+			bpPropertyMaster.bpmCounty = bpmCityid[2];
+			bpPropertyMaster.areaCn = bpmCity[2];
+			bpPropertyMaster.bpmConfirmStatus = $("#_confirmStatus").val();
+			bpPropertyMaster.auditResult = 1;
+			if(bpPropertyMaster.bpmConfirmStatus == null || bpPropertyMaster.bpmConfirmStatus == "") {
+				bpPropertyMaster.bpmConfirmStatus = "N"
+			}
+			bpPropertyRpt.bprPosition = $("#_once").val();
+			if(bpPropertyRpt.bprPosition == null || bpPropertyRpt.bprPosition == "") {
+				bpPropertyRpt.bprPosition = "01"
+			}
+			bpPropertyRpt.bprViewType = $("#_vision").val();
+			if(bpPropertyRpt.bprViewType == null || bpPropertyRpt.bprViewType == "") {
+				bpPropertyRpt.bprViewType = "01"
+			}
+			bpPropertyRpt.bprTimeQuantum = $("#_timeQuantum").val();
+			if(bpPropertyRpt.bprTimeQuantum == null || bpPropertyRpt.bprTimeQuantum == "") {
+				bpPropertyRpt.bprTimeQuantum = "01"
+			}
+			bpPropertyRpt.bprMarketType = $("#_mainTrade").val();
+			if(bpPropertyRpt.bprMarketType == null || bpPropertyRpt.bprMarketType == "") {
+				bpPropertyRpt.bprMarketType = "01"
+			}
+			bpPropertyRpt.bprViceMarketType = $("#_subTrade").val();
+			if(bpPropertyRpt.bprViceMarketType == null || bpPropertyRpt.bprViceMarketType == "") {
+				bpPropertyRpt.bprViceMarketType = "02"
+			}
+			bpPropertyRpt.bprCarStop = $("#_parked").val();
+			if(bpPropertyRpt.bprCarStop == null || bpPropertyRpt.bprCarStop == "") {
+				bpPropertyRpt.bprCarStop = "01"
+			}
+			bpPropertyRpt.bprCarWay = $("#_traffic").val();
+			if(bpPropertyRpt.bprCarWay == null || bpPropertyRpt.bprCarWay == "") {
+				bpPropertyRpt.bprCarWay = "01"
+			}
+			bpPropertyRpt.bprRoadType = $("#_roadType").val();
+			if(bpPropertyRpt.bprRoadType == null || bpPropertyRpt.bprRoadType == "") {
+				bpPropertyRpt.bprRoadType = "01"
+			}
+			bpPropertyRpt.bprMarketClass = $("#_objectType").val();
+			if(bpPropertyRpt.bprMarketClass == null || bpPropertyRpt.bprMarketClass == "") {
+				bpPropertyRpt.bprMarketClass = "01"
+			}
+			bpPropertyMaster.bpmAddress = $("#_address").val();
+			if(bpPropertyMaster.bpmAddress == null || bpPropertyMaster.bpmAddress.length == 0 || bpPropertyMaster.bpmAddress == "必填") {
+				mui.toast("亲，你的物件地址没填！！！");
+				return "f";
+			}
+			bpPropertyMaster.bpmPropertyName = $("#_propertyName").val();
+			if(bpPropertyMaster.bpmPropertyName == null || bpPropertyMaster.bpmPropertyName.length == 0 || bpPropertyMaster.bpmPropertyName == "必填") {
+				mui.toast("亲，你的物件名称没填！！！");
+				return "f";
+			}
+			bpPropertyMaster.bpmStreet = $("#_street").val();
+			//			if(bpPropertyMaster.bpmStreet == null || bpPropertyMaster.bpmStreet.length == 0 || bpPropertyMaster.bpmStreet == "必填") {
+			//				mui.toast("亲，你的物件街道没填！！！");
+			//				return "f";
+			//			}
+			if(bpPropertyMaster.bpm_ownerName == null || bpPropertyMaster.bpm_ownerName.length == 0 || bpPropertyMaster.bpm_ownerName != "选填") {
+				//				mui.toast("亲，你的房东姓名没填！！！");
+				//				return "f";
+				bpPropertyMaster.bpm_ownerName = $("#_ownerName").val();
+			}
+			if(bpPropertyMaster.bpm_ownerTel == null || bpPropertyMaster.bpm_ownerTel.length == 0 || bpPropertyMaster.bpm_ownerTel != "选填") {
+				//				mui.toast("亲，你的房东手机没填！！！");
+				//				return "f";
+				bpPropertyMaster.bpm_ownerTel = $("#_ownerTel").val();
+			}
+			if(bpPropertyMaster.bpm_ownerAdd == null || bpPropertyMaster.bpm_ownerAdd.length == 0 || bpPropertyMaster.bpm_ownerAdd != "选填") {
+				//				mui.toast("亲，你的房东住址没填！！！");
+				//				return "f";
+				bpPropertyMaster.bpm_ownerAdd = $("#_ownerAdd").val();
+			}
+			bpPropertyRpt.bprExpectRent = $("#_marketprice").val();

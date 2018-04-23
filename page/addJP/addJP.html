@@ -11,6 +11,7 @@
 	    <link rel="stylesheet" href="../../css/common/ljrem.css" />
 	    <link rel="stylesheet" href="addJP.css" />
 	    <link rel="stylesheet" href="popup.css" />
+	    <!--<link rel="stylesheet" href="webuploader.css"  />-->
 	</head>
 	<body>
 		<section class="page page_yezhu">
@@ -25,8 +26,11 @@
 						<li class="change" id="xiaoqu" data-page="xiaoqu">
 							<div>基盘名称</div><input type="text" placeholder="请输入基盘名称" style="width: 80%;">
 						</li>
-						<li class="change" id="jpType" data-page="xiaoqu" onclick="JPTypeListShow()">
-							<div>基盘类别</div><i></i><span></span>
+						<li class="change " id="jpType" data-page="xiaoqu"  onclick="accuracyListShow()">
+							<div>确度</div><i class="accuracyList">请选择</i><span></span>
+						</li>
+						<li class="change " id="jpType" data-page="xiaoqu"  onclick="JPTypeListShow()">
+							<div>基盘类别</div><i class="JPTypeList">请选择</i><span></span>
 						</li>
 						<li class="change" id="jpArea" data-page="loudong">
 							<div>基盘区域</div><i></i><span></span>
@@ -50,19 +54,20 @@
 					<div class="count ">
 						<p>预估</p>
 						<div class="step2-box">
-							<div><span>预估日商</span><input type="tel" class="pirce inp"><i class="ti">万</i></div>
-							<div><span>预估租金</span><input type="tel" class="pirce inp"><i class="ti">万</i></div>
+							<div><span>预估日商</span><input type="number" class="pirce inp"><i class="ti">万</i></div>
+							<div><span>预估租金</span><input type="number" class="pirce inp"><i class="ti">万</i></div>
 						</div>
 						<p>基盘分析</p>
 						<div class="step2-box">
-							<div><span>面积</span><input type="text" class="txt-yezhu pirce"><i class="ti">㎡</i></div>
-							<div><span>店宽</span><input type="text" class="txt-yezhu pirce"><i class="ti">m</i></div>
-							<div><span>立地</span><input type="text" class="txt-yezhu" placeholder="请选择" readonly></div>
-							<div><span>视野</span><input type="text" class="txt-yezhu" placeholder="请选择" readonly></div>
-							<div><span>主商圈</span><input type="text" class="txt-yezhu" placeholder="请选择" readonly></div>
-							<div><span>副商圈</span><input type="text" class="txt-yezhu" placeholder="请选择" readonly></div>
-							<div><span>车辆停靠</span><input type="text" class="txt-yezhu" placeholder="请选择" readonly></div>
-							<div><span>路况类型</span><input type="text" class="txt-yezhu" placeholder="请选择" readonly></div>
+							<div><span>面积</span><input type="number" class="txt-yezhu pirce"><i class="ti">㎡</i></div>
+							<div><span>店宽</span><input type="number" class="txt-yezhu pirce"><i class="ti">m</i></div>
+							<div onclick="siteListShow()"><span>立地</span><i class="izi siteList">请选择</i><span class="rarrow"></span></div>
+							<div onclick="viewListShow()"><span>视野</span><i class="izi viewList">请选择</i><span class="rarrow"></span></div>
+							<div onclick="marketTypeListShow()"><span>主商圈</span><i class="izi marketTypeList">请选择</i><span class="rarrow"></span></div>
+							<div onclick="subMarketTypeListShow()"><span>副商圈</span><i class="izi subMarketTypeList">请选择</i><span class="rarrow"></span></div>
+							<div onclick="carparkListShow()"><span>车辆停靠</span><i class="izi carparkList">请选择</i><span class="rarrow"></span></div>
+							<div onclick="txfxListShow()"><span>通行方向</span><i class="izi txfxList">请选择</i><span class="rarrow"></span></div>
+							<div onclick="waywidthListShow()"><span>路宽类型</span><i class="izi waywidthList">请选择</i><span class="rarrow"></span></div>
 							<div class="next step3 steps" data-page="step3">下一步</div>
 						</div>
 					</div>
@@ -70,10 +75,18 @@
 			</div>
 			<div class="step" data-page="step3">
 				<div class="header">
-						<span class="tips"><a href="/sh/"><i></i>返回</a></span>
-						<span class="title">基盘发布</span>
-					</div>
-				<div class="next step4 steps" data-page="step4">提交</div>
+					<span class="tips"><a href="/sh/"><i></i>返回</a></span>
+					<span class="title">基盘发布</span>
+				</div>
+				<div id="uploader-demo">
+    				<!--用来存放item-->
+    				<div id="fileList" class="uploader-list"></div>
+    				<div>
+	    				<img src="../../img/common/add.png" />
+	    				<div id="filePicker" style="opacity: 0;"><img src="../../img/common/add.png" /></div>
+    				</div>
+				</div>
+				<div class="next step4 steps" data-page="step4">立即发布</div>
 			</div>
 			<div class="step" data-page="step4" style="background:#fff;">
 				<div class="header">
@@ -110,6 +123,9 @@
 		<!--弹窗-->
 	</section>	
 	<script src="../../js/common/zepto.min.js" ></script>
+	<script src="../../js/common/jquery-1.11.0.js"></script>
+	<script src="webuploader.html5only.js"></script>
+	<script src="../../js/common/gisbase.js" ></script>
 	<script src="addJP1.js" ></script>
 	</body>
 </html>

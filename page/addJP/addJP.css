@@ -248,7 +248,7 @@ html {
 	border-bottom: 0
 }
 
-.yezhu-wrapper .list li span {
+.yezhu-wrapper .list li span,.rarrow {
 	background: url("../../img/common/single_right_grey.png") left top no-repeat;
 	width: 22px;
 	height: .84rem;
@@ -306,7 +306,7 @@ html {
 	color: #999
 }
 
-.yezhu-wrapper .list .stepChange li.change i {
+.yezhu-wrapper .list .stepChange li.change i ,.izi{
 	position: absolute;
 	right: 40px
 }
