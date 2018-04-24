@@ -6,7 +6,7 @@ var base = {
 //判断是否为空
 $.isNull = function(str) {
 	if (str == null || typeof (str) == "undefined" || str == "null"
-			|| str == "") {
+			|| str == "" || str == "请选择") {
 		return true;
 	}
 	return false;
@@ -49,11 +49,11 @@ $.reqPostAjaxs = function(url, requestData, callBack){
 		contentType: "application/json",
 		url: url,
 		headers: {
-			"token": token
+			"token": localStorage.getItem('$auth_token')//token
 		},
 		dataType: "json",	
 		data : requestJson,		
-		timeout : 60000,
+		timeout : 30000,
 		success : function(data) {
 			$(".ajax_prevent_channel").remove();
 			if (!$.isNull(callBack)) {
@@ -79,11 +79,11 @@ $.reqDeleteAjaxs = function(url, requestData, callBack){
 		contentType: "application/json",
 		url: url,
 		headers: {
-			"token": token
+			"token": ""//token
 		},
 		dataType: "json",	
 		data : requestJson,		
-		timeout : 60000,
+		timeout : 30000,
 		success : function(data) {
 			$(".ajax_prevent_channel").remove();
 			if (!$.isNull(callBack)) {
@@ -129,3 +129,114 @@ function modelAlert(){
 		$("body").append(str);
 		
 }
+function logingis(userId,password){
+	var password1 = toBase64(password);
+	var data = {
+		userId: userId,
+		password: password1
+	}
+	var url = base.basePath + '/familymart.user.login'
+	$.ajax({
+		type: "POST",
+		contentType: "application/json",
+		url: url,
+		dataType: "json",	
+		data : JSON.stringify(data),		
+		timeout : 60000,
+		success : function(data) {
+			$(".ajax_prevent_channel").remove();
+			if(data.statusCode == 200) {
+				localStorage.setItem('$user_data', JSON.stringify(data.data));
+				localStorage.setItem('$auth_key',data.data.key);
+				localStorage.setItem('$auth_token',data.data.token);
+				}
+			if(data.statusCode == 500) {
+				alert(data.message);
+					
+			}
+		},
+		error : function(data) {
+			
+		},
+		beforeSend : function(xhr) {
+			$(".ajax_prevent_channel").remove();
+			$.ajaxPreventChannel();
+		},
+		async : true
+	});
+}
+
+var getState = function() {
+		var stateText = localStorage.getItem('$state') || "{}";
+		return JSON.parse(stateText);
+};
+var createState = function(name, callback) {
+		var state = getState();
+		state.account = name;
+		state.token = localStorage.getItem('$auth_token');
+		 setState(state);
+		return callback();
+};
+var setState = function(state) {
+		state = state || {};
+		localStorage.setItem('$state', JSON.stringify(state));
+		var settings =  getSettings();
+		settings.gestures = '';
+		 setSettings(settings);
+	};
+var getSettings = function() {
+		var settingsText = localStorage.getItem('$settings') || "{}";
+		return JSON.parse(settingsText);
+}
+var toBase64 = function(data) {
+		var toBase64Table = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+		var base64Pad = '=';
+		var result = '';
+
+		var length = data.length;
+
+		var i;
+
+		// Convert every three bytes to 4 ascii characters.
+
+		for(i = 0; i < (length - 2); i += 3) {
+
+			result += toBase64Table[data.charCodeAt(i) >> 2];
+
+			result += toBase64Table[((data.charCodeAt(i) & 0x03) << 4) + (data.charCodeAt(i + 1) >> 4)];
+
+			result += toBase64Table[((data.charCodeAt(i + 1) & 0x0f) << 2) + (data.charCodeAt(i + 2) >> 6)];
+
+			result += toBase64Table[data.charCodeAt(i + 2) & 0x3f];
+
+		}
+
+		// Convert the remaining 1 or 2 bytes, pad out to 4 characters.
+
+		if(length % 3) {
+
+			i = length - (length % 3);
+
+			result += toBase64Table[data.charCodeAt(i) >> 2];
+
+			if((length % 3) == 2) {
+
+				result += toBase64Table[((data.charCodeAt(i) & 0x03) << 4) + (data.charCodeAt(i + 1) >> 4)];
+
+				result += toBase64Table[(data.charCodeAt(i + 1) & 0x0f) << 2];
+
+				result += base64Pad;
+
+			} else {
+
+				result += toBase64Table[(data.charCodeAt(i) & 0x03) << 4];
+
+				result += base64Pad + base64Pad;
+
+			}
+
+		}
+
+		return result;
+
+	}

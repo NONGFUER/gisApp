@@ -1,5 +1,5 @@
 
-(  )familymart.property.applycreate 物件创建
+( 完成 )familymart.property.applycreate 物件创建
 
 (  )familymart.property.appupdate 物件变更
 
@@ -15,12 +15,22 @@
 
 ( 完成 )familymart.commons.getwaywidthlist 路宽类型
 
-familymart.commons.getcitylist 城市
+( 完成 )familymart.commons.getcitylist 城市
 
-familymart.commons.getarealist 区域
+( 完成 没用 )familymart.commons.getarealist 区域
 
-familymart.commons.getareaofcitylist 根据城市查区域 cityId
+(完成 )familymart.commons.getareaofcitylist 根据城市查区域 cityId
 
 (完成)familymart.commons.getmarkettypelist 商圈类型
 
 (完成)familymart.commons.getpropertysortlist 物件类别
+
+
+I young:
+familymart.delete.uploader  bpmId  id
+I young:
+familymart.edit.uploader bpmId  id
+I young:
+familymart.get.uploader  bpmId
+
+familymart.property.app.getlist
