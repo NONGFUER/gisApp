@@ -13,6 +13,7 @@ var domLists = {};
 $(function(){
 	logingis("000005","000005");
 	getImages("SH18410137");
+	getJPInfo("SH18410137")
 //	imageHandle();
 	$(".changeStep").click(function(){
 		var nextPage = $(this).attr("data-page");
@@ -35,13 +36,34 @@ $(function(){
 	});
 
 });
+//获取
+function getJPInfo(bpmId){
+//	var url = base.basePath + "familymart.property.app.getbp?id="+bpmId;
+//	var reqData = {
+//		id:bpmId
+//	};
+//	$.reqPostAjaxs( url, reqData, function(data){
+//		console.log(data);
+//	} );
+	var jpData = {"statusCode":200,"message":"执行成功","dataFlag":0,"data":{"bpPropertyMaster":{"bpmPropertyId":"SH18410137","bpmCity":"001","bpmCounty":"003","bpmZipcode":null,"bpmAddress":"萨达哈","bpmStatus":"01","bpmCheckDate":null,"bpmCheckUser":null,"bpmOwnerId":"000005","bpmDevelopValue":null,"bpmDevelopCoincidenceRate":null,"bpmMarketValue":null,"bpmVieValue":null,"bpmHolidayCustomerValue":null,"bpmWorkdayCustomerValue":null,"bpmRemark":null,"bpmRsvStatus":null,"bpmRsvDatetime":null,"bpmCreateUserId":"000005","bpmCreateDate":1524629173000,"bpmUpdateUserId":"000005","bpmUpdateDate":1524629173000,"bpmShopPosition":null,"bpmCheckFlag":"0","bpmFirstSignupDate":null,"bpmFirstLease":null,"bpmNewshopOpenCheck":"0","bpmDlpPressFlag":"0","bpmDeptMgrPressFlag":"0","bpmSubMgrPressFlag":"0","bpmRptFlag":"0","bpmFirstLeaseMonth":null,"bpmRecordStatus":"10","bpmDeleteReason":null,"bpmDeleteCheck":"0","bpmDeleteCheckman":null,"bpmDeleteRpt":"0","bpmStreet":"萨达哈","bpmConfirmStatus":"01","bpmStoreFcType":"01","bpmInvestmentCost":null,"bpmPrintStatus":null,"bpmPrintUserId":null,"bpmPrintDate":null,"lng":null,"lat":null,"city":"上海市","area":"003","auditResult":0,"bpmPropertyName":"哈哈哈","img1":"upload/2018年04月25日/5.jpg","img2":"upload/2018年04月25日/c.jpg","img3":"upload/2018年04月25日/5.jpg","img4":"upload/2018年04月25日/d.jpg","undertake":"000005","areaCn":"卢湾区"},"bpPropertyRpt":{"bprPropertyId":"SH18410137","bprExpectDaysales":1111,"bprExpectRent":11,"bprMarketType":"03","bprViceMarketType":"02","bprObjectType":"03","bprMarketClass":"01","bprPosition":"01","bprShopArea":11,"bprShopWidth":1111,"bprRoadType":"02","bprCustomerFlow":666,"bprViewType":"01","bprCarStop":"01","bprCarWay":"01","bprRemark":"暂无描述","bprRsvStatus":null,"bprRsvDatetime":1524629173000,"bprCreateUserId":"000005","bprCreateDate":1524629173000,"bprUpdateUserId":"000005","bprUpdateDate":1524629173000,"bprRank":null,"bprScore":null,"bprClosemarketType":null,"bprClosemarketRemark":null,"bprTimeQuantum":null},"bpHouseOwnerInfo":null,"bpMarketInfo":null,"bpCustomerInfo":null,"bpPropertySettingList":null,"tuId":null,"tuName":"测试账号","orgName":"昆山课","tuEmail":null,"tuMp":null}}
+	handleData(jpData)
+}
 //获取图片
 function getImages(bpmId){
-	var url = base.basePath + "familymart.get.uploader?bpmId="+bpmId;
+	var url = base.basePath + "familymart.get.uploader";
 	var reqData = "";
 	$.reqGetAjaxs( url, reqData, function(data){
 		console.log(data);
 	} );
+}
+//处理数据
+function handleData(jpData){
+	var bpPropertyMaster = jpData.data.bpPropertyMaster;
+	$("#jpName").val(bpPropertyMaster.bpmPropertyName);//基盘名称
+	$(".accuracyList").attr("select-value",bpPropertyMaster.bpmConfirmStatus);//基盘类别
+	$(".accuracyList").html(bpPropertyMaster.bpmConfirmStatus);
+	//确度
+	//
 }
 /*获取表单信息*/
 function getFormData(){

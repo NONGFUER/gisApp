@@ -48,16 +48,18 @@ function transformFileToFormData (file,num) {
     // size
     formData.append('size', file.size || "image/jpeg");
     // name
-    formData.append('name', file.name);
+    formData.append('name', 'SH18410137'+'_'+num+'.'+file.name.split('.')[1]);
     // lastModifiedDate
     formData.append('lastModifiedDate', file.lastModifiedDate);
     // append 文件
+    file.name = 'SH18410137'+'_'+num+'.'+file.name.split('.')[1]
     formData.append('file', file);
     // 上传图片
-    uploadImg(formData);
+    uploadImg(formData,num);
 }
 // 将file转成dataUrl
-function transformFileToDataUrl (file) {
+function transformFileToDataUrl (file,num) {
+	$("#f"+num).attr("src" ,URL.createObjectURL(file));
     var imgCompassMaxSize = 400 * 1024; // 超过 200k 就压缩
 
     // 存储文件相关信息
@@ -71,16 +73,16 @@ function transformFileToDataUrl (file) {
     reader.onload = function(e) {
         var result = e.target.result;
         if(result.length < imgCompassMaxSize) {
-            compress(result, processData, false );    // 图片不压缩
+            compress(result, processData, false,num );    // 图片不压缩
         } else {
-            compress(result, processData);            // 图片压缩
+            compress(result, processData,true, num);            // 图片压缩
         }
     };
     reader.readAsDataURL(file);
 }
 
 // 使用canvas绘制图片并压缩
-function compress (dataURL, callback, shouldCompress = true) {
+function compress (dataURL, callback, shouldCompress = true,num) {
     var img = new window.Image();
     img.src = dataURL;
     console.log(dataURL);
@@ -96,12 +98,12 @@ function compress (dataURL, callback, shouldCompress = true) {
         } else {
             compressedDataUrl = canvas.toDataURL(imgFile.type, 1);
         }
-        callback(compressedDataUrl);
+        callback(compressedDataUrl,num);
     }
 }
-function processData (dataURL) {
+function processData (dataURL,num) {
     // 这里使用二进制方式处理dataUrl
-    var binaryString = window.atob(dataUrl.split(',')[1]);
+    var binaryString = window.atob(dataURL.split(',')[1]);
     var arrayBuffer = new ArrayBuffer(binaryString.length);
     var intArray = new Uint8Array(arrayBuffer);
     var imgFile = this.imgFile;
@@ -140,10 +142,10 @@ function processData (dataURL) {
     formData.append('lastModifiedDate', imgFile.lastModifiedDate);
     // append 文件
     formData.append('file', fileOfBlob);
-    uploadImg(formData);
+    uploadImg(formData,num);
 }
 // 上传图片
-function uploadImg (formData) {
+function uploadImg (formData,num) {
     var xhr = new XMLHttpRequest();
     // 进度监听
     xhr.upload.addEventListener('progress', function(e){console.log(e.loaded / e.total)}, false);
@@ -162,6 +164,6 @@ function uploadImg (formData) {
             }
         }
     };
-    xhr.open('POST', base.basePath + 'familymart.uploader?id=1&bpmId=SH18395945' , true);
+    xhr.open('POST', base.basePath + 'familymart.uploader?id='+num+'&bpmId=SH18410137' , true);
     xhr.send(formData);
 }

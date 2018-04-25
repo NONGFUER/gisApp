@@ -240,3 +240,4 @@ var toBase64 = function(data) {
 		return result;
 
 	}
+
