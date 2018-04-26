@@ -1,4 +1,5 @@
 $(function(){
+	getJPList();
 	var n = 1;
 	$(document).scroll(function() {
 		if(n) {
@@ -23,6 +24,24 @@ $(function(){
 		}
 	});
 });
-
-
+function getJPList(){
+	var url = base.basePath + "familymart.property.app.getlist?curPage=1&pageSize=10";
+	var reqData = {
+		curPage:1,
+		pageSize:10
+	}
+	$.reqPostAjaxs(url,reqData ,function(data){
+		console.log(data);
+		if( data.statusCode == "200" ){
+			var jpLists = data.data;
+		}
+	} );
+//	for( var i = 0; i < jpLists.length; i++){
+//		
+//	}
+}
+//跳转
+$(".sort_bar_add").click(function(){
+	window.location.href = "../addJP/addJP.html"
+});
 

@@ -164,6 +164,6 @@ function uploadImg (formData,num) {
             }
         }
     };
-    xhr.open('POST', base.basePath + 'familymart.uploader?id='+num+'&bpmId=SH18410137' , true);
+    xhr.open('POST', base.basePath + 'familymart.uploader?id='+num+'&bpmId=SH18438526' , true);
     xhr.send(formData);
 }

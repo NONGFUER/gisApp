@@ -1,7 +1,8 @@
 var base = {
 		url : window.location.protocol+"//"+window.location.host+"//",
 		basePath:"http://172.16.0.83:8090/fmgis/v1.0/",
-		imagePath : "../../../image/", // 图片路径
+		imagePath : window.location.protocol+"//"+window.location.host+"//gisApp/img/common/", // 图片路径
+		static:"http://172.16.0.83:8090/fmgis/v1.0/"
 };
 //判断是否为空
 $.isNull = function(str) {

@@ -10,10 +10,11 @@ var carparkList = getCarparkList();//车辆停靠
 var waywidthList = getWaywidthList();//路宽
 var txfxList = getTxfxList();//通行方向
 var domLists = {};
+
 $(function(){
 	logingis("000005","000005");
-	getImages("SH18410137");
-	getJPInfo("SH18410137")
+	getImages("SH18438526");
+	getJPInfo("SH18438526")
 //	imageHandle();
 	$(".changeStep").click(function(){
 		var nextPage = $(this).attr("data-page");
@@ -38,38 +39,88 @@ $(function(){
 });
 //获取
 function getJPInfo(bpmId){
-//	var url = base.basePath + "familymart.property.app.getbp?id="+bpmId;
+	var url = base.basePath + "familymart.property.app.getbp?id="+bpmId;
 //	var reqData = {
 //		id:bpmId
 //	};
-//	$.reqPostAjaxs( url, reqData, function(data){
-//		console.log(data);
-//	} );
+	$.reqPostAjaxs( url, "", function(data){
+		console.log(data);
+		if(data.statusCode = "200"){
+			var jpData = data.data;
+			handleData(jpData)
+		}else{
+			
+		}
+		
+	} );
 	var jpData = {"statusCode":200,"message":"执行成功","dataFlag":0,"data":{"bpPropertyMaster":{"bpmPropertyId":"SH18410137","bpmCity":"001","bpmCounty":"003","bpmZipcode":null,"bpmAddress":"萨达哈","bpmStatus":"01","bpmCheckDate":null,"bpmCheckUser":null,"bpmOwnerId":"000005","bpmDevelopValue":null,"bpmDevelopCoincidenceRate":null,"bpmMarketValue":null,"bpmVieValue":null,"bpmHolidayCustomerValue":null,"bpmWorkdayCustomerValue":null,"bpmRemark":null,"bpmRsvStatus":null,"bpmRsvDatetime":null,"bpmCreateUserId":"000005","bpmCreateDate":1524629173000,"bpmUpdateUserId":"000005","bpmUpdateDate":1524629173000,"bpmShopPosition":null,"bpmCheckFlag":"0","bpmFirstSignupDate":null,"bpmFirstLease":null,"bpmNewshopOpenCheck":"0","bpmDlpPressFlag":"0","bpmDeptMgrPressFlag":"0","bpmSubMgrPressFlag":"0","bpmRptFlag":"0","bpmFirstLeaseMonth":null,"bpmRecordStatus":"10","bpmDeleteReason":null,"bpmDeleteCheck":"0","bpmDeleteCheckman":null,"bpmDeleteRpt":"0","bpmStreet":"萨达哈","bpmConfirmStatus":"01","bpmStoreFcType":"01","bpmInvestmentCost":null,"bpmPrintStatus":null,"bpmPrintUserId":null,"bpmPrintDate":null,"lng":null,"lat":null,"city":"上海市","area":"003","auditResult":0,"bpmPropertyName":"哈哈哈","img1":"upload/2018年04月25日/5.jpg","img2":"upload/2018年04月25日/c.jpg","img3":"upload/2018年04月25日/5.jpg","img4":"upload/2018年04月25日/d.jpg","undertake":"000005","areaCn":"卢湾区"},"bpPropertyRpt":{"bprPropertyId":"SH18410137","bprExpectDaysales":1111,"bprExpectRent":11,"bprMarketType":"03","bprViceMarketType":"02","bprObjectType":"03","bprMarketClass":"01","bprPosition":"01","bprShopArea":11,"bprShopWidth":1111,"bprRoadType":"02","bprCustomerFlow":666,"bprViewType":"01","bprCarStop":"01","bprCarWay":"01","bprRemark":"暂无描述","bprRsvStatus":null,"bprRsvDatetime":1524629173000,"bprCreateUserId":"000005","bprCreateDate":1524629173000,"bprUpdateUserId":"000005","bprUpdateDate":1524629173000,"bprRank":null,"bprScore":null,"bprClosemarketType":null,"bprClosemarketRemark":null,"bprTimeQuantum":null},"bpHouseOwnerInfo":null,"bpMarketInfo":null,"bpCustomerInfo":null,"bpPropertySettingList":null,"tuId":null,"tuName":"测试账号","orgName":"昆山课","tuEmail":null,"tuMp":null}}
-	handleData(jpData)
+	
 }
 //获取图片
 function getImages(bpmId){
-	var url = base.basePath + "familymart.get.uploader";
+	var url = base.basePath + "familymart.get.uploader?bpmId="+bpmId;;
 	var reqData = "";
 	$.reqGetAjaxs( url, reqData, function(data){
-		console.log(data);
+		if( data.statusCode == "200"  ){
+			var  jpLists = data.data;
+			for(var i = 0; i < jpLists.length; i++){
+				$("#f"+(i+1)).attr("src" ,base.static + jpLists[i]);
+			}
+			
+		}else{
+			alert(data.message);
+		}
 	} );
 }
 //处理数据
 function handleData(jpData){
-	var bpPropertyMaster = jpData.data.bpPropertyMaster;
+	//$("").html();
+	//$("").attr("select_data",)
+	var bpPropertyMaster = jpData.bpPropertyMaster;
+	var bpPropertyRpt = jpData.bpPropertyRpt;
 	$("#jpName").val(bpPropertyMaster.bpmPropertyName);//基盘名称
-	$(".accuracyList").attr("select-value",bpPropertyMaster.bpmConfirmStatus);//基盘类别
-	$(".accuracyList").html(bpPropertyMaster.bpmConfirmStatus);
-	//确度
-	//
+	$(".accuracyList").html(bpPropertyMaster.bpmConfirmStatus);//确度
+	$(".JPTypeList").attr("select-value",bpPropertyRpt.bprObjectType);//基盘类别
+	$(".JPTypeList").html(DICTIONARY["bprObjectType"][bpPropertyRpt.bprObjectType]);//基盘类别
+	$(".cityList").html(bpPropertyMaster.city);//基盘所在市
+	$(".cityList").attr("select-value",bpPropertyMaster.bpmCity);//基盘所在市
+	$(".areaList").html(bpPropertyMaster.areaCn);//基盘所在区
+	$(".areaList").attr("select-value",bpPropertyMaster.bpmCounty);//基盘所在区
+	$("#jpAdress").val(bpPropertyMaster.bpmAddress);//基盘地址
+	$("#jpRoad").val(bpPropertyMaster.bpmStreet);//基盘街道
+	
+	$("#rishang").val(bpPropertyRpt.bprExpectDaysales);//预估日商
+	$("#zujin").val(bpPropertyRpt.bprExpectRent);//预估租金
+	$("#mianji").val(bpPropertyRpt.bprShopArea);//面积
+	$("#dwidth").val(bpPropertyRpt.bprShopWidth);//店宽
+	//立地
+	$(".siteList").html(DICTIONARY["bprPosition"][bpPropertyRpt.bprPosition]);
+	$(".siteList").attr("select-value",bpPropertyRpt.bprPosition)
+	//视野
+	$(".viewList").html(DICTIONARY["bprViewType"][bpPropertyRpt.bprViewType]);
+	$(".viewList").attr("select-value",bpPropertyRpt.bprViewType)
+	//主商圈
+	$(".marketTypeList").html(DICTIONARY["bprMarketType"][bpPropertyRpt.bprMarketType]);
+	$(".marketTypeList").attr("select-value",bpPropertyRpt.bprMarketType)
+	//副商圈
+	$(".subMarketTypeList").html(DICTIONARY["bprMarketType"][bpPropertyRpt.bprViceMarketType]);
+	$(".subMarketTypeList").attr("select_data",bpPropertyRpt.bprViceMarketType)
+	//车辆停靠
+	$(".carparkList").html(DICTIONARY["bprCarStop"][bpPropertyRpt.bprCarStop]);
+	$(".carparkList").attr("select-value",bpPropertyRpt.bprCarStop)
+	//通行方向
+	$(".txfxList").html(DICTIONARY["bprCarWay"][bpPropertyRpt.bprCarWay]);
+	$(".txfxList").attr("select-value",bpPropertyRpt.bprCarWay)
+	//路宽类型
+	$(".waywidthList").html(DICTIONARY["bprRoadType"][bpPropertyRpt.bprRoadType]);
+	$(".waywidthList").attr("select-value",bpPropertyRpt.bprRoadType)
+	$("#complete").attr("data-id",bpPropertyMaster.bpmPropertyId);
 }
 /*获取表单信息*/
 function getFormData(){
 	var jpName    = $("#jpName").val();//基盘名称 
 	if($.isNull(jpName)){alert("基盘名称为空 ！")};
-	var accuracy  = $(".accuracyList").attr("select-value");//确度
+	var accuracy  = $(".accuracyList").html();//确度
 	if($.isNull(accuracy)){alert("确度为空 ！")};
 	var jpType    = $(".JPTypeList").attr("select-value");//基盘类型
 	var cityValue = $(".cityList").attr("select-value");//城市
@@ -95,10 +146,11 @@ function getFormData(){
 	var propertyDto = {}
 	var bpPropertyRpt    = {};
 	var bpPropertyMaster = {};
-	
+	bpPropertyMaster.bpmPropertyId = $("#complete").attr("data-id")
+	bpPropertyRpt.bprPropertyId	   = $("#complete").attr("data-id")
 	bpPropertyMaster.bpmPropertyName  = jpName;//基盘名称
 	bpPropertyMaster.bpmConfirmStatus = accuracy;//确度
-	bpPropertyRpt.bprMarketClass      = jpType;//基盘类型	
+	bpPropertyRpt.bprObjectType      = jpType;//基盘类型	
 	bpPropertyMaster.bpmCity          = cityValue; //市Id
 	bpPropertyMaster.city             = cityName;	//城市名
 	bpPropertyMaster.bpmCounty        = areaValue;//区域Id
@@ -126,99 +178,16 @@ function getFormData(){
 	propertyDto.bpPropertyMaster      = bpPropertyMaster;
 	return propertyDto;
 }
-//创建基盘
+//修改基盘
 function createJipan(){
-	var url = base.basePath + "familymart.property.applycreate"
+	var url = base.basePath + "familymart.property.appupdate"
 	var reqData = getFormData();
 	$.reqPostAjaxs( url, reqData, function(data){
 		console.log(data);
+		
 //		var nextPage = $(this).attr("data-page");
 //		shownext( nextPage );
 	} );
-}
-//图片处理
-function imageHandle(){
-		var uploader = WebUploader.create({
-	    	// 选完文件后，是否自动上传。
-	    	auto: true,
-	    	// swf文件路径
-//	    	swf: BASE_URL + '/js/Uploader.swf',
-	    	// 文件接收服务端。
-	    	server: base.basePath + 'familymart.edit.uploader?id=1&bpmId=SH18395945',
-	   		//server:"http://127.0.0.1:8020/gisApp/page/addJP/addJP.html?__hbt=1524530676151",
-	   		// 选择文件的按钮。可选。
-	    	// 内部根据当前运行是创建，可能是input元素，也可能是flash.
-	    	pick: '#filePicker',
-		    // 只允许选择图片文件。
-		    accept: {
-		        title: 'Images',
-		        extensions: 'gif,jpg,jpeg,bmp,png',
-		        mimeTypes: 'image/*'
-		    },
-		    formData: {  
-                id: '1',
-                bpmId:'SH18395945'
-            }, 
-		});
-		// 当有文件添加进来的时候
-		uploader.on( 'fileQueued', function( file ) {
-			console.log(file)
-			console.log(file.id);
-			console.log(file.name);
-		    var $li = $(
-		            '<div id="' + file.id + '" class="file-item thumbnail">' +
-		                '<img>' +
-		                '<div class="info">' + file.name + '</div>' +
-		            '</div>'
-		            ),
-		        $img = $li.find('img');		
-		    // $list为容器jQuery实例
-		    $(".uploader-list").append( $li );
-		    // 创建缩略图
-		    // 如果为非图片文件，可以不用调用此方法。
-		    // thumbnailWidth x thumbnailHeight 为 100 x 100
-		    uploader.makeThumb( file, function( error, src ) {
-		        if ( error ) {
-		            $img.replaceWith('<span>不能预览</span>');
-		            return;
-		        }		
-		        $img.attr( 'src', src );
-		    }, 100, 100 );
-		});
-		// 文件上传过程中创建进度条实时显示。
-		uploader.on( 'uploadProgress', function( file, percentage ) {
-		    var $li = $( '#'+file.id ),
-		        $percent = $li.find('.progress span');
-		
-		    // 避免重复创建
-		    if ( !$percent.length ) {
-		        $percent = $('<p class="progress"><span></span></p>')
-		                .appendTo( $li )
-		                .find('span');
-		    }
-		
-		    $percent.css( 'width', percentage * 100 + '%' );
-		});
-		// 文件上传成功，给item添加成功class, 用样式标记上传成功。
-		uploader.on( 'uploadSuccess', function( file ) {
-		    $( '#'+file.id ).addClass('upload-state-done');
-		});		
-		// 文件上传失败，显示上传出错。
-		uploader.on( 'uploadError', function( file ) {
-		    var $li = $( '#'+file.id ),
-		        $error = $li.find('div.error');
-		
-		    // 避免重复创建
-		    if ( !$error.length ) {
-		        $error = $('<div class="error"></div>').appendTo( $li );
-		    }
-		
-		    $error.text('上传失败');
-		});	
-		// 完成上传完了，成功或者失败，先删除进度条。
-		uploader.on( 'uploadComplete', function( file ) {
-		    $( '#'+file.id ).find('.progress').remove();
-		});
 }
 
 //展示下一步
@@ -243,6 +212,20 @@ var shownext = function(e, t) {
 			stepon.removeClass("stepon").removeClass("slide-right")
 		}).addClass("slide-right")
 	}
+}
+var showpre = function(e) {
+	var wrapper = $(".page_yezhu").find(".yezhu-wrapper");
+	var stepon = wrapper.find(".stepon"),
+		dpDom = $(".page_yezhu").find("[data-page=" + e + "]");
+		dpDom.addClass("back-ready");
+		setTimeout(function() {
+			dpDom.one("webkitTransitionEnd", function() {
+				dpDom.removeClass("back-ready")
+			}).addClass("stepon")
+		});
+		stepon.one("webkitTransitionEnd", function() {
+			stepon.removeClass("stepon").removeClass("slide-right")
+		}).addClass("slide-right")
 }
 //取消弹窗
 var bottomCancle = function() {

@@ -1,18 +1,8 @@
-var w = getJPTypeList();//类型
-var cityList = getCityList();//城市列表
-var areaList = getAreaList();//区列表
-var accuracyList = getAccuracyList();//确度
-var siteList = getSiteList();//立地面
-var viewList = getViewList();//视野
-var marketTypeList = getMarketTypeList();//主商圈
-var subMarketTypeList = getSubMarketTypeList();//副商圈
-var carparkList = getCarparkList();//车辆停靠
-var waywidthList = getWaywidthList();//路宽
-var txfxList = getTxfxList();//通行方向
 var domLists = {};
+
 $(function(){
 	logingis("000005","000005");
-	getImages("SH18410137");
+	getImages("SH18438526");
 //	imageHandle();
 	$(".changeStep").click(function(){
 		var nextPage = $(this).attr("data-page");
@@ -47,7 +37,7 @@ function getImages(bpmId){
 function getFormData(){
 	var jpName    = $("#jpName").val();//基盘名称 
 	if($.isNull(jpName)){alert("基盘名称为空 ！")};
-	var accuracy  = $(".accuracyList").attr("select-value");//确度
+	var accuracy  = $(".accuracyList").html();//确度
 	if($.isNull(accuracy)){alert("确度为空 ！")};
 	var jpType    = $(".JPTypeList").attr("select-value");//基盘类型
 	var cityValue = $(".cityList").attr("select-value");//城市
@@ -76,7 +66,7 @@ function getFormData(){
 	
 	bpPropertyMaster.bpmPropertyName  = jpName;//基盘名称
 	bpPropertyMaster.bpmConfirmStatus = accuracy;//确度
-	bpPropertyRpt.bprMarketClass      = jpType;//基盘类型	
+	bpPropertyRpt.bprObjectType      = jpType;//基盘类型	
 	bpPropertyMaster.bpmCity          = cityValue; //市Id
 	bpPropertyMaster.city             = cityName;	//城市名
 	bpPropertyMaster.bpmCounty        = areaValue;//区域Id
@@ -114,90 +104,6 @@ function createJipan(){
 //		shownext( nextPage );
 	} );
 }
-//图片处理
-function imageHandle(){
-		var uploader = WebUploader.create({
-	    	// 选完文件后，是否自动上传。
-	    	auto: true,
-	    	// swf文件路径
-//	    	swf: BASE_URL + '/js/Uploader.swf',
-	    	// 文件接收服务端。
-	    	server: base.basePath + 'familymart.edit.uploader?id=1&bpmId=SH18395945',
-	   		//server:"http://127.0.0.1:8020/gisApp/page/addJP/addJP.html?__hbt=1524530676151",
-	   		// 选择文件的按钮。可选。
-	    	// 内部根据当前运行是创建，可能是input元素，也可能是flash.
-	    	pick: '#filePicker',
-		    // 只允许选择图片文件。
-		    accept: {
-		        title: 'Images',
-		        extensions: 'gif,jpg,jpeg,bmp,png',
-		        mimeTypes: 'image/*'
-		    },
-		    formData: {  
-                id: '1',
-                bpmId:'SH18395945'
-            }, 
-		});
-		// 当有文件添加进来的时候
-		uploader.on( 'fileQueued', function( file ) {
-			console.log(file)
-			console.log(file.id);
-			console.log(file.name);
-		    var $li = $(
-		            '<div id="' + file.id + '" class="file-item thumbnail">' +
-		                '<img>' +
-		                '<div class="info">' + file.name + '</div>' +
-		            '</div>'
-		            ),
-		        $img = $li.find('img');		
-		    // $list为容器jQuery实例
-		    $(".uploader-list").append( $li );
-		    // 创建缩略图
-		    // 如果为非图片文件，可以不用调用此方法。
-		    // thumbnailWidth x thumbnailHeight 为 100 x 100
-		    uploader.makeThumb( file, function( error, src ) {
-		        if ( error ) {
-		            $img.replaceWith('<span>不能预览</span>');
-		            return;
-		        }		
-		        $img.attr( 'src', src );
-		    }, 100, 100 );
-		});
-		// 文件上传过程中创建进度条实时显示。
-		uploader.on( 'uploadProgress', function( file, percentage ) {
-		    var $li = $( '#'+file.id ),
-		        $percent = $li.find('.progress span');
-		
-		    // 避免重复创建
-		    if ( !$percent.length ) {
-		        $percent = $('<p class="progress"><span></span></p>')
-		                .appendTo( $li )
-		                .find('span');
-		    }
-		
-		    $percent.css( 'width', percentage * 100 + '%' );
-		});
-		// 文件上传成功，给item添加成功class, 用样式标记上传成功。
-		uploader.on( 'uploadSuccess', function( file ) {
-		    $( '#'+file.id ).addClass('upload-state-done');
-		});		
-		// 文件上传失败，显示上传出错。
-		uploader.on( 'uploadError', function( file ) {
-		    var $li = $( '#'+file.id ),
-		        $error = $li.find('div.error');
-		
-		    // 避免重复创建
-		    if ( !$error.length ) {
-		        $error = $('<div class="error"></div>').appendTo( $li );
-		    }
-		
-		    $error.text('上传失败');
-		});	
-		// 完成上传完了，成功或者失败，先删除进度条。
-		uploader.on( 'uploadComplete', function( file ) {
-		    $( '#'+file.id ).find('.progress').remove();
-		});
-}
 
 //展示下一步
 /*@function*/
@@ -233,10 +139,15 @@ var bottomCancle = function() {
 	}, 100)
 }
 //选择赋值
-function choose_option(obj){
+function choose_option(obj,t){
 	var objDom = $(obj);
 	var select_value = objDom.html();
 	var select_data = objDom.attr("select_data");
+	if(t){
+		$(".areaList").attr("select-value","");
+		$(".areaList").html("请选择").css("color","#e0");
+		$(".areaList").attr("cityid",select_data);
+	}
 	var select_option = objDom.parent("ul").attr("option-list");
 	var select_option_dom = objDom.parent("ul").attr("option-list-dom");
 	var o;
@@ -254,16 +165,14 @@ function choose_option(obj){
 	bottomCancle();
 	console.log(select_data +"-" +select_value);
 	$("." + select_option).html(select_value).attr("select-value", select_data)
-//	f.one(i).find(".chooose").html(select_data).attr("select-value", select_value);
-//	f.one(i).find(".chooose").css("color", "#394043")
 }
-
 //--------------《《------------------《《----------弹窗枚举-----------》》--------------》》
 //展示城市
 function cityListShow(){
+	var cityList = getCityList();//城市列表
 	var cityListDom = [];
 	for(var i = 1; i < cityList.length; i++) {
-		var x = "<li select_data=" + cityList[i][1] + " onclick='choose_option(this)'>" + cityList[i][0] + "</li>";
+		var x = "<li select_data=" + cityList[i][1] + " onclick='choose_option(this,true)'>" + cityList[i][0] + "</li>";
 		cityListDom.push($(x))
 	}
 	domLists.cityListDom = cityListDom
@@ -278,6 +187,14 @@ function cityListShow(){
 }
 //展示区域
 function areaListShow(){
+	var cityId = $(".areaList").attr("cityid");
+	if(cityId){
+		var areaList = getAreaList(cityId);//区列表
+	}else{
+		alert("请先选择城市");
+		return;
+	}
+	
 	var areaListDom = [];
 	for(var i = 1; i < areaList.length; i++) {
 		var x = "<li select_data=" + areaList[i][1] + " onclick='choose_option(this)'>" + areaList[i][0] + "</li>";
@@ -295,6 +212,7 @@ function areaListShow(){
 }
 //展示基盘类型
 function JPTypeListShow(){
+	var w = getJPTypeList();//类型
 	var JPTypeListDom = [];
 	for(var i = 1; i < w.length; i++) {
 		var x = "<li select_data=" + w[i][1] + " onclick='choose_option(this)'>" + w[i][0] + "</li>";
@@ -312,6 +230,7 @@ function JPTypeListShow(){
 }
 //展示立地面
 function siteListShow(){
+	var siteList = getSiteList();//立地面
 	var siteListDom = [];
 	for(var i = 1; i < siteList.length; i++) {
 		var x = "<li select_data=" + siteList[i][1] + " onclick='choose_option(this)'>" + siteList[i][0] + "</li>";
@@ -329,6 +248,7 @@ function siteListShow(){
 }
 //展示视野
 function viewListShow(){
+	var viewList = getViewList();//视野
 	var viewListDom = [];
 	for(var i = 1; i < viewList.length; i++) {
 		var x = "<li select_data=" + viewList[i][1] + " onclick='choose_option(this)'>" + viewList[i][0] + "</li>";
@@ -346,6 +266,7 @@ function viewListShow(){
 }
 //展示主商圈
 function marketTypeListShow(){
+	var marketTypeList = getMarketTypeList();//主商圈
 	var marketTypeListDom = [];
 	for(var i = 1; i < marketTypeList.length; i++) {
 		var x = "<li select_data=" + marketTypeList[i][1] + " onclick='choose_option(this)'>" + marketTypeList[i][0] + "</li>";
@@ -363,6 +284,7 @@ function marketTypeListShow(){
 }
 //展示副商圈
 function subMarketTypeListShow(){
+	var subMarketTypeList = getSubMarketTypeList();//副商圈
 	var subMarketTypeListDom = [];
 	for(var i = 1; i < subMarketTypeList.length; i++) {
 		var x = "<li select_data=" + subMarketTypeList[i][1] + " onclick='choose_option(this)'>" + subMarketTypeList[i][0] + "</li>";
@@ -380,6 +302,7 @@ function subMarketTypeListShow(){
 }
 //展示车辆停靠
 function carparkListShow(){
+	var carparkList = getCarparkList();//车辆停靠
 	var carparkListDom = [];
 	for(var i = 1; i < carparkList.length; i++) {
 		var x = "<li select_data=" + carparkList[i][1] + " onclick='choose_option(this)'>" + carparkList[i][0] + "</li>";
@@ -398,6 +321,7 @@ function carparkListShow(){
 
 //展示路宽
 function waywidthListShow(){
+	var waywidthList = getWaywidthList();//路宽
 	var waywidthListDom = [];
 	for(var i = 1; i < waywidthList.length; i++) {
 		var x = "<li select_data=" + waywidthList[i][1] + " onclick='choose_option(this)'>" + waywidthList[i][0] + "</li>";
@@ -415,6 +339,7 @@ function waywidthListShow(){
 }
 //展示通行方向
 function txfxListShow(){
+	var txfxList = getTxfxList();//通行方向
 	var txfxListDom = [];
 	for(var i = 1; i < txfxList.length; i++) {
 		var x = "<li select_data=" + txfxList[i][1] + " onclick='choose_option(this)'>" + txfxList[i][0] + "</li>";
@@ -432,6 +357,7 @@ function txfxListShow(){
 }
 //展示通行方向
 function accuracyListShow(){
+	var accuracyList = getAccuracyList();//确度
 	var accuracyListDom = [];
 	for(var i = 1; i < accuracyList.length; i++) {
 		var x = "<li select_data=" + accuracyList[i][1] + " onclick='choose_option(this)'>" + accuracyList[i][0] + "</li>";
@@ -469,11 +395,11 @@ function getCityList(){
 	return typeArrays;
 }
 //获取区域类表
-function getAreaList(){
+function getAreaList(cityId){
 	var typeArrays = [
 					["选择区"]
 				];
-	var url = base.basePath + "familymart.commons.getareaofcitylist?cityId=001";
+	var url = base.basePath + "familymart.commons.getareaofcitylist?cityId="+cityId;
 	$.reqGetAjaxs( url, "", function(data){
 		if(data.statusCode == "200"){
 			if(data.data){
