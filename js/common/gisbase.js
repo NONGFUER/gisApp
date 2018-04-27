@@ -1,8 +1,8 @@
 var base = {
 		url : window.location.protocol+"//"+window.location.host+"//",
 		basePath:"http://172.16.0.83:8090/fmgis/v1.0/",
-		imagePath : window.location.protocol+"//"+window.location.host+"//gisApp/img/common/", // 图片路径
-		static:"http://172.16.0.83:8090/fmgis/v1.0/"
+		imagePath : window.location.protocol+"//"+window.location.host+"/gisApp/img/common/", // 图片路径
+		static:"http://172.16.0.80:8090/fmgis/v1.0/"
 };
 //判断是否为空
 $.isNull = function(str) {
@@ -134,7 +134,8 @@ function logingis(userId,password){
 	var password1 = toBase64(password);
 	var data = {
 		userId: userId,
-		password: password1
+		password: password1,
+		cityId:"001"
 	}
 	var url = base.basePath + '/familymart.user.login'
 	$.ajax({
