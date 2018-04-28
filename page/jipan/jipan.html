@@ -9,180 +9,398 @@
     <link rel="stylesheet" href="../../css/common/ljbase.css" />
 </head>
 	<body>
+		<header class="header header_white">
+			<div class="flexbox left">
+				<a href="javascript:history.back();" class="header_back"></a>
+				<a href="" class="city_wrap">
+					<span class="switch_city"><em class="city">上海</em><i class="icon_pull"></i></span>
+				</a>
+			</div>
+			<a href="" class="logo_wrap center"><span class=""></span></a>
+			<a href="" class="my right"><i class="icon_user"></i></a>
+		</header>
 		<div class="mod_box house_lists">
 			<!--筛选条-->
-			<div class="tab_bar flexbox" data-mark="booth" id="filter">
-				<div class="tab_tit box_col q_district" data-mark="booth_area">
+			<div class="tab_bar flexbox" id="booth" >
+				<div class="tab_tit box_col q_district" id="booth_area">
 					<h2 class="tit">区域</h2><i class="icon_triangle_down"></i></div>
-				<div class="tab_tit box_col q_price" data-mark="booth_price">
-					<h2 class="tit">价格</h2><i class="icon_triangle_down"></i></div>
-				<div class="tab_tit box_col q_frame" data-mark="booth_model">
-					<h2 class="tit">房型</h2><i class="icon_triangle_down"></i></div>
-				<div class="tab_tit box_col q_more" data-mark="booth_more">
+				<div class="tab_tit box_col q_price" id="booth_price">
+					<h2 class="tit">确度</h2><i class="icon_triangle_down"></i></div>
+				<div class="tab_tit box_col q_frame" id="booth_model">
+					<h2 class="tit">面积</h2><i class="icon_triangle_down"></i></div>
+				<div class="tab_tit box_col q_more" id="booth_more">
 					<h3 class="tit">更多</h3><i class="icon_triangle_down"></i></div>
 			</div>
 			<!--/筛选条-->
 	
 			<div class="occupy" style="height: 89px;display: none;"></div>
-			<div class="sort_bar" data-mark="btn_sort" style="bottom: 4.28rem;"><i class="icon_sort"></i><span>排序</span></div>
-			<div class="sort_bar_add" data-mark="btn_sort" style="bottom: 8.28rem;"><img src="../../img/common/addJP.png" ></div>
+			<div class="sort_bar" id="btn_sort" style="bottom: 4.28rem;"><i class="icon_sort"></i><span>排序</span></div>
+			<div class="sort_bar_add" id="btn_sort" style="bottom: 8.28rem;"><img src="../../img/common/addJP.png" ></div>
 			<div class="mod_cont">
-				<ul class="lists" data-mark="list_container" data-info="total=75992">
-					<li class="pictext">
-						<a href="/sh/ershoufang/107100184346.html" class="a_mask"></a>
-						<div class="flexbox">
-							<div class="mod_media">
-								<div class="media_main">
-									<img src="https://image1.ljcdn.com/310000-inspection/rsp_pic_uploadc691045f-2ca4-4980-ad44-da3245f1fd1c.jpg.210x164.jpg" origin-src="https://image1.ljcdn.com/310000-inspection/rsp_pic_uploadc691045f-2ca4-4980-ad44-da3245f1fd1c.jpg.210x164.jpg" alt="陆家嘴中央公寓 3室2厅 1490万" class="lazyload">
-								</div>
-							</div>
-							<div class="item_list">
-								<div class="item_main">益江路二店1</div>
-								<div class="item_other text_cut" title="陆家嘴中央公寓二手房">3室2厅/154m²/南/陆家嘴中央公寓</div>
-								<div class="item_minor"><span class="price_total"><em>1490</em><span class="unit">万</span></span><span class="unit_price">96754元/平</span></div>
-								<div class="tag_box">
-									<span class="tag subway_house" style="background-color:rgba(89,171,253,0.15);color:rgb(89,171,253)" title="地铁二手房">地铁</span>
-									<span class="tag five" style="background-color:rgba(242,161,47,0.15);color:rgb(242,161,47)" title="满五年二手房">满五年</span>
-									<span class="tag haskey" style="background-color:rgba(51,190,133,0.15);color:rgb(51,190,133)" title="随时看房二手房">随时看房</span>
-									<span class="tag elevator" style="background-color:rgba(123,189,255,0.15);color:rgb(123,189,255)" title="有电梯二手房">有电梯</span>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="pictext">
-						<a href="/sh/ershoufang/107100184346.html" class="a_mask"></a>
-						<div class="flexbox">
-							<div class="mod_media">
-								<div class="media_main">
-									<img src="https://image1.ljcdn.com/310000-inspection/rsp_pic_uploadc691045f-2ca4-4980-ad44-da3245f1fd1c.jpg.210x164.jpg" origin-src="https://image1.ljcdn.com/310000-inspection/rsp_pic_uploadc691045f-2ca4-4980-ad44-da3245f1fd1c.jpg.210x164.jpg" alt="陆家嘴中央公寓 3室2厅 1490万" class="lazyload">
-								</div>
-							</div>
-							<div class="item_list">
-								<div class="item_main">益江路二店2</div>
-								<div class="item_other text_cut" title="陆家嘴中央公寓二手房">3室2厅/154m²/南/陆家嘴中央公寓</div>
-								<div class="item_minor"><span class="price_total"><em>1490</em><span class="unit">万</span></span><span class="unit_price">96754元/平</span></div>
-								<div class="tag_box">
-									<span class="tag subway_house" style="background-color:rgba(89,171,253,0.15);color:rgb(89,171,253)" title="地铁二手房">地铁</span>
-									<span class="tag five" style="background-color:rgba(242,161,47,0.15);color:rgb(242,161,47)" title="满五年二手房">满五年</span>
-									<span class="tag haskey" style="background-color:rgba(51,190,133,0.15);color:rgb(51,190,133)" title="随时看房二手房">随时看房</span>
-									<span class="tag elevator" style="background-color:rgba(123,189,255,0.15);color:rgb(123,189,255)" title="有电梯二手房">有电梯</span>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="pictext">
-						<a href="/sh/ershoufang/107100184346.html" class="a_mask"></a>
-						<div class="flexbox">
-							<div class="mod_media">
-								<div class="media_main">
-									<img src="https://image1.ljcdn.com/310000-inspection/rsp_pic_uploadc691045f-2ca4-4980-ad44-da3245f1fd1c.jpg.210x164.jpg" origin-src="https://image1.ljcdn.com/310000-inspection/rsp_pic_uploadc691045f-2ca4-4980-ad44-da3245f1fd1c.jpg.210x164.jpg" alt="陆家嘴中央公寓 3室2厅 1490万" class="lazyload">
-								</div>
-							</div>
-							<div class="item_list">
-								<div class="item_main">益江路二店3</div>
-								<div class="item_other text_cut" title="陆家嘴中央公寓二手房">3室2厅/154m²/南/陆家嘴中央公寓</div>
-								<div class="item_minor"><span class="price_total"><em>1490</em><span class="unit">万</span></span><span class="unit_price">96754元/平</span></div>
-								<div class="tag_box">
-									<span class="tag subway_house" style="background-color:rgba(89,171,253,0.15);color:rgb(89,171,253)" title="地铁二手房">地铁</span>
-									<span class="tag five" style="background-color:rgba(242,161,47,0.15);color:rgb(242,161,47)" title="满五年二手房">满五年</span>
-									<span class="tag haskey" style="background-color:rgba(51,190,133,0.15);color:rgb(51,190,133)" title="随时看房二手房">随时看房</span>
-									<span class="tag elevator" style="background-color:rgba(123,189,255,0.15);color:rgb(123,189,255)" title="有电梯二手房">有电梯</span>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="pictext">
-						<a href="/sh/ershoufang/107100184346.html" class="a_mask"></a>
-						<div class="flexbox">
-							<div class="mod_media">
-								<div class="media_main">
-									<img src="https://image1.ljcdn.com/310000-inspection/rsp_pic_uploadc691045f-2ca4-4980-ad44-da3245f1fd1c.jpg.210x164.jpg" origin-src="https://image1.ljcdn.com/310000-inspection/rsp_pic_uploadc691045f-2ca4-4980-ad44-da3245f1fd1c.jpg.210x164.jpg" alt="陆家嘴中央公寓 3室2厅 1490万" class="lazyload">
-								</div>
-							</div>
-							<div class="item_list">
-								<div class="item_main">益江路二店4</div>
-								<div class="item_other text_cut" title="陆家嘴中央公寓二手房">3室2厅/154m²/南/陆家嘴中央公寓</div>
-								<div class="item_minor"><span class="price_total"><em>1490</em><span class="unit">万</span></span><span class="unit_price">96754元/平</span></div>
-								<div class="tag_box">
-									<span class="tag subway_house" style="background-color:rgba(89,171,253,0.15);color:rgb(89,171,253)" title="地铁二手房">地铁</span>
-									<span class="tag five" style="background-color:rgba(242,161,47,0.15);color:rgb(242,161,47)" title="满五年二手房">满五年</span>
-									<span class="tag haskey" style="background-color:rgba(51,190,133,0.15);color:rgb(51,190,133)" title="随时看房二手房">随时看房</span>
-									<span class="tag elevator" style="background-color:rgba(123,189,255,0.15);color:rgb(123,189,255)" title="有电梯二手房">有电梯</span>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="pictext">
-						<a href="/sh/ershoufang/107100184346.html" class="a_mask"></a>
-						<div class="flexbox">
-							<div class="mod_media">
-								<div class="media_main">
-									<img src="https://image1.ljcdn.com/310000-inspection/rsp_pic_uploadc691045f-2ca4-4980-ad44-da3245f1fd1c.jpg.210x164.jpg" origin-src="https://image1.ljcdn.com/310000-inspection/rsp_pic_uploadc691045f-2ca4-4980-ad44-da3245f1fd1c.jpg.210x164.jpg" alt="陆家嘴中央公寓 3室2厅 1490万" class="lazyload">
-								</div>
-							</div>
-							<div class="item_list">
-								<div class="item_main">益江路二店5</div>
-								<div class="item_other text_cut" title="陆家嘴中央公寓二手房">3室2厅/154m²/南/陆家嘴中央公寓</div>
-								<div class="item_minor"><span class="price_total"><em>1490</em><span class="unit">万</span></span><span class="unit_price">96754元/平</span></div>
-								<div class="tag_box">
-									<span class="tag subway_house" style="background-color:rgba(89,171,253,0.15);color:rgb(89,171,253)" title="地铁二手房">地铁</span>
-									<span class="tag five" style="background-color:rgba(242,161,47,0.15);color:rgb(242,161,47)" title="满五年二手房">满五年</span>
-									<span class="tag haskey" style="background-color:rgba(51,190,133,0.15);color:rgb(51,190,133)" title="随时看房二手房">随时看房</span>
-									<span class="tag elevator" style="background-color:rgba(123,189,255,0.15);color:rgb(123,189,255)" title="有电梯二手房">有电梯</span>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="pictext">
-						<a href="/sh/ershoufang/107100184346.html" class="a_mask"></a>
-						<div class="flexbox">
-							<div class="mod_media">
-								<div class="media_main">
-									<img src="https://image1.ljcdn.com/310000-inspection/rsp_pic_uploadc691045f-2ca4-4980-ad44-da3245f1fd1c.jpg.210x164.jpg" origin-src="https://image1.ljcdn.com/310000-inspection/rsp_pic_uploadc691045f-2ca4-4980-ad44-da3245f1fd1c.jpg.210x164.jpg" alt="陆家嘴中央公寓 3室2厅 1490万" class="lazyload">
-								</div>
-							</div>
-							<div class="item_list">
-								<div class="item_main">益江路二店6</div>
-								<div class="item_other text_cut" title="陆家嘴中央公寓二手房">3室2厅/154m²/南/陆家嘴中央公寓</div>
-								<div class="item_minor"><span class="price_total"><em>1490</em><span class="unit">万</span></span><span class="unit_price">96754元/平</span></div>
-								<div class="tag_box">
-									<span class="tag subway_house" style="background-color:rgba(89,171,253,0.15);color:rgb(89,171,253)" title="地铁二手房">地铁</span>
-									<span class="tag five" style="background-color:rgba(242,161,47,0.15);color:rgb(242,161,47)" title="满五年二手房">满五年</span>
-									<span class="tag haskey" style="background-color:rgba(51,190,133,0.15);color:rgb(51,190,133)" title="随时看房二手房">随时看房</span>
-									<span class="tag elevator" style="background-color:rgba(123,189,255,0.15);color:rgb(123,189,255)" title="有电梯二手房">有电梯</span>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="pictext">
-						<a href="/sh/ershoufang/107100184346.html" class="a_mask"></a>
-						<div class="flexbox">
-							<div class="mod_media">
-								<div class="media_main">
-									<img src="https://image1.ljcdn.com/310000-inspection/rsp_pic_uploadc691045f-2ca4-4980-ad44-da3245f1fd1c.jpg.210x164.jpg" origin-src="https://image1.ljcdn.com/310000-inspection/rsp_pic_uploadc691045f-2ca4-4980-ad44-da3245f1fd1c.jpg.210x164.jpg" alt="陆家嘴中央公寓 3室2厅 1490万" class="lazyload">
-								</div>
-							</div>
-							<div class="item_list">
-								<div class="item_main">益江路二店7</div>
-								<div class="item_other text_cut" title="陆家嘴中央公寓二手房">3室2厅/154m²/南/陆家嘴中央公寓</div>
-								<div class="item_minor"><span class="price_total"><em>1490</em><span class="unit">万</span></span><span class="unit_price">96754元/平</span></div>
-								<div class="tag_box">
-									<span class="tag subway_house" style="background-color:rgba(89,171,253,0.15);color:rgb(89,171,253)" title="地铁二手房">地铁</span>
-									<span class="tag five" style="background-color:rgba(242,161,47,0.15);color:rgb(242,161,47)" title="满五年二手房">满五年</span>
-									<span class="tag haskey" style="background-color:rgba(51,190,133,0.15);color:rgb(51,190,133)" title="随时看房二手房">随时看房</span>
-									<span class="tag elevator" style="background-color:rgba(123,189,255,0.15);color:rgb(123,189,255)" title="有电梯二手房">有电梯</span>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="loading_box m_lj_loadingDom" data-mark="loading_dom">
+				<ul class="lists">
+					<li class="loading_box m_lj_loadingDom" id="loading_dom" style="display: none;">
 						<a href="/sh/ershoufang/pg2/"><i class="loading"></i><span>加载中…</span></a>
 					</li>
 				</ul>
 			</div>
 		</div>
+		
+		<section class="layer_fixed filter_box" style="display: none;" id="panel_box">
+			<!--头部筛选条-->
+			<header class="tab_bar flexbox">
+				<div class="tab_tit box_col" id="button_area"><span class="tit">区域</span><i class="icon_triangle_down"></i></div>
+				<div class="tab_tit box_col" id="button_price"><span class="tit">价格</span><i class="icon_triangle_down"></i></div>
+				<div class="tab_tit box_col" id="button_model"><span class="tit">房型</span><i class="icon_triangle_down"></i></div>
+				<div class="tab_tit box_col" id="button_more"><span class="tit">更多</span><i class="icon_triangle_down"></i></div>
+			</header>
+			<!--/头部筛选条-->
+			<div class="content">
+				<!--区域-->
+				<div class="filter_item lists_area" id="panel_area">
+					<div class="area_list">
+						<div class="nav" id="level1">
+							<ul class="level1">
+								<li class="li" data-act="s1" data-info="id=district&amp;name=区域">区域</li>
+								<li class="li" data-act="s1" data-info="id=subway_line&amp;name=地铁">地铁</li>
+							</ul>
+						</div>
+						<div class="guide" id="level2">
+							<ul class="level2 active">
+		
+								<li class="li" data-act="s2" data-info="id=0&amp;res=&amp;name=区域&amp;jump=">
+									<a href="/sh/zufang/" title="不限租房">不限</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310115&amp;res=pudong&amp;name=浦东&amp;jump=">
+									<a href="/sh/zufang/pudong/" title="浦东租房">浦东</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310112&amp;res=minhang&amp;name=闵行&amp;jump=">
+									<a href="/sh/zufang/minhang/" title="闵行租房">闵行</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310113&amp;res=baoshan&amp;name=宝山&amp;jump=">
+									<a href="/sh/zufang/baoshan/" title="宝山租房">宝山</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310104&amp;res=xuhui&amp;name=徐汇&amp;jump=">
+									<a href="/sh/zufang/xuhui/" title="徐汇租房">徐汇</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310107&amp;res=putuo&amp;name=普陀&amp;jump=">
+									<a href="/sh/zufang/putuo/" title="普陀租房">普陀</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310110&amp;res=yangpu&amp;name=杨浦&amp;jump=">
+									<a href="/sh/zufang/yangpu/" title="杨浦租房">杨浦</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310105&amp;res=changning&amp;name=长宁&amp;jump=">
+									<a href="/sh/zufang/changning/" title="长宁租房">长宁</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310117&amp;res=songjiang&amp;name=松江&amp;jump=">
+									<a href="/sh/zufang/songjiang/" title="松江租房">松江</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310114&amp;res=jiading&amp;name=嘉定&amp;jump=">
+									<a href="/sh/zufang/jiading/" title="嘉定租房">嘉定</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310101&amp;res=huangpu&amp;name=黄浦&amp;jump=">
+									<a href="/sh/zufang/huangpu/" title="黄浦租房">黄浦</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310106&amp;res=jingan&amp;name=静安&amp;jump=">
+									<a href="/sh/zufang/jingan/" title="静安租房">静安</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310108&amp;res=zhabei&amp;name=闸北&amp;jump=">
+									<a href="/sh/zufang/zhabei/" title="闸北租房">闸北</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310109&amp;res=hongkou&amp;name=虹口&amp;jump=">
+									<a href="/sh/zufang/hongkou/" title="虹口租房">虹口</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310118&amp;res=qingpu&amp;name=青浦&amp;jump=">
+									<a href="/sh/zufang/qingpu/" title="青浦租房">青浦</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310120&amp;res=fengxian&amp;name=奉贤&amp;jump=">
+									<a href="/sh/zufang/fengxian/" title="奉贤租房">奉贤</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310116&amp;res=jinshan&amp;name=金山&amp;jump=">
+									<a href="/sh/zufang/jinshan/" title="金山租房">金山</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310230&amp;res=chongming&amp;name=崇明&amp;jump=">
+									<a href="/sh/zufang/chongming/" title="崇明租房">崇明</a>
+								</li>
+								<li class="li" data-act="s2" data-info="id=310333&amp;res=shanghaizhoubian&amp;name=上海周边&amp;jump=">
+									<a href="/sh/zufang/shanghaizhoubian/" title="上海周边租房">上海周边</a>
+								</li>
+		
+							</ul>
+						</div>
+						<div class="cont" id="level3" style="display: none;">
+							<ul class="level3">
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!--/区域-->
+		
+				<!--价格-->
+				<div class="filter_item lists_price" id="panel_price">
+					<ul class="price_list ">
+						<li class="li" data-act="price" data-info="id=0&amp;name=不限">
+							<a href="/sh/zufang/" title="上海不限租房">不限</a>
+						</li>
+						<li class="li" data-act="price" data-info="id=1&amp;name=1000元以下">
+							<a href="/sh/zufang/rp1/" title="上海1000元以下租房">1000元以下</a>
+						</li>
+						<li class="li" data-act="price" data-info="id=2&amp;name=1000-2000元">
+							<a href="/sh/zufang/rp2/" title="上海1000-2000元租房">1000-2000元</a>
+						</li>
+						<li class="li" data-act="price" data-info="id=3&amp;name=2000-4000元">
+							<a href="/sh/zufang/rp3/" title="上海2000-4000元租房">2000-4000元</a>
+						</li>
+						<li class="li" data-act="price" data-info="id=4&amp;name=4000-6000元">
+							<a href="/sh/zufang/rp4/" title="上海4000-6000元租房">4000-6000元</a>
+						</li>
+						<li class="li" data-act="price" data-info="id=5&amp;name=6000-8000元">
+							<a href="/sh/zufang/rp5/" title="上海6000-8000元租房">6000-8000元</a>
+						</li>
+						<li class="li" data-act="price" data-info="id=6&amp;name=8000-12000元">
+							<a href="/sh/zufang/rp6/" title="上海8000-12000元租房">8000-12000元</a>
+						</li>
+						<li class="li" data-act="price" data-info="id=7&amp;name=12000元以上">
+							<a href="/sh/zufang/rp7/" title="上海12000元以上租房">12000元以上</a>
+						</li>
+					</ul>
+					<div class="custom_price" data-info="id=other"><input type="number" class="input" placeholder="最低价格" id="minPrice_input" data-act="number_input"><em class="connect">-</em><input type="number" class="input" placeholder="最高价格" id="maxPrice_input" data-act="number_input">
+						<a href="javascript:;" class="btn btn_price" data-act="price" data-info="id=other">确定</a>
+					</div>
+				</div>
+				<!--/价格-->
+		
+				<!--房型-->
+				<div class="filter_item lists_more" id="panel_model">
+					<div class="more_list">
+						<dl class="item">
+							<dt class="item_tit">卧室</dt>
+							<dd class="item_cont">
+								<ul class="inline value_lists">
+									<li class="val" data-act="check" data-info="id=1&amp;name=一室&amp;key=l1">
+										<a href="/sh/zufang/l1/">一室</a>
+									</li>
+									<li class="val" data-act="check" data-info="id=1&amp;name=二室&amp;key=l2">
+										<a href="/sh/zufang/l2/">二室</a>
+									</li>
+									<li class="val" data-act="check" data-info="id=1&amp;name=三室&amp;key=l3">
+										<a href="/sh/zufang/l3/">三室</a>
+									</li>
+									<li class="val" data-act="check" data-info="id=1&amp;name=四室&amp;key=l4">
+										<a href="/sh/zufang/l4/">四室</a>
+									</li>
+									<li class="val" data-act="check" data-info="id=1&amp;name=五室&amp;key=l5">
+										<a href="/sh/zufang/l5/">五室</a>
+									</li>
+									<li class="val" data-act="check" data-info="id=1&amp;name=五室以上&amp;key=l6">
+										<a href="/sh/zufang/l6/">五室以上</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl class="item">
+							<dt class="item_tit">卫生间</dt>
+							<dd class="item_cont">
+								<ul class="inline value_lists">
+									<li class="val" data-act="check" data-info="id=1&amp;name=独卫&amp;key=br1">
+										<a href="/sh/zufang/br1/">独卫</a>
+									</li>
+									<li class="val" data-act="check" data-info="id=1&amp;name=两卫&amp;key=br2">
+										<a href="/sh/zufang/br2/">两卫</a>
+									</li>
+									<li class="val" data-act="check" data-info="id=1&amp;name=三卫&amp;key=br3">
+										<a href="/sh/zufang/br3/">三卫</a>
+									</li>
+									<li class="val" data-act="check" data-info="id=1&amp;name=三卫以上&amp;key=br4">
+										<a href="/sh/zufang/br4/">三卫以上</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="opt_box">
+						<a href="javascript:;" class="btn btn_link" data-act="clear">重置</a>
+						<a href="javascript:;" class="btn btn_green q_button" data-act="submit">确定</a>
+					</div>
+				</div>
+				<!--/房型-->
+		
+				<!--更多-->
+				<div class="filter_item lists_more" id="panel_more">
+					<div class="more_list">
+						<dl class="item">
+							<dt class="item_tit">朝向</dt>
+							<dd class="item_cont">
+								<ul class="inline value_lists">
+									<li class="val   " data-act="check" data-info="id=1&amp;name=朝东&amp;key=f1">
+										<a href="/sh/zufang/f1/">朝东</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=朝南&amp;key=f2">
+										<a href="/sh/zufang/f2/">朝南</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=朝西&amp;key=f3">
+										<a href="/sh/zufang/f3/">朝西</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=朝北&amp;key=f4">
+										<a href="/sh/zufang/f4/">朝北</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=南北&amp;key=f5">
+										<a href="/sh/zufang/f5/">南北</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl class="item">
+							<dt class="item_tit">建筑面积(平)</dt>
+							<dd class="item_cont">
+								<ul class="inline value_lists">
+									<li class="val   " data-act="check" data-info="id=1&amp;name=50平以下&amp;key=ra1">
+										<a href="/sh/zufang/ra1/">50平以下</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=50-70平&amp;key=ra2">
+										<a href="/sh/zufang/ra2/">50-70平</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=70-90平&amp;key=ra3">
+										<a href="/sh/zufang/ra3/">70-90平</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=90-110平&amp;key=ra4">
+										<a href="/sh/zufang/ra4/">90-110平</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=110-150平&amp;key=ra5">
+										<a href="/sh/zufang/ra5/">110-150平</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=150平以上&amp;key=ra6">
+										<a href="/sh/zufang/ra6/">150平以上</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl class="item">
+							<dt class="item_tit">标签</dt>
+							<dd class="item_cont">
+								<ul class="inline value_lists">
+									<li class="val   " data-act="check" data-info="id=1&amp;name=近地铁&amp;key=su">
+										<a href="/sh/zufang/su1/">近地铁</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=精装修&amp;key=rd">
+										<a href="/sh/zufang/rd1/">精装修</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=新上房源&amp;key=tt2">
+										<a href="/sh/zufang/tt2/">新上房源</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=随时看房&amp;key=tt4">
+										<a href="/sh/zufang/tt4/">随时看房</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=有车位&amp;key=hc">
+										<a href="/sh/zufang/hc1/">有车位</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl class="item">
+							<dt class="item_tit">楼层</dt>
+							<dd class="item_cont">
+								<ul class="inline value_lists">
+									<li class="val   " data-act="check" data-info="id=1&amp;name=低楼层&amp;key=lc1">
+										<a href="/sh/zufang/lc1/">低楼层</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=中楼层&amp;key=lc2">
+										<a href="/sh/zufang/lc2/">中楼层</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=高楼层&amp;key=lc3">
+										<a href="/sh/zufang/lc3/">高楼层</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl class="item">
+							<dt class="item_tit">装修</dt>
+							<dd class="item_cont">
+								<ul class="inline value_lists">
+									<li class="val   " data-act="check" data-info="id=1&amp;name=精装修&amp;key=de1">
+										<a href="/sh/zufang/de1/">精装修</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=普通装修&amp;key=de2">
+										<a href="/sh/zufang/de2/">普通装修</a>
+									</li>
+									<li class="val   " data-act="check" data-info="id=1&amp;name=毛坯房&amp;key=de3">
+										<a href="/sh/zufang/de3/">毛坯房</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl class="item">
+							<dt class="item_tit">供暖方式</dt>
+							<dd class="item_cont">
+								<ul class="inline value_lists">
+									<li class="val" data-act="tap" data-info="id=1&amp;key=hy">
+										<a href="/sh/zufang/hy1/">市政供暖</a>
+									</li>
+									<li class="val" data-act="tap" data-info="id=2&amp;key=hy">
+										<a href="/sh/zufang/hy2/">自供暖</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl class="item">
+							<dt class="item_tit">电梯</dt>
+							<dd class="item_cont">
+								<ul class="inline value_lists">
+									<li class="val" data-act="tap" data-info="id=2&amp;key=ie">
+										<a href="/sh/zufang/ie2/">有电梯</a>
+									</li>
+									<li class="val" data-act="tap" data-info="id=1&amp;key=ie">
+										<a href="/sh/zufang/ie1/">无电梯</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl class="item">
+							<dt class="item_tit">品牌</dt>
+							<dd class="item_cont">
+								<ul class="inline value_lists">
+									<li class="val" data-act="tap" data-info="id=0&amp;key=bd">
+										<a href="/sh/zufang/">全部品牌</a>
+									</li>
+									<li class="val" data-act="tap" data-info="id=1&amp;key=bd">
+										<a href="/sh/zufang/bd1/">链家</a>
+									</li>
+									<li class="val" data-act="tap" data-info="id=2&amp;key=bd">
+										<a href="/sh/zufang/bd2/">自如</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl class="item">
+							<dt class="item_tit">方式</dt>
+							<dd class="item_cont">
+								<ul class="inline value_lists">
+									<li class="val" data-act="tap" data-info="id=0&amp;key=rt">
+										<a href="/sh/zufang/">不限</a>
+									</li>
+									<li class="val" data-act="tap" data-info="id=1&amp;key=rt">
+										<a href="/sh/zufang/rt1/">整租</a>
+									</li>
+									<li class="val" data-act="tap" data-info="id=2&amp;key=rt">
+										<a href="/sh/zufang/rt2/">合租</a>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="opt_box">
+						<a href="javascript:;" class="btn btn_link" data-act="clear">重置</a>
+						<a href="javascript:;" class="btn btn_green q_button" data-act="submit">确定</a>
+					</div>
+				</div>
+				<!--/更多-->
+			</div>
+		</section>
+		
 	<script src="../../js/common/zepto.min.js" ></script>
+
 	<script type="text/javascript" src="../../js/common/gisbase.js" ></script>
-	<script src="jipan.js"></script>
+	<script type="text/javascript" src="../../js/common/dictionary.js" ></script>
+	<script type="text/javascript" src="../../js/common/echo.js" ></script>
+	<script src="jipan.js"></script>		
 	</body>
 </html>

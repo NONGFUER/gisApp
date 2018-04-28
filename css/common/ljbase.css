@@ -1726,7 +1726,7 @@ ul.lists li {
 .home_header .icon_user {
 	font-size: 0;
 	display: inline-block;
-	background-image: url("../../images/common/sprite_new.svg?id=201607141919&version=f08cdb1glx");
+	background-image: url("../../img/common/sprite_new.svg");
 	background-repeat: no-repeat;
 	background-position: 0 0;
 	-webkit-transform: none;
