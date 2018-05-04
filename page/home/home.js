@@ -1,24 +1,53 @@
 $(function(){
-	        
-  var mySwiper = new Swiper ('.swiper-container', {
-   	effect: 'coverflow',
-   	loop:true,
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: 'auto',
-    coverflowEffect: {
-       rotate: 50,
-       stretch: 0,
-       depth: 100,
-       modifier: 1,
-       slideShadows : true,
-    },
-    pagination: {
-       el: '.swiper-pagination',
-    },
-  })        
+	//logingis("000005","000005");	
+	logingis("0209014","12345678");	   
+  	var mySwiper = new Swiper ('.swiper-container', {
+	   	effect: 'coverflow',
+	   	loop:true,
+	    grabCursor: true,
+	    centeredSlides: true,
+	    slidesPerView: 'auto',
+	    coverflowEffect: {
+	       rotate: 50,
+	       stretch: 0,
+	       depth: 100,
+	       modifier: 1,
+	       slideShadows : true,
+	    },
+	    pagination: {
+	       el: '.swiper-pagination',
+	    },
+  	})        
 	getSjpList();
 	Echo.init({offset: 0,throttle: 0});
+	//跳转
+$("#devStore").unbind("tap").bind("tap",function(){
+	window.location.href = base.url + 'gisApp/page/JP/jipan/jipan.html'
+});
+$("#opponents").unbind("tap").bind("tap",function(){
+	window.location.href = base.url + "gisApp/page/Opponents/opponent/opponent.html"
+	
+});
+$("#stores").unbind("tap").bind("tap",function(){
+	window.location.href = base.url + "gisApp/page/Stores/store/store.html"
+});
+$("#agreements").unbind("tap").bind("tap",function(){
+	modelAlert("敬请期待");
+});
+$("#excels").unbind("tap").bind("tap",function(){
+	modelAlert("敬请期待");
+});
+$("#map").unbind("tap").bind("tap",function(){
+	modelAlert("敬请期待");
+});
+$("#deal").unbind("tap").bind("tap",function(){
+	modelAlert("敬请期待");
+});
+$("#devWiki").unbind("tap").bind("tap",function(){
+	window.location.href = base.url + 'gisApp/page/devWiki/devWiki.html'
+	//modelAlert("敬请期待");
+});
+
 });
 //获取基盘
 function getSjpList(){
@@ -41,7 +70,8 @@ function getSjpList(){
 					"bprViceMarketType":DICTIONARY["bprMarketType"][sjpList[i].bprViceMarketType],
 					"bpmConfirmStatus":sjpList[i].bpmConfirmStatus,
 					"bprCustomerFlow":sjpList[i].bprCustomerFlow ?sjpList[i].bprCustomerFlow :"" ,
-					"bprExpectDaysales":sjpList[i].bprExpectDaysales ? sjpList[i].bprExpectDaysales : ""
+					"bprExpectDaysales":sjpList[i].bprExpectDaysales ? sjpList[i].bprExpectDaysales : "",
+					"jpid":sjpList[i].id
 				}
 				$(".lists").append(strMoudle(preData));
 			}
@@ -52,7 +82,7 @@ function getSjpList(){
 function strMoudle(data){
 	var str = '';
 	str += '<li class="pictext">'
-	str += 	'<a href="'+(base.url+ 'gisApp/page/JPDetail/JPDetail.html' )+'" class="a_mask"></a>'
+	str += 	'<a href="'+(base.url)+ 'gisApp/page/JP/jpDetail/jpDetail.html?jpid='+data.jpid+'" class="a_mask"></a>'
 	str += 	'<div class="flexbox">'
 	str += 		'<div class="mod_media">'
 	str += 			'<div class="media_main"><img src="'+base.imagePath+'loading1.gif" alt="" onerror="errorImg(this)" class="lazyload" data-echo="'+base.static+data.imgpath+'"></div>'
@@ -72,4 +102,3 @@ function strMoudle(data){
 	str += '</li>'
 	return str;
 }
- 

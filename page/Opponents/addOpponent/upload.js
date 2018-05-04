@@ -160,10 +160,12 @@ function uploadImg (formData,num) {
                 // 上传成功
                 alert("成功")
             } else {
+            	alert("失败")
                 // 上传失败
             }
         }
     };
-    xhr.open('POST', base.basePath + 'familymart.uploader?id='+num+'&bpmId=SH17684148' , true);
+   // xhr.open('POST', base.basePath + 'familymart.uploader?id='+num+'&bpmId='+localStorage.getItem('$jpid') , true);
+  xhr.open('POST', base.basePath + 'batch.upload1?id='+num+'&bpmId='+localStorage.getItem('$jpid') , true);  
     xhr.send(formData);
 }

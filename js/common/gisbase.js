@@ -1,6 +1,7 @@
 var base = {
-		url : window.location.protocol+"//"+window.location.host+"//",
+		url : window.location.protocol+"//"+window.location.host+"/",
 		basePath:"http://172.16.0.83:8090/fmgis/v1.0/",
+		//basePath:"http://172.16.101.112:8090/fmgis/v1.0/",
 		imagePath : window.location.protocol+"//"+window.location.host+"/gisApp/img/common/", // 图片路径
 		static:"http://172.16.0.83:8090/fmgis/v1.0/"
 };
@@ -16,12 +17,13 @@ $.isNull = function(str) {
 //get请求
 $.reqGetAjaxs = function(url, requestData, callBack) {
 	var requestJson = !$.isNull(requestData) ? JSON.stringify(requestData) : '';
+	var token = localStorage.getItem('$auth_token');
 	$.ajax({
 		type: "GET",
 		contentType: "application/json",
 		url: url,
 		headers: {
-			"token": ""
+			"token": token
 		},
 		dataType: "json",	
 		data : requestJson,		
@@ -34,6 +36,7 @@ $.reqGetAjaxs = function(url, requestData, callBack) {
 		},
 		error : function(data) {
 			$(".ajax_prevent_channel").remove();
+			modelAlert("网络好像开小差了呢，请设置给力一点儿网络吧！");
 			
 		},
 		beforeSend : function(xhr) {
@@ -45,12 +48,13 @@ $.reqGetAjaxs = function(url, requestData, callBack) {
 //post请求
 $.reqPostAjaxs = function(url, requestData, callBack){
 	var requestJson = !$.isNull(requestData) ? JSON.stringify(requestData) : '';
+	var token = localStorage.getItem('$auth_token');
 	$.ajax({
 		type: "POST",
 		contentType: "application/json",
 		url: url,
 		headers: {
-			"token": localStorage.getItem('$auth_token')//token
+			"token": token//token
 		},
 		dataType: "json",	
 		data : requestJson,		
@@ -62,7 +66,8 @@ $.reqPostAjaxs = function(url, requestData, callBack){
 			}
 		},
 		error : function(data) {
-			
+			$(".ajax_prevent_channel").remove();
+			modelAlert("网络好像开小差了呢，请设置给力一点儿网络吧！");
 		},
 		beforeSend : function(xhr) {
 			$(".ajax_prevent_channel").remove();
@@ -72,7 +77,7 @@ $.reqPostAjaxs = function(url, requestData, callBack){
 	});
 }
 
-//post请求
+//delete请求
 $.reqDeleteAjaxs = function(url, requestData, callBack){
 	var requestJson = !$.isNull(requestData) ? JSON.stringify(requestData) : '';
 	$.ajax({
@@ -93,6 +98,7 @@ $.reqDeleteAjaxs = function(url, requestData, callBack){
 		},
 		error : function(data) {
 			$(".ajax_prevent_channel").remove();
+			modelAlert("网络好像开小差了呢，请设置给力一点儿网络吧！");
 		},
 		beforeSend : function(xhr) {
 			$.ajaxPreventChannel();
@@ -109,27 +115,28 @@ $.ajaxPreventChannel = function() {
 	ajaxPrevent += "<div class='ajax_prevent_a' style='width: 30%;margin-top: 55%;"
 			+ "margin-left: 35%;text-align: center;background-clip: padding-box;"
 			+ "color: #585858;'>";
-	ajaxPrevent += "<img style=' width: 64px;height: 64px;' src='./image/common/ajaxLoading.gif' ></div></div>";
+	ajaxPrevent += "<img style=' width: 64px;height: 64px;' src='"+base.imagePath+"ajaxLoading.gif' ></div></div>";
 	$("body").append(ajaxPrevent);
 	$(".ajax_prevent_a").css("margin-top",(window.innerHeight/2));
 };
 
-function modelAlert(){
-	var str = "";
-		str += '<div id="myModal3" class="modal  fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true" style="display: none;">'
-		str += 	'<div class="modal-header">'
-		str += 		'<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>'
-		str += 		'<h3 id="myModalLabel3">Confirm Header</h3>'
-		str += 	'</div>'
-		str += 	'<div class="modal-body"><p>Body goes here...</p></div>	'
-		str += 	'<div class="modal-footer">'
-		str += 		'<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>'
-		str += 		'<button data-dismiss="modal" class="btn blue">Confirm</button>'
-		str += 	'</div>'
-		str += '</div>'
-		$("body").append(str);
-		
-}
+function modelAlert(message, describe, method) {
+	/**--android alert黑屏问题 --*/
+	if(!describe){
+		var describe = "温馨提示";
+	}
+	$("body").append('<div class="mui-popup mui-popup-in" style="display: block;"><div class="mui-popup-inner"><div class="mui-popup-title">'+describe+'</div><div class="mui-popup-text">'+message+'</div></div><div class="mui-popup-buttons"><span class="mui-popup-button mui-popup-button-bold">确定</span></div></div>');
+	$("body").append('<div class="mui-popup-backdrop mui-active" style="display: block;"></div>');
+	$(".mui-popup-button").on("tap",function(){
+		setTimeout(function(){
+			if (method != null && method != "" && method != undefined) {
+				method();
+			}
+			$(".mui-popup-backdrop,.mui-popup").remove();
+		},200)
+	});
+}	
+//登录
 function logingis(userId,password){
 	var password1 = toBase64(password);
 	var data = {
@@ -158,13 +165,13 @@ function logingis(userId,password){
 			}
 		},
 		error : function(data) {
-			
+			$(".ajax_prevent_channel").remove();
 		},
 		beforeSend : function(xhr) {
 			$(".ajax_prevent_channel").remove();
 			$.ajaxPreventChannel();
 		},
-		async : true
+		async : false
 	});
 }
 
@@ -228,4 +235,81 @@ function appendStyle() {
 	t.id = e;
 	t.innerHTML = ".lists_model .model_list,.lists_price .price_list{-webkit-box-sizing:border-box;-moz-box-sizing:border-box}.filter_box .filter_item .cont li,.filter_box .filter_item .guide li,.filter_box .tab_bar,.lists_price .price_list li{border-bottom:1px solid #e5e5e5}body.filter_show{overflow:hidden;position:absolute;top:0;bottom:0;left:0;right:0}.filter_box .tab_bar{position:relative;z-index:10}.filter_box .filter_item{position:absolute;background:#fff;top:0;left:0;right:0;-webkit-transition:-webkit-transform .5s ease;-moz-transition:transform .5s ease,-moz-transform .5s ease;-o-transition:transform .5s ease,-o-transform .5s ease;transition:transform .5s ease;transition:transform .5s ease,-webkit-transform .5s ease,-moz-transform .5s ease,-o-transform .5s ease;-webkit-transform:translate3d(0,-100%,0);-moz-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);opacity:0;z-index:1}.filter_box .area_list,.filter_box .model_list,.filter_box .more_list,.filter_box .price_list{width:100%;max-height:25.625rem;background:#fff;overflow:auto}.filter_box .more_list{max-height:20rem;max-height:calc(100vh - 16.0625rem)}.filter_box .area_list{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex}.filter_box .filter_item.active{-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);transform:translate3d(0,0,0);opacity:1;z-index:2}.filter_box .filter_item .cont,.filter_box .filter_item .guide,.filter_box .filter_item .nav{overflow:auto}.filter_box .lists_area.active{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex}.filter_box .filter_item li{line-height:2.5rem}.filter_box .filter_item li.active a{color:#00ae66;-webkit-tap-highlight-color:rgab(0,0,0,0)}.filter_box .filter_item li.active .btn{color:#fff;-webkit-tap-highlight-color:rgab(0,0,0,0)}.filter_box .filter_item .guide,.filter_box .filter_item .nav{-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;-ms-flex:1;flex:1;padding-left:1.1875rem;border-right:1px solid #e5e5e5}.filter_box .filter_item .nav{background:#f0f0f0;padding-left:0}.filter_box .filter_item .nav li{padding-left:1.875rem}.filter_box .filter_item .nav li.active{background:#fff;margin-right:-1px;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5}.filter_box .filter_item .nav li:first-child{border-top:0}.filter_box .filter_item .cont{-webkit-box-flex:2;-webkit-flex:2;-moz-box-flex:2;-ms-flex:2;flex:2;padding-left:1.1875rem}.filter_box .filter_item .cont li.active,.filter_box .filter_item .guide li.active{color:#00ae66}.filter_box .filter_item .level2.active,.filter_box .filter_item .level3.active{display:block}.lists_price .price_list{width:100%;padding-left:1.25rem;box-sizing:border-box}.lists_price .price_list li{height:3.125rem;line-height:3.125rem;font-size:1rem}.lists_price .price_list li:last-child{border-bottom:0}.lists_price li>*{vertical-align:middle}.lists_price li>span{margin-right:.9375rem}.lists_price .input{width:2.1875rem;height:1.125rem;line-height:1.125rem;padding:0 .125rem;font-size:.6875rem;border:0;background:#f5f5f5;-webkit-border-radius:.125rem;-moz-border-radius:.125rem;border-radius:.125rem;text-align:center}.lists_price .connect{padding:0 .3125rem;color:#c5c5c5}.lists_model .btn,.lists_price .btn{background-color:#00ae66;color:#fff}.lists_price .btn{display:inline-block;width:2.0625rem;height:1rem;line-height:1rem;margin-left:.625rem;font-size:.625rem;-webkit-border-radius:.125rem;-moz-border-radius:.125rem;border-radius:.125rem}.lists_model .model_list{width:100%;padding-left:1.25rem;box-sizing:border-box}.lists_model .model_list li{height:2.5rem;line-height:2.5rem;border-bottom:1px solid #e5e5e5}.lists_model .model_list li:last-child{border-bottom:0}.lists_model .model_list li label{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex}.lists_model .model_list .model{display:block;-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;-ms-flex:1;flex:1}.lists_model .model_list input[type=checkbox]{margin-top:.8125rem;margin-right:1.25rem}.lists_model .btn_link{background:0 0;color:#00ae66}.lists_more .item{padding:1.25rem;border-bottom:1px solid #e5e5e5}.lists_more .item:last-child{border-bottom:0}.lists_more .item_tit{font-size:.875rem;font-weight:600}.lists_more .item_desc{color:#9c9fa1;font-size:.6875rem;margin-top:.9375rem}.lists_more .item_cont .value_lists{overflow:hidden;padding-bottom:.125rem}.lists_more .item_cont .val{float:left;width:25%;height:1.5625rem;line-height:1.5625rem;margin:.75rem 0 0;padding-right:.75rem;font-size:.6875rem;text-align:center;color:#999;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.lists_more .item_cont .val a{display:block;border:1px solid #e5e5e5;color:#999;-webkit-border-radius:.125rem;-moz-border-radius:.125rem;border-radius:.125rem;overflow:hidden;white-space:nowrap}.lists_more .item_cont .val.active a{border-color:#00ae66}.lists_model .opt_box,.lists_more .opt_box,.opt_box+.lists_model .model_list{border-top:1px solid #e5e5e5}.lists_model .model_list li,.lists_price .price_list li{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAQAAACROWYpAAAAUklEQVR4Ae3VOQEAQQgDwEhACk4XgyESFgX3Obi/IqkHOoCMI2euFzs5ZGDkeq8MsHKV42Lkx3YcM3Ajh2vcuHHj/3Hj+0ef9ezdyBisy7AYsg2cbp3yKncnfQAAAABJRU5ErkJggg==) 92% center no-repeat;-moz-background-size:.9375rem .9375rem;-o-background-size:.9375rem .9375rem;background-size:.9375rem .9375rem}.lists_model .model_list li.active,.lists_price .price_list li.active{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAPFBMVEUAAAAAr2AArmYAr2UArWYArWUArmUArmUArmUArWYArWUArmYArmUAr2gArWYAr2QArWYArmUArWUArmbHRGgfAAAAE3RSTlMAEKAw8GDPkO+Pn9CwIIBAcMDgP/MWjgAAAIJJREFUeF7N0zkWxDAIBNHGSJY861L3v+sERHgentSV/oSAlm2TormZBnUMNVxFzhSoDM7Hdsi2XixzVlgLDqVn9r7TxJ3pim6hia8w49wlNPO9wWqhPLRnPYFL6KJfVgdeSRNrAZJm1ju0YvuEFixvoQXLT/VMxzNo/0Zko1XYhn0BNtYUGVhIZlYAAAAASUVORK5CYII=) 92% center no-repeat;-moz-background-size:.9375rem .9375rem;-o-background-size:.9375rem .9375rem;background-size:.9375rem .9375rem}.lists_price .price_list li,.lists_price .price_list li.active{background:0 0}";
 	document.head.appendChild(t)
+}
+
+//基盘模板
+function strMoudle(data){
+	var str = '';
+	str += '<li class="pictext">'
+	str += 	'<a href="'+(base.url)+ 'gisApp/page/JP/jpDetail/jpDetail.html?jpid='+data.jpid+'" class="a_mask"></a>'
+	str += 	'<div class="flexbox">'
+	str += 		'<div class="mod_media">'
+	str += 			'<div class="media_main"><img src="'+base.imagePath+'loading1.gif" alt="" onerror="errorImg(this)" class="lazyload" data-echo="'+base.static+data.imgpath+'"></div>'
+	str += 		'</div>'
+	str += 		'<div class="item_list">'
+	str += 			'<div class="item_main">' + (data.dtoName ? data.dtoName : '即将开店' )+ '</div>'
+	str += 			'<div class="item_other text_cut" title="">'+data.bprShopArea+'m²/店宽'+data.bprShopWidth+'m/人流'+data.bprCustomerFlow+'/日商'+data.bprExpectDaysales+'</div>'
+	str += 			'<div class="item_minor"><span class="price_total"><em>'+data.bprExpectRent+'</em><span class="unit">元/月</span></span><span class="unit_price"></span></div>'
+	str += 			'<div class="tag_box">'
+	str += 				'<span class="tag" style="color:rgb(51,190,133);background-color:rgba(51,190,133,0.15);" title="">'+data.bpmConfirmStatus+'</span>'
+	str += 				'<span class="tag" style="color:rgb(89,171,253);background-color:rgba(89,171,253,0.15);" title="">'+data.bprMarketType+'</span>'
+	str += 				'<span class="tag" style="color:rgb(242,161,47);background-color:rgba(242,161,47,0.15);" title="">'+data.bprViceMarketType+'</span>'
+	str += 				'<span class="tag" style="color:rgb(123,189,255);background-color:rgba(123,189,255,0.15);" title="">'+data.areaName+'</span>'
+	str += 			'</div>'
+	str += 		'</div>'
+	str += 	'</div>'											
+	str += '</li>'
+	return str;
+}
+function errorImg(obj){
+	    $(obj).attr("src",base.imagePath + "photo_none.png");
+		return false;
+}
+//获取滚动条当前的位置 
+function getScrollTop() { 
+    var scrollTop = 0; 
+    if (document.documentElement && document.documentElement.scrollTop) { 
+    	scrollTop = document.documentElement.scrollTop; 
+    }else if (document.body) { 
+    	scrollTop = document.body.scrollTop; 
+    } 
+    return scrollTop; 
+}
+
+//获取当前可视范围的高度 
+function getClientHeight() { 
+    var clientHeight = 0; 
+    if (document.body.clientHeight && document.documentElement.clientHeight) { 
+    	clientHeight = Math.min(document.body.clientHeight, document.documentElement.clientHeight); 
+	}else { 
+    	clientHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight); 
+    } 
+    return clientHeight; 
+}
+//获取文档完整的高度 
+function getScrollHeight() { 
+	return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight); 
+}
+/**
+ * 得到地址栏参数
+ * 
+ * @param names
+ *            参数名称
+ * @param urls
+ *            从指定的urls获取参数
+ * @returns string
+ */
+function getUrlQueryString(names, urls) {
+	urls = urls || window.location.href;
+	urls && urls.indexOf("?") > -1 ? urls = urls
+			.substring(urls.indexOf("?") + 1) : "";
+	var reg = new RegExp("(^|&)" + names + "=([^&]*)(&|$)", "i");
+	var r = urls ? urls.match(reg) : window.location.search.substr(1)
+			.match(reg);
+	if (r != null && r[2] != "")
+		return unescape(r[2]);
+	return null;
+};
+function toIndex(){
+	window.location.href = base.url + "gisApp/page/home/home.html";
 }

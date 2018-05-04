@@ -2,15 +2,15 @@
 <html>
 	<head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	    <title>全家-基盘列表</title>
+	    <title>全家-基盘发布流程</title>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	    <meta name="format-detection" content="telephone=no" />   	    
 	    <script>    	
 			;(function(f,i){var b=i.documentElement;var e=f.navigator.appVersion;var g=e.match(/android/gi);var c=e.match(/iphone/gi);var k=f.devicePixelRatio;var j=1,d=1;if(c){if(k>=3){j=3}else{if(k>=2){j=2}else{j=1}}}else{j=1}d=1/j;var h=i.querySelector('meta[name="viewport"]');if(!h){h=i.createElement("meta");h.setAttribute("name","viewport");if(b.firstElementChild){b.firstElementChild.appendChild(h)}else{var a=i.createElement("div");a.appendChild(h);i.write(a.innerHTML)}}if(j){h.setAttribute("content","initial-scale="+d+", maximum-scale="+d+", minimum-scale="+d+", user-scalable=no,uc-fitscreen=yes");b.style.fontSize=16*j+"px"}window.DPR=j})(window,document);	
 	    </script>
-	    <link rel="stylesheet" href="../../css/common/ljrem.css" />
-	    <link rel="stylesheet" href="../addJP/addJP.css" />
-	    <link rel="stylesheet" href="../addJP/popup.css" />
+	    <link rel="stylesheet" href="../../../css/common/ljrem.css" />
+	    <link rel="stylesheet" href="addJP.css" />
+	    <link rel="stylesheet" href="../../../css/common/popup.css" />
 	</head>
 	<body>
 		<section class="page page_yezhu">
@@ -18,12 +18,12 @@
 			<div class="list">
 				<div class="step stepon steps" data-page="step1">
 					<div class="header">
-						<span class="tips"><a href="/sh/"><i></i>返回</a></span>
+						<span class="tips"><a href="../jipan/jipan.html"><i></i>返回</a></span>
 						<span class="title">基盘发布</span>
 					</div>
 					<ul class="stepChange">
 						<li class="change" id="xiaoqu" data-page="xiaoqu">
-							<div>基盘名称</div><input type="text" id="jpName" placeholder="请输入基盘名称" style="width: 80%;">
+							<div>基盘名称</div><input type="text" id="jpName" placeholder="请输入基盘名称" style="width: 74%;">
 						</li>
 						<li class="change " id="jpType" data-page="xiaoqu"  onclick="accuracyListShow()">
 							<div>确度</div><i class="accuracyList">请选择</i><span></span>
@@ -38,10 +38,10 @@
 							<div>基盘所在区</div><i class="areaList">请选择</i><span></span>
 						</li>
 						<li class="change"  data-page="danyuan">
-							<div>基盘地址</div><input id="jpAdress" type="text" placeholder="请输入基盘地址"  style="width: 80%;">
+							<div>基盘地址</div><input id="jpAdress" type="text" placeholder="请输入基盘地址"  style="width: 74%;">
 						</li>
 						<li class="change"  data-page="menpai">
-							<div>基盘街道</div><input type="text" id="jpRoad" placeholder="请输入基盘街道"  style="width: 80%;">
+							<div>基盘街道</div><input type="text" id="jpRoad" placeholder="请输入基盘街道"  style="width: 74%;">
 						</li>
 					</ul>
 					<div class="step1 next steps" data-page="step2" id="toxia">下一步</div>					
@@ -82,23 +82,23 @@
 				</div>
 				<p>二楼正面全景</p>
 				<div id="uploader1">
-					<img src="../../img/common/add.png" class="imgstyle" id="f1"/>
-    				<input id="filePicker" type="file" name="image" accept="image/*">
+					<img src="../../../img/common/add.png" class="imgstyle" id="f1"/>
+    				<input id="filePicker" class="filePicker1" type="file" name="image" accept="image/*">
 				</div>
 				<p>店铺对面</p>
 				<div id="uploader1">
-					<img src="../../img/common/add.png" class="imgstyle" id="f2"/>
-    				<input id="filePicker1" type="file" name="image" accept="image/*" >
+					<img src="../../../img/common/add.png" class="imgstyle" id="f2"/>
+    				<input id="filePicker1" class="filePicker2" type="file" name="image" accept="image/*" >
 				</div>
 				<p>顺向50米</p>
 				<div id="uploader1">
-					<img src="../../img/common/add.png" class="imgstyle" id="f3"/>
-    				<input id="filePicker2" type="file" name="image" accept="image/*" >
+					<img src="../../../img/common/add.png" class="imgstyle" id="f3"/>
+    				<input id="filePicker2" class="filePicker3" type="file" name="image" accept="image/*" >
 				</div>
 				<p>逆向50米</p>
 				<div id="uploader1">
-					<img src="../../img/common/add.png" class="imgstyle" id="f4"/>
-    				<input id="filePicker3" type="file" name="image" accept="image/*" >
+					<img src="../../../img/common/add.png" class="imgstyle" id="f4"/>
+    				<input id="filePicker3" class="filePicker4" type="file" name="image" accept="image/*" >
 				</div>
 				<div class="next step4 steps" data-page="step4" id="complete">立即发布</div>
 			</div>
@@ -136,12 +136,10 @@
 		<div class="layer_fixed" data-mark="layer_fixed" style="display: none;"></div>
 		<!--弹窗-->
 	</section>	
-	<script src="../../js/common/zepto.min.js" ></script>
-	<script src="../../js/common/jquery-1.11.0.js"></script>
-	
-	<script src="../../js/common/gisbase.js" ></script>
-	<script src="dictionary.js"></script>
-	<script src="modifyJP.js" ></script>
-	<script src="../addJP/upload.js"></script>
+	<script src="../../../js/common/zepto.min.js" ></script>
+	<script src="../../../js/common/jquery-1.11.0.js"></script>
+	<script src="../../../js/common/gisbase.js" ></script>
+	<script src="addJP.js" ></script>
+	<script src="upload.js"></script>
 	</body>
 </html>
