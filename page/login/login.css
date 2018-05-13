@@ -1,0 +1,485 @@
+html,
+body {
+    height: 100%;
+    background: #fff;
+}
+
+.wrapper .page_user {
+    background: #fff;
+}
+
+.content_area {
+    position: relative;
+}
+
+.content_area ul {
+    height: 3rem;
+    line-height: 3rem;
+    border-bottom: 1px solid rgb(197, 197, 197);
+    color: rgb(87, 87, 87);
+    background-color: white;
+}
+
+.content_area ul li {
+    display: inline-block;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.content_area .right_arrow:after,
+.content_area .right_arrow:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 58%;
+    border-right: 1px solid rgb(209, 209, 209);
+    -webkit-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+    right: 0;
+    top: -0.1rem;
+}
+
+.content_area .right_arrow:before {
+    top: 1.4rem;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+
+.content_area .login_area {
+    position: relative;
+    background-color: white;
+}
+
+.content_area .login_area>.login_method {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    height: 2.125rem;
+    line-height: 2.125rem;
+    border-bottom: 0.25rem solid gray;
+}
+
+.content_area .login_area .input_area {
+    height: 3.75rem;
+    line-height: 3.75rem;
+    margin: 0 1.875rem;
+    position: relative;
+    padding-right: 1.5rem;
+}
+
+.content_area .login_area .border {
+    border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.content_area .login_area input {
+    border: none;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.content_area .login_area ::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #cdcfd0;
+}
+
+.content_area .login_area :-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #cdcfd0;
+}
+
+.content_area .login_area ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #cdcfd0;
+}
+
+.content_area .login_area :-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #cdcfd0;
+}
+
+.content_area .login_area input:focus::-webkit-input-placeholder {
+    color: #cdcfd0;
+}
+
+.content_area .login_area .input_area .close {
+    display: none;
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+.content_area .login_area .input_area .close::after,
+.content_area .login_area .input_area .close::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: .1rem;
+    height: 60%;
+    left: 50%;
+    top: 50%;
+    background: #cdcfd0;
+}
+
+.content_area .login_area .input_area .close::before {
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    transform: translateX(-50%, -50%) rotate(45deg);
+}
+
+.content_area .login_area .input_area .close::after {
+    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translateX(-50%, -50%) rotate(-45deg);
+}
+
+.content_area .login_area .input_area .close_short {
+    right: 40%;
+}
+
+.content_area .login_area .short_input {
+    width: 55%;
+}
+
+.content_area .login_area .send_verify_num,
+.content_area .login_area .send_verify_num_s {
+    display: inline-block;
+    float: right;
+    height: 2rem;
+    margin: 0.93rem -1.5rem 0.44rem 0;
+    line-height: 2rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #9c9fa1;
+}
+
+.content_area .login_area .send_verify_num_s {
+    display: none;
+}
+
+.content_area .login_area img {
+    display: inline-block;
+    float: right;
+    height: 2rem;
+    border: 1px solid rgb(186, 186, 186);
+    margin: 0.93rem -1.5rem 0.44rem 0;
+    width: 5.125rem;
+    line-height: 2rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: black;
+}
+
+.content_area .login_area .green_border {
+    position: absolute;
+    top: 2.125rem;
+    width: 50%;
+    height: 0.25rem;
+    background-color: rgb(57, 172, 106);
+    transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+}
+
+.content_area .login_area .move_green_border {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+}
+
+.content_area .login_area .disabled {
+    color: rgb(207, 207, 207);
+}
+
+.content_area .btn_area {
+    padding: 0.75rem 1.875rem;
+    text-align: center;
+    font-size: .8125rem;
+    color: #6b7072;
+}
+
+.content_area .btn_area .btn {
+    height: 3rem;
+    line-height: 3rem;
+    margin-bottom: 1.25rem;
+    background-color: #66cea3;
+}
+
+.content_area .link_area {
+    padding: 0 0.75rem;
+    text-align: center;
+}
+
+.content_area .link_area .forget {
+    margin-left: 1rem;
+    border-left: 1px solid #e5e5e5;
+    padding-left: 1rem;
+    color: #6b7072;
+}
+
+.content_area .hide {
+    display: none;
+}
+
+.header {
+    display: none;
+}
+
+.content_area .login_header {
+    height: 2.75rem;
+    line-height: 2.75rem;
+    position: relative;
+}
+
+.content_area .login_header .close {
+    height: 1.5rem;
+    width: 1.5rem;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 1.25rem;
+    margin: auto;
+}
+
+.content_area .login_header .close::after,
+.content_area .login_area .close::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: .1rem;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    background: #6b7072;
+}
+
+.content_area .login_header .close::before {
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    transform: translateX(-50%, -50%) rotate(45deg);
+}
+
+.content_area .login_header .close::after {
+    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translateX(-50%, -50%) rotate(-45deg);
+}
+
+.login_header .register {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 1.25rem;
+    margin: auto;
+    font-size: 1rem;
+    color: #6b7072;
+    display: inline-block;
+    line-height: 1rem;
+    height: 1rem;
+}
+
+.content_area .login_area .login_header .back {
+    height: .8rem;
+    width: .8rem;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 1.25rem;
+    z-index: 1;
+    margin: auto;
+    border: solid #6b7072;
+    border-width: 0 0 4px 4px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.login_title {
+    text-align: center;
+    color: #394043;
+    font-size: 1.125rem;
+}
+
+.login_desc {
+    margin: 0 1.875rem;
+    position: relative;
+}
+
+.login_desc .login_type {
+    height: 3.75rem;
+    line-height: 3.75rem;
+    color: #394043;
+    font-size: 1.75rem;
+    width: 100%;
+    top: 0;
+}
+
+.login_desc .login_text {
+    font-size: 1rem;
+    color: #9c9fa1;
+    display: none;
+}
+
+.login_method {
+    display: inline-block;
+}
+
+.login_method_0 {
+    display: none;
+}
+
+.content_area .login_area .active_color {
+    color: #394043;
+}
+
+.agree_protocol {
+    position: absolute;
+    bottom: -1rem;
+    width: 100%;
+    font-size: .8125rem;
+    line-height: 1rem;
+    color: #cdcfd0;
+    text-align: center;
+}
+
+.agree_protocol a.link_protocol {
+    color: inherit;
+    text-decoration: underline;
+    line-height: 1rem;
+}
+
+.center {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+/*toast*/
+
+.toast {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 10;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.toast .content {
+    min-width: 8.125rem;
+    max-width: 12.5rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-border-radius: .625rem;
+    -moz-border-radius: .625rem;
+    border-radius: .625rem;
+    text-align: center;
+    padding: 0 .625rem 1.0rem;
+    color: #fff;
+}
+
+.toast .content_without_icon {
+    padding-top: 1rem;
+}
+
+.toast .icon_box {
+    min-width: 5rem;
+    min-height: 5.0rem;
+}
+
+.toast .info_box {
+    font-size: 1.0rem;
+    line-height: 1.5;
+    font-weight: normal;
+}
+
+.toast .icon_warn,
+.toast .icon_error {
+    display: block;
+    position: relative;
+    width: 5.0rem;
+    height: 5.0rem;
+    margin: 1.875rem auto 0;
+    border: 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    font-size: 0;
+    cursor: pointer;
+}
+
+.toast .icon_error::before,
+.toast .icon_error::after {
+    position: absolute;
+    content: " ";
+    width: 0.125rem;
+    height: 70%;
+    background-color: #ffffff;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    -moz-transform: translate(-50%, -50%) rotate(45deg);
+    -ms-transform: translate(-50%, -50%) rotate(45deg);
+    -o-transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
+    -webkit-border-radius: 0.125rem;
+    -moz-border-radius: 0.125rem;
+    border-radius: 0.125rem;
+}
+
+.toast .icon_error::after {
+    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+    -moz-transform: translate(-50%, -50%) rotate(-45deg);
+    -ms-transform: translate(-50%, -50%) rotate(-45deg);
+    -o-transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.toast .icon_success {
+    display: block;
+    width: 3.6rem;
+    height: 2.0rem;
+    border-left: 0.125rem solid #fff;
+    border-bottom: 0.125rem solid #fff;
+    -webkit-transform: translate(2.25rem, 0.5rem) rotate(-45deg);
+    -moz-transform: translate(2.25rem, 0.5rem) rotate(-45deg);
+    -ms-transform: translate(2.25rem, 0.5rem) rotate(-45deg);
+    -o-transform: translate(2.25rem, 0.5rem) rotate(-45deg);
+    transform: translate(2.25rem, 0.5rem) rotate(-45deg);
+}
+
+.toast .icon_warn {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0.125rem solid #fff;
+    -webkit-transform: translate(0, 1.25rem);
+    -moz-transform: translate(0, 1.25rem);
+    -ms-transform: translate(0, 1.25rem);
+    -o-transform: translate(0, 1.25rem);
+    transform: translate(0, 1.25rem);
+}
+
+.toast .icon_warn::before {
+    position: absolute;
+    content: " ";
+    width: 0.125rem;
+    height: 50%;
+    background-color: #fff;
+    top: 0.3125rem;
+    left: 50%;
+    margin-left: -0.0625rem;
+}
+
+.toast .icon_warn::after {
+    position: absolute;
+    content: " ";
+    width: 0.25rem;
+    height: 0.25rem;
+    -webkit-border-radius: 0.125rem;
+    -moz-border-radius: 0.125rem;
+    border-radius: 0.125rem;
+    background-color: #fff;
+    top: 72%;
+    left: 50%;
+    margin-left: -0.125rem;
+}

@@ -1,37 +1,38 @@
 var domLists = {};
 
 $(function(){	
-	getImages("SH18438526");
-//	imageHandle();
+	$(".msgwriter-txt").unbind("input").bind("input",function(){
+		$(".num").text($(this).val().length)
+	});
+	//返回下一页
 	$(".changeStep").click(function(){
 		var nextPage = $(this).attr("data-page");
 		shownext( nextPage );
 	});
+	//下一步
 	$("#toxia").click(function(){
 		var nextPage = $(this).attr("data-page");
 		shownext( nextPage );
 	});
+	//信息填完以后（除了照相）
 	$("#infoComplete").click(function(){
 		var nextPage = $(this).attr("data-page");
 		shownext( nextPage );
 	});
+	//影像完成后
 	$("#complete").click(function(){
-		createJipan()
-		
+		createJipan()	
 	});
-	$(".cancle").click(function(){
+	//取消
+	$(".cancle,.layer_fixed").click(function(){
 		bottomCancle();
 	});
-
+	$("#backpre,#backjipan,#finish").click(function(){
+		window.location.href = base.url + "gisApp/page/JP/jipan/jipan.html";
+	});
+	
 });
-//获取图片
-function getImages(bpmId){
-	var url = base.basePath + "familymart.get.uploader?bpmId="+bpmId;
-	var reqData = "";
-	$.reqGetAjaxs( url, reqData, function(data){
-		console.log(data);
-	} );
-}
+
 /*获取表单信息*/
 function getFormData(){
 	var jpName    = $("#jpName").val();//基盘名称 
@@ -45,6 +46,7 @@ function getFormData(){
 	var areaName  = $(".areaList").html();			//区
 	var jpAdress  = $("#jpAdress").val();//基盘地址
 	var jpRoad    = $("#jpRoad").val();  //基盘街道
+	var jpRemark  = $("#question_content").val(); //基盘描述
 	
 	var rishang   = $("#rishang").val()//预估日商
 	var zujin     = $("#zujin").val()//预估租金
@@ -60,9 +62,13 @@ function getFormData(){
 	var waywidth  = $(".waywidthList").attr("select-value");//路宽类型
 	
 	var img1      = $(".filePicker1").attr("data-img");
+	if($.isNull(img1)){modelAlert("请先上传二楼正面全景照！");return false;}
 	var img2      = $(".filePicker2").attr("data-img");
+	if($.isNull(img2)){modelAlert("请先上传店铺对面照！");return false;}
 	var img3      = $(".filePicker3").attr("data-img");
+	if($.isNull(img3)){modelAlert("请先上传顺向50米照！");return false;}
 	var img4      = $(".filePicker4").attr("data-img");
+	if($.isNull(img4)){modelAlert("请先上传逆向50米照！");return false;}
 	
 	
 	var propertyDto = {}
@@ -78,10 +84,8 @@ function getFormData(){
 	bpPropertyMaster.areaCn           = areaName;//区域名
 	bpPropertyMaster.bpmAddress       = jpAdress;//基盘地址
 	bpPropertyMaster.bpmStreet        = jpRoad;//基盘街道
-	bpPropertyMaster.img1 			  = img1;
-	bpPropertyMaster.img2             = img2;
-	bpPropertyMaster.img3             = img3;
-	bpPropertyMaster.img4             = img4;
+	bpPropertyRpt.bprRemark           = jpRemark;//基盘描述
+	
 	
 	
 	bpPropertyRpt.bprExpectRent       = zujin;//预估租金
@@ -98,7 +102,12 @@ function getFormData(){
 	bpPropertyRpt.bprCarStop		  = carPark;//车辆停靠
 	bpPropertyRpt.bprCarWay			  = txfx; //通行方向
 	bpPropertyRpt.bprRoadType         = waywidth//路宽类型
-	bpPropertyRpt.bprRemark           = "暂无描述";
+	
+	
+	bpPropertyMaster.img1 			  = img1;
+	bpPropertyMaster.img2             = img2;
+	bpPropertyMaster.img3             = img3;
+	bpPropertyMaster.img4             = img4;
 	
 	propertyDto.bpPropertyRpt         = bpPropertyRpt;
 	propertyDto.bpPropertyMaster      = bpPropertyMaster;
@@ -108,10 +117,13 @@ function getFormData(){
 function createJipan(){
 	var url = base.basePath + "familymart.property.applycreate"
 	var reqData = getFormData();
+	if(!reqData){return false;}
 	$.reqPostAjaxs( url, reqData, function(data){
-		console.log(data);
-//		var nextPage = $(this).attr("data-page");
-//		shownext( nextPage );
+		if( data.statusCode == "200" ){
+			shownext("step4")
+		}else{
+			modelAlert(data.message);
+		}
 	} );
 }
 

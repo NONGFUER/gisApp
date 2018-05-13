@@ -1,9 +1,91 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
+
 	<head>
-		<meta charset="UTF-8">
-		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>全家-竞争店详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="format-detection" content="telephone=no" />
+		<script>    	
+			;(function(f,i){var b=i.documentElement;var e=f.navigator.appVersion;var g=e.match(/android/gi);var c=e.match(/iphone/gi);var k=f.devicePixelRatio;var j=1,d=1;if(c){if(k>=3){j=3}else{if(k>=2){j=2}else{j=1}}}else{j=1}d=1/j;var h=i.querySelector('meta[name="viewport"]');if(!h){h=i.createElement("meta");h.setAttribute("name","viewport");if(b.firstElementChild){b.firstElementChild.appendChild(h)}else{var a=i.createElement("div");a.appendChild(h);i.write(a.innerHTML)}}if(j){h.setAttribute("content","initial-scale="+d+", maximum-scale="+d+", minimum-scale="+d+", user-scalable=no,uc-fitscreen=yes");b.style.fontSize=16*j+"px"}window.DPR=j})(window,document);	
+	    </script>
+	    <link rel="stylesheet" href="../../../css/widget/swiper/swiper-4.2.2.min.css" />
+		<link rel="stylesheet" href="../../../css/common/ljrem.css" />
+		<link rel="stylesheet" href="../../JP/jpDetail/jpDetail.css" />
 	</head>
+
 	<body>
+		<section class="page page_zufang has_fixbar" >
+
+			<!--头部-->
+			<header class="header header_white header_style">
+				<div class="flexbox left">
+					<a href="javascript:void(0);" class="header_back" id="header_back"></a>
+					<a href="javascript:void(0)" class="city_wrap">
+						<span class="switch_city"><em class="city">上海</em><i class="icon_pull"></i></span>
+					</a>
+				</div>
+				<a href="javascript:void(0)" class="logo_wrap center"><span class=""></span></a>
+				<a href="javascript:void(0)" class="my right"><i class="icon_user"></i></a>
+			</header>
+
+			<div class="content_area margin_top50">
+				<div class="mod_box house_head">
+					<div class="swiper-container">
+						<div class="swiper-wrapper"></div>
+						<div class="swiper-pagination"></div>
+					</div>
+					<h3 class="house_desc" id="jzName" ></h3>
+					<h3 class="similar_data">
+			        	<div class="similar_data_detail"><p class="gray big">日商</p><p class="red big"><span id="rishang"></span><span id="unit" >元</span></p></div>
+			            <div class="similar_data_detail"><p class="gray big">月租金</p><p class="red big" id="zujin"></p></div>
+			            <div class="similar_data_detail"><p class="gray big">客流</p><p class="red big" id="keliu"></p></div>
+			        </h3>
+					<div class="occupy" style="height: 109px; display: none;"></div>
+					<ul class="house_description big lightblack">
+						<div class="tag_group">							
+							<span class="marketTypeList" style="color:rgb(242,161,47);background-color:rgba(242,161,47,0.15);"></span>
+							<span class="subMarketTypeList" style="color:rgb(51,190,133);background-color:rgba(51,190,133,0.15);"></span>
+							<span class="areaList" style="color:rgb(123,189,255);background-color:rgba(123,189,255,0.15);"></span>
+							<span class="accuracyList" style="color:rgb(89,171,253);background-color:rgba(89,171,253,0.15);"></span>
+						</div>
+						<li class="short"><span class="gray">基盘类型：</span><span class="JPTypeList"></span></li>
+						<li class="short"><span class="gray">店宽：</span>    <span id="dwidth"></span></li>
+						
+						<li class="short"><span class="gray">主商圈：</span>  <span id="marketTypeList"></span></li>
+						<li class="short"><span class="gray">副商圈：</span>  <span id="subMarketTypeList"></span></li>
+						<li class="short"><span class="gray">立地：</span>    <span id="siteList"></span></li>
+						<li class="short"><span class="gray">视野：</span>    <span id="viewList"></span></li>
+						<li class="short"><span class="gray">车辆停靠：</span><span id="carparkList"></span></li>
+						<li class="short"><span class="gray">通行方向：</span><span id="txfxList"></span></li>
+						<li class="short"><span class="gray">路宽类型：</span><span id="waywidthList"></span></li>	
+						<li class="long"><span class="gray">所在区域：</span><span id="areaList"></span></li>
+						<li class="long ">
+							<a><span class="gray">基盘地址：</span><span id="jpAdress"></span></a>		
+						</li>
+						<li class="long ">
+							<a><span class="gray">基盘街道：</span><span id="jpRoad"></span></a>
+						</li>
+						
+					</ul>										
+					<a class="sub_mod_box house_introduce " >
+						<h3 class="mod_tit ">基盘介绍</h3>
+						<div class="mod_cont fiveline house_intro_mod_cont">
+							 
+						</div>
+					</a>
+				</div>
+			
+			</div>
+			<!--<div class="sort_bar_add" id="btn_sort" ><img src="../../../img/common/addJP.png" ></div>-->
+			<div class="sort_bar_add" id="btn_sort" style="bottom: 4.28rem;"><i class="icon_edit"></i><span>编辑</span></div>
+		</section>
+		<script src="../../../js/common/zepto.min.js" ></script>
+		<script src="../../../js/widget/mui/mui.min.js"></script>
+		<script src="../../../js/widget/swiper/swiper-4.2.2.min.js" ></script>
+		<script src="../../../js/common/gisbase.js"></script>
+		<script src="../../../js/common/dictionary.js"></script>
+		<script src="oppenentDetail.js"></script>
 	</body>
+	
 </html>

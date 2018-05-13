@@ -1,15 +1,9 @@
-var w = getJPTypeList();//类型
-var cityList = getCityList();//城市列表
-var areaList = getAreaList();//区列表
-var marketTypeList = getMarketTypeList();//主商圈
-var subMarketTypeList = getSubMarketTypeList();//副商圈
 var domLists = {};
 var bmpId = getUrlQueryString("jpid");
 localStorage.setItem('$jpid',bmpId);
 $(function(){	
 	getImages(bmpId);
 	getJPInfo(bmpId)
-//	imageHandle();
 	$(".changeStep").click(function(){
 		var nextPage = $(this).attr("data-page");
 		shownext( nextPage );
@@ -26,10 +20,16 @@ $(function(){
 		createJipan()
 		
 	});
-	$(".cancle").click(function(){
+	$(".cancle,.layer_fixed").click(function(){
 		bottomCancle();
 	});
-
+	$(".msgwriter-txt").unbind("input").bind("input",function(){
+		$(".num").text($(this).val().length)
+	});
+	$("#backpre,#backjipan,#finish").click(function(){
+		window.location.href = base.url + "gisApp/page/JP/jpDetail/jpDetail.html?jpid="+bmpId;
+	});
+	
 });
 //获取
 function getJPInfo(bpmId){
@@ -56,6 +56,7 @@ function getImages(bpmId){
 			var  jpLists = data.data;
 			for(var i = 0; i < jpLists.length; i++){
 				$("#f"+(i+1)).attr("src" ,base.static + jpLists[i]);
+				$(".filePicker"+(i+1)).attr("data-img",jpLists[i]);
 			}
 			
 		}else{
@@ -79,7 +80,10 @@ function handleData(jpData){
 	$(".areaList").attr("select-value",bpPropertyMaster.bpmCounty);//基盘所在区
 	$("#jpAdress").val(bpPropertyMaster.bpmAddress);//基盘地址
 	$("#jpRoad").val(bpPropertyMaster.bpmStreet);//基盘街道
-	
+	$("#question_content").val(bpPropertyRpt.bprRemark);
+	if(bpPropertyRpt.bprRemark){
+		$(".num").text(bpPropertyRpt.bprRemark.length)
+	}
 	$("#rishang").val(bpPropertyRpt.bprExpectDaysales);//预估日商
 	$("#zujin").val(bpPropertyRpt.bprExpectRent);//预估租金
 	$("#mianji").val(bpPropertyRpt.bprShopArea);//面积
@@ -120,6 +124,7 @@ function getFormData(){
 	var areaName  = $(".areaList").html();			//区
 	var jpAdress  = $("#jpAdress").val();//基盘地址
 	var jpRoad    = $("#jpRoad").val();  //基盘街道
+	var jpRemark  = $("#question_content").val(); //基盘描述
 	
 	var rishang   = $("#rishang").val()//预估日商
 	var zujin     = $("#zujin").val()//预估租金
@@ -135,9 +140,13 @@ function getFormData(){
 	var waywidth  = $(".waywidthList").attr("select-value");//路宽类型
 	
 	var img1      = $(".filePicker1").attr("data-img");
+	if($.isNull(img1)){modelAlert("请先上传二楼正面全景照！");return false;}
 	var img2      = $(".filePicker2").attr("data-img");
+	if($.isNull(img2)){modelAlert("请先上传店铺对面照！");return false;}
 	var img3      = $(".filePicker3").attr("data-img");
+	if($.isNull(img3)){modelAlert("请先上传顺向50米照！");return false;}
 	var img4      = $(".filePicker4").attr("data-img");
+	if($.isNull(img4)){modelAlert("请先上传逆向50米照！");return false;}
 	
 	var propertyDto = {}
 	var bpPropertyRpt    = {};
@@ -153,6 +162,7 @@ function getFormData(){
 	bpPropertyMaster.areaCn           = areaName;//区域名
 	bpPropertyMaster.bpmAddress       = jpAdress;//基盘地址
 	bpPropertyMaster.bpmStreet        = jpRoad;//基盘街道
+	bpPropertyRpt.bprRemark           = jpRemark;//基盘描述
 	
 	bpPropertyRpt.bprExpectRent       = zujin;//预估租金
 	bpPropertyRpt.bprExpectDaysales   = rishang;//预估日商
@@ -162,13 +172,18 @@ function getFormData(){
 	bpPropertyMaster.auditResult      = 1; //审批结果  0-审批中，1-审批通过，2-审批未通过, 9-临时暂存数据
 	bpPropertyRpt.bprPosition         = siteValue; //立地
 	bpPropertyRpt.bprViewType         = viewValue;//视野
-//	bpPropertyRpt.bprTimeQuantum      分段人流
+	//	bpPropertyRpt.bprTimeQuantum      分段人流
 	bpPropertyRpt.bprMarketType       = markType;//主商圈
 	bpPropertyRpt.bprViceMarketType   = subType;//副商圈
 	bpPropertyRpt.bprCarStop		  = carPark;//车辆停靠
 	bpPropertyRpt.bprCarWay			  = txfx; //通行方向
 	bpPropertyRpt.bprRoadType         = waywidth//路宽类型
-	bpPropertyRpt.bprRemark           = "暂无描述";
+	//bpPropertyRpt.bprRemark           = "暂无描述";
+	
+	bpPropertyMaster.img1 = img1;
+	bpPropertyMaster.img2 = img2;
+	bpPropertyMaster.img3 = img3;
+	bpPropertyMaster.img4 = img4;
 	
 	propertyDto.bpPropertyRpt         = bpPropertyRpt;
 	propertyDto.bpPropertyMaster      = bpPropertyMaster;
@@ -178,11 +193,14 @@ function getFormData(){
 function createJipan(){
 	var url = base.basePath + "familymart.property.appupdate"
 	var reqData = getFormData();
+	if(!reqData){return false;}
 	$.reqPostAjaxs( url, reqData, function(data){
 		console.log(data);
-		
-//		var nextPage = $(this).attr("data-page");
-//		shownext( nextPage );
+		if(data.statusCode == "200"){
+			shownext("step4");
+		}else{
+			modelAlert(data.message);
+		}
 	} );
 }
 
@@ -262,6 +280,7 @@ function choose_option(obj){
 //--------------《《------------------《《----------弹窗枚举-----------》》--------------》》
 //展示城市
 function cityListShow(){
+	var cityList = getCityList();//城市列表
 	var cityListDom = [];
 	for(var i = 1; i < cityList.length; i++) {
 		var x = "<li select_data=" + cityList[i][1] + " onclick='choose_option(this)'>" + cityList[i][0] + "</li>";
@@ -279,6 +298,7 @@ function cityListShow(){
 }
 //展示区域
 function areaListShow(){
+	var areaList = getAreaList();//区列表
 	var areaListDom = [];
 	for(var i = 1; i < areaList.length; i++) {
 		var x = "<li select_data=" + areaList[i][1] + " onclick='choose_option(this)'>" + areaList[i][0] + "</li>";
@@ -296,6 +316,7 @@ function areaListShow(){
 }
 //展示基盘类型
 function JPTypeListShow(){
+	var w = getJPTypeList();//类型
 	var JPTypeListDom = [];
 	for(var i = 1; i < w.length; i++) {
 		var x = "<li select_data=" + w[i][1] + " onclick='choose_option(this)'>" + w[i][0] + "</li>";
@@ -313,6 +334,7 @@ function JPTypeListShow(){
 }
 //展示立地面
 function siteListShow(){
+	var siteList = getSiteList();
 	var siteListDom = [];
 	for(var i = 1; i < siteList.length; i++) {
 		var x = "<li select_data=" + siteList[i][1] + " onclick='choose_option(this)'>" + siteList[i][0] + "</li>";
@@ -330,6 +352,7 @@ function siteListShow(){
 }
 //展示视野
 function viewListShow(){
+	var viewList = getViewList();
 	var viewListDom = [];
 	for(var i = 1; i < viewList.length; i++) {
 		var x = "<li select_data=" + viewList[i][1] + " onclick='choose_option(this)'>" + viewList[i][0] + "</li>";
@@ -347,6 +370,7 @@ function viewListShow(){
 }
 //展示主商圈
 function marketTypeListShow(){
+	var marketTypeList = getMarketTypeList();//主商圈
 	var marketTypeListDom = [];
 	for(var i = 1; i < marketTypeList.length; i++) {
 		var x = "<li select_data=" + marketTypeList[i][1] + " onclick='choose_option(this)'>" + marketTypeList[i][0] + "</li>";
@@ -364,6 +388,7 @@ function marketTypeListShow(){
 }
 //展示副商圈
 function subMarketTypeListShow(){
+	var subMarketTypeList = getSubMarketTypeList();//副商圈
 	var subMarketTypeListDom = [];
 	for(var i = 1; i < subMarketTypeList.length; i++) {
 		var x = "<li select_data=" + subMarketTypeList[i][1] + " onclick='choose_option(this)'>" + subMarketTypeList[i][0] + "</li>";
@@ -381,6 +406,7 @@ function subMarketTypeListShow(){
 }
 //展示车辆停靠
 function carparkListShow(){
+	var carparkList = getCarparkList();
 	var carparkListDom = [];
 	for(var i = 1; i < carparkList.length; i++) {
 		var x = "<li select_data=" + carparkList[i][1] + " onclick='choose_option(this)'>" + carparkList[i][0] + "</li>";
@@ -399,6 +425,7 @@ function carparkListShow(){
 
 //展示路宽
 function waywidthListShow(){
+	var waywidthList = getWaywidthList();
 	var waywidthListDom = [];
 	for(var i = 1; i < waywidthList.length; i++) {
 		var x = "<li select_data=" + waywidthList[i][1] + " onclick='choose_option(this)'>" + waywidthList[i][0] + "</li>";
@@ -416,6 +443,7 @@ function waywidthListShow(){
 }
 //展示通行方向
 function txfxListShow(){
+	var txfxList = getTxfxList();
 	var txfxListDom = [];
 	for(var i = 1; i < txfxList.length; i++) {
 		var x = "<li select_data=" + txfxList[i][1] + " onclick='choose_option(this)'>" + txfxList[i][0] + "</li>";
@@ -433,6 +461,7 @@ function txfxListShow(){
 }
 //展示通行方向
 function accuracyListShow(){
+	var accuracyList = getAccuracyList();
 	var accuracyListDom = [];
 	for(var i = 1; i < accuracyList.length; i++) {
 		var x = "<li select_data=" + accuracyList[i][1] + " onclick='choose_option(this)'>" + accuracyList[i][0] + "</li>";

@@ -18,21 +18,20 @@ function getJPList(curpage,pagesize,timesort){
 			for( var i = 0; i < sjpList.length-1; i++ ){
 				var areaName = (sjpList[i].city ? sjpList[i].city : '') +''+(sjpList[i].area ? sjpList[i].area : '') ;
 				var preData = {
-					"dtoName":sjpList[i].dtoName,
-					"imgpath":sjpList[i].img1,
-					"bprExpectRent":sjpList[i].bprExpectRent,
-					"bprShopArea":sjpList[i].bprShopArea,
-					"bprShopWidth":sjpList[i].bprShopWidth,
+					"spStoreName":sjpList[i].spStoreName,
 					"areaName":areaName,
-					"bprExpectRent":(sjpList[i].bprExpectRent == 0 ? "不详" : sjpList[i].bprExpectRent ),
-					"bprMarketType":DICTIONARY["bprMarketType"][sjpList[i].bprMarketType],
-					"bprViceMarketType":DICTIONARY["bprMarketType"][sjpList[i].bprViceMarketType],
-					"bpmConfirmStatus":sjpList[i].bpmConfirmStatus,
-					"bprCustomerFlow":sjpList[i].bprCustomerFlow ?sjpList[i].bprCustomerFlow :"" ,
-					"bprExpectDaysales":sjpList[i].bprExpectDaysales ? sjpList[i].bprExpectDaysales : "",
-					"jpid":sjpList[i].id
+					"closingDate":sjpList[i].closingDate,
+					"openingDate":sjpList[i].openingDate,
+					"spStoreStatus":sjpList[i].spStoreStatus,
+					"tcAvg":sjpList[i].tcAvg,
+					"tuName":sjpList[i].tuName,
+					"undertakeName":sjpList[i].undertakeName,
+					"profileImg":sjpList[i].profileImg,
+					"spAddr":sjpList[i].spAddr,
+					"spPhone":sjpList[i].spPhone,
+					"spStoreId":sjpList[i].spStoreId,		
 				}
-				$(".lists").append(strMoudle(preData));
+				$(".lists").append(strMoudleMD(preData));
 			}
 			Echo.init({offset: 0,throttle: 0});//图片懒加载
 			var loadDom = $('<li class="loading_box"><i class="loading"></i><span>加载中…</span></li>');
@@ -59,21 +58,20 @@ function getJPList1(curpage,pagesize,timesort){
 			for( var i = 0; i < sjpList.length-1; i++ ){
 				var areaName = (sjpList[i].city ? sjpList[i].city : '') +''+(sjpList[i].area ? sjpList[i].area : '') ;
 				var preData = {
-					"dtoName":sjpList[i].dtoName,
-					"imgpath":sjpList[i].img1,
-					"bprExpectRent":sjpList[i].bprExpectRent,
-					"bprShopArea":sjpList[i].bprShopArea,
-					"bprShopWidth":sjpList[i].bprShopWidth,
+					"spStoreName":sjpList[i].spStoreName,
 					"areaName":areaName,
-					"bprExpectRent":(sjpList[i].bprExpectRent == 0 ? "不详" : sjpList[i].bprExpectRent ),
-					"bprMarketType":DICTIONARY["bprMarketType"][sjpList[i].bprMarketType],
-					"bprViceMarketType":DICTIONARY["bprMarketType"][sjpList[i].bprViceMarketType],
-					"bpmConfirmStatus":sjpList[i].bpmConfirmStatus,
-					"bprCustomerFlow":sjpList[i].bprCustomerFlow ?sjpList[i].bprCustomerFlow :"" ,
-					"bprExpectDaysales":sjpList[i].bprExpectDaysales ? sjpList[i].bprExpectDaysales : "",
-					"jpid":sjpList[i].id
+					"closingDate":sjpList[i].closingDate,
+					"openingDate":sjpList[i].openingDate,
+					"spStoreStatus":sjpList[i].spStoreStatus,
+					"tcAvg":sjpList[i].tcAvg,
+					"tuName":sjpList[i].tuName,
+					"undertakeName":sjpList[i].undertakeName,
+					"profileImg":sjpList[i].profileImg,
+					"spAddr":sjpList[i].spAddr,
+					"spPhone":sjpList[i].spPhone,
+					"spStoreId":sjpList[i].spStoreId,					
 				}
-				$(".lists").append(strMoudle(preData));
+				$(".lists").append(strMoudleMD(preData));
 			}
 			Echo.init({offset: 0,throttle: 0});//图片懒加载
 		}

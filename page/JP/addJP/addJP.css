@@ -249,7 +249,7 @@ html {
 }
 
 .yezhu-wrapper .list li span,.rarrow {
-	background: url("../../img/common/single_right_grey.png") left top no-repeat;
+	background: url("../../../img/common/single_right_grey.png") left top no-repeat;
 	width: 22px;
 	height: .84rem;
 	display: inline-block;
@@ -433,7 +433,7 @@ html {
 }
 
 .yezhu-wrapper .step2 .step2-box div i.right {
-	background: url("../../../images/yezhu/single_right_grey.png?version=f099q2l0sf") left top no-repeat;
+	background: url("../../../img/common/single_right_grey.png?version=f099q2l0sf") left top no-repeat;
 	width: 22px;
 	height: .84rem;
 	display: inline-block;
@@ -461,7 +461,7 @@ html {
 
 .yezhu-wrapper #step3 .suc .icon_successpng {
 	height: 5.2124rem;
-	background: url("../../../images/yezhu/success.png?version=f099q2l0sf") center no-repeat;
+	background: url("../../../img/common/success.png?version=f099q2l0sf") center no-repeat;
 	background-size: 100%
 }
 
@@ -722,7 +722,8 @@ html {
 #filePicker,
 #filePicker1,
 #filePicker2,
-#filePicker3{
+#filePicker3,
+#filePicker4{
 	opacity: 0;
 	position: absolute;
 	z-index: 1;
@@ -743,4 +744,28 @@ html {
 	margin:0 auto;
     display: block;
     
+}
+.msgwriter-layer .msgwriter-txt-container {
+    width: 100%;
+    background-color: #fff;
+}
+.msgwriter-layer .msgwriter-txt-container .msgwriter-txt {
+    height: 6.4375rem;
+    width: 100%;
+    padding: 1rem;
+    outline: 0;
+    resize: none;
+    border: none;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: .975rem;
+    color: #394043;
+}
+.msgwriter-layer .msgwriter-btm {
+    padding: 1rem;
+    height: 1.25rem;
+    position: relative;
+    color: #9c9fa1;
+}
+.msgwriter-layer .msgwriter-count {
+    font-size: .8125rem;
 }

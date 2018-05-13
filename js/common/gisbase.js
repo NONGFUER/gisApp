@@ -1,7 +1,8 @@
 var base = {
 		url : window.location.protocol+"//"+window.location.host+"/",
-		basePath:"http://172.16.0.83:8090/fmgis/v1.0/",
-		//basePath:"http://172.16.101.112:8090/fmgis/v1.0/",
+		//url : "http://172.16.0.83/",
+		//basePath:"http://172.16.0.83:8090/fmgis/v1.0/",
+		basePath:"http://172.16.101.112:8090/fmgis/v1.0/",
 		imagePath : window.location.protocol+"//"+window.location.host+"/gisApp/img/common/", // 图片路径
 		static:"http://172.16.0.83:8090/fmgis/v1.0/"
 };
@@ -141,10 +142,10 @@ function logingis(userId,password){
 	var password1 = toBase64(password);
 	var data = {
 		userId: userId,
-		password: password1,
-		cityId:"001"
+		password: password1
 	}
-	var url = base.basePath + '/familymart.user.login'
+	
+	var url = base.basePath + 'familymart.user.login'
 	$.ajax({
 		type: "POST",
 		contentType: "application/json",
@@ -158,6 +159,8 @@ function logingis(userId,password){
 				localStorage.setItem('$user_data', JSON.stringify(data.data));
 				localStorage.setItem('$auth_key',data.data.key);
 				localStorage.setItem('$auth_token',data.data.token);
+				localStorage.setItem('$user_id', userId);
+				window.location.href = base.url + 'gisApp/page/home/home.html'
 				}
 			if(data.statusCode == 500) {
 				alert(data.message);
@@ -247,8 +250,8 @@ function strMoudle(data){
 	str += 			'<div class="media_main"><img src="'+base.imagePath+'loading1.gif" alt="" onerror="errorImg(this)" class="lazyload" data-echo="'+base.static+data.imgpath+'"></div>'
 	str += 		'</div>'
 	str += 		'<div class="item_list">'
-	str += 			'<div class="item_main">' + (data.dtoName ? data.dtoName : '即将开店' )+ '</div>'
-	str += 			'<div class="item_other text_cut" title="">'+data.bprShopArea+'m²/店宽'+data.bprShopWidth+'m/人流'+data.bprCustomerFlow+'/日商'+data.bprExpectDaysales+'</div>'
+	str += 			'<div class="item_main">' + (data.dtoName ? data.dtoName : '--' )+ '</div>'
+	str += 			'<div class="item_other text_cut" title="">'+data.bprShopArea+'m²/店宽'+data.bprShopWidth+'m/客流'+data.bprCustomerFlow+'/日商'+data.bprExpectDaysales+'</div>'
 	str += 			'<div class="item_minor"><span class="price_total"><em>'+data.bprExpectRent+'</em><span class="unit">元/月</span></span><span class="unit_price"></span></div>'
 	str += 			'<div class="tag_box">'
 	str += 				'<span class="tag" style="color:rgb(51,190,133);background-color:rgba(51,190,133,0.15);" title="">'+data.bpmConfirmStatus+'</span>'
@@ -260,6 +263,61 @@ function strMoudle(data){
 	str += 	'</div>'											
 	str += '</li>'
 	return str;
+}
+//竞争店模板
+function strMoudleJZ(data){
+	var str = '';
+	str += '<li class="pictext">'
+	str += 	'<a href="'+(base.url)+ 'gisApp/page/Opponents/oppenentDetail/oppenentDetail.html?jzid='+data.jpid+'" class="a_mask"></a>'
+	str += 	'<div class="flexbox">'
+	str += 		'<div class="mod_media">'
+	str += 			'<div class="media_main"><img src="'+base.imagePath+'loading1.gif" alt="" onerror="errorImg(this)" class="lazyload" data-echo="'+base.static+data.imgpath+'"></div>'
+	str += 		'</div>'
+	str += 		'<div class="item_list">'
+	str += 			'<div class="item_main">' + (data.dtoName ? data.dtoName : '--' )+ '</div>'
+	str += 			'<div class="item_other text_cut" title="">'+(data.brand ? data.brand : '--')+'/客流'+(data.bprCustomerFlow ? data.bprCustomerFlow : '--' )+'/日商'+(data.bprExpectDaysales ? data.bprExpectDaysales : '--' )+'</div>'
+	str += 			'<div class="item_minor"><span class="price_total"><em>'+(data.bprExpectRent ?  data.bprExpectRent : '--' )+'</em><span class="unit">元/月</span></span><span class="unit_price"></span></div>'
+	str += 			'<div class="tag_box">'
+	str += 				data.bprMarketType ? '<span class="tag" style="color:rgb(89,171,253);background-color:rgba(89,171,253,0.15);" title="">'+data.bprMarketType+'</span>' : ''
+	str += 				data.bprViceMarketType ?'<span class="tag" style="color:rgb(242,161,47);background-color:rgba(242,161,47,0.15);" title="">'+data.bprViceMarketType+'</span>' : ''
+	str += 				'<span class="tag" style="color:rgb(123,189,255);background-color:rgba(123,189,255,0.15);" title="">'+data.areaName+'</span>'
+	if(data.cigaretteFlag == "Y"){
+		str += '<span class="tag" style="color:rgb(51,190,133);background-color:rgba(51,190,133,0.15);" title="">售烟</span>'
+	}
+	str += 			'</div>'
+	str += 		'</div>'
+	str += 	'</div>'											
+	str += '</li>'
+	return str;
+	
+}
+//竞争店模板
+function strMoudleMD(data){
+	var str = '';
+	str += '<li class="pictext">'
+	str += 	'<a href="'+(base.url)+ 'gisApp/page/Stores/storeDetail/storeDetail.html?mdid='+data.spStoreId+'" class="a_mask"></a>'
+	str += 	'<div class="flexbox">'
+	str += 		'<div class="mod_media">'
+	str += 			'<div class="media_main"><img src="'+base.imagePath+'loading1.gif" alt="" onerror="errorImg(this)" class="lazyload" data-echo="'+base.static+data.imgpath+'"></div>'
+	str += 		'</div>'
+	str += 		'<div class="item_list">'
+	str += 			'<div class="item_main">' + (data.spStoreName ? data.spStoreName : '--' )+ '</div>'
+	str += 			'<div class="item_other text_cut" title="">'+(data.brand ? data.brand : '--')+'/客流'+(data.bprCustomerFlow ? data.bprCustomerFlow : '--' )+'/日商'+(data.bprExpectDaysales ? data.bprExpectDaysales : '--' )+'</div>'
+	str += 			'<div class="item_minor"><span class="price_total"><em>'+data.bprExpectRent+'</em><span class="unit">元/月</span></span><span class="unit_price"></span></div>'
+	str += 			'<div class="tag_box">'	
+	
+	str += 			data.bprMarketType ? '<span class="tag" style="color:rgb(89,171,253);background-color:rgba(89,171,253,0.15);" title="">'+data.bprMarketType+'</span>':''
+	str += 			data.bprViceMarketType ? '<span class="tag" style="color:rgb(242,161,47);background-color:rgba(242,161,47,0.15);" title="">'+data.bprViceMarketType+'</span>':''
+	str += 			'<span class="tag" style="color:rgb(123,189,255);background-color:rgba(123,189,255,0.15);" title="">'+data.areaName+'</span>'
+	if(data.cigaretteFlag == "Y"){
+		str += '<span class="tag" style="color:rgb(51,190,133);background-color:rgba(51,190,133,0.15);" title="">售烟</span>'
+	}
+	str += 			'</div>'
+	str += 		'</div>'
+	str += 	'</div>'											
+	str += '</li>'
+	return str;
+	
 }
 function errorImg(obj){
 	    $(obj).attr("src",base.imagePath + "photo_none.png");

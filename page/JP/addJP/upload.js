@@ -11,6 +11,9 @@ $("#filePicker2").on("change",function(e){
 $("#filePicker3").on("change",function(e){
 	handleInputChange (e,4);
 });
+$("#filePicker4").on("change",function(e){
+	handleInputChange (e,5);
+});
 function handleInputChange (event,num) {
     // 获取当前选中的文件
     var file = event.target.files[0];
@@ -185,7 +188,7 @@ $.ajax({
 		success : function(data) {
 			$(".ajax_prevent_channel").remove();
 			$(".filePicker"+num).attr("data-img",data);
-			 alert("成功");
+			 console.log("成功");
 		},
 		error : function(data) {
 			$(".ajax_prevent_channel").remove();

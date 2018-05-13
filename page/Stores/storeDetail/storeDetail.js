@@ -1,6 +1,6 @@
-var bpmId = getUrlQueryString("jpid");
+var bpmId = getUrlQueryString("mdid");
 $(function(){
-	bpmId = getUrlQueryString("jpid");
+	bpmId = getUrlQueryString("mdid");
 	getJPInfo(bpmId);
 	var mySwiper = new Swiper ('.swiper-container', {
 	   	loop:true,
@@ -12,19 +12,19 @@ $(function(){
 	    },
   	})     
   	$("#header_back").click(function(){
-  		window.location.href = base.url + "gisApp/page/JP/jipan/jipan.html"
+  		window.location.href = base.url + "gisApp/page/Stores/store/store.html"
   	});
 });
 
 //获取
 function getJPInfo(bpmId){
-	var url = base.basePath + "familymart.property.app.getbp?id="+bpmId;
-	$.reqPostAjaxs( url, "", function(data){
+	var url = base.basePath + "familymart.mastore.app.get?spStoreId="+bpmId;
+	$.reqGetAjaxs( url, "", function(data){
 		if(data.statusCode == "200"){
 			var jpData = data.data;
 			handleData(jpData);
 		}else{
-			modelAlert(data.message,"",toIndex);	
+			//modelAlert(data.message,"",toIndex);	
 		}		
 	} );	
 }
@@ -67,7 +67,3 @@ function handleData(jpData){
 	$(".swiper-wrapper").append(img1).append(img2).append(img3).append(img4);
 	$("#complete").attr("data-id",bpPropertyMaster.bpmPropertyId);
 }
-//跳转到基盘添加
-$(".sort_bar_add").click(function(){
-	window.location.href = "../modifyJP/modifyJP.html?jpid="+bpmId;
-});

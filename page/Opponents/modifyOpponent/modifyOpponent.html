@@ -1,9 +1,163 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title></title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <title>全家-竞争店发布流程</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <meta name="format-detection" content="telephone=no" />   	    
+	    <script>    	
+			;(function(f,i){var b=i.documentElement;var e=f.navigator.appVersion;var g=e.match(/android/gi);var c=e.match(/iphone/gi);var k=f.devicePixelRatio;var j=1,d=1;if(c){if(k>=3){j=3}else{if(k>=2){j=2}else{j=1}}}else{j=1}d=1/j;var h=i.querySelector('meta[name="viewport"]');if(!h){h=i.createElement("meta");h.setAttribute("name","viewport");if(b.firstElementChild){b.firstElementChild.appendChild(h)}else{var a=i.createElement("div");a.appendChild(h);i.write(a.innerHTML)}}if(j){h.setAttribute("content","initial-scale="+d+", maximum-scale="+d+", minimum-scale="+d+", user-scalable=no,uc-fitscreen=yes");b.style.fontSize=16*j+"px"}window.DPR=j})(window,document);	
+	    </script>    
+	    	    <link rel="stylesheet" href="../../../css/widget/mdate/Mdate.css"  />
+	    <link rel="stylesheet" href="../../../css/common/ljrem.css" />
+	    <link rel="stylesheet" href="../../JP/addJP/addJP.css" />
+	    <link rel="stylesheet" href="../../../css/common/popup.css" />
 	</head>
 	<body>
+		<section class="page page_yezhu">
+		<div class="yezhu-wrapper">
+			<div class="list">
+				<div class="step stepon steps" data-page="step1">
+					<div class="header">
+						<span class="tips"><a href="../opponent/opponent.html"><i></i>返回</a></span>
+						<span class="title">竞争店发布</span>
+					</div>
+					<ul class="stepChange">
+						<li class="change" id="xiaoqu" data-page="xiaoqu">
+							<div>竞争店名</div><input type="text" id="jzName" placeholder="请输入竞争店名称" style="width: 75%;">
+						</li>
+						<li class="change " id="jzType" data-page="xiaoqu"  onclick="JZBrandListShow()">
+							<div>竞争品牌</div><i class="brandList">请选择</i><span></span>
+						</li>
+						<li class="change" id="jzCity" data-page="loudong" onclick="cityListShow()">
+							<div>竞争店所在城市</div><i class="cityList">请选择</i><span></span>
+						</li>
+						<li class="change" id="jzArea" data-page="loudong" onclick="areaListShow()">
+							<div>竞争店所在区</div><i class="areaList">请选择</i><span></span>
+						</li>
+						<li class="change"  data-page="danyuan">
+							<div>竞争店地址</div><input id="jpAdress" type="text" placeholder="请输入竞争店地址"  style="width: 74%;">
+						</li>
+						<li class="change"  data-page="menpai">
+							<div>竞争店街道</div><input type="text" id="jpRoad" placeholder="请输入竞争店街道"  style="width: 74%;">
+						</li>
+						<li class="change"  data-page="menpai">
+							<div>竞争店描述</div>
+						</li>
+						<div class="msgwriter-layer">
+							
+					        <div class="msgwriter-txt-container">
+					        	<textarea data-mark="question_content" class="msgwriter-txt" placeholder="描述一下竞争店的具体信息、瑕疵、亮点" maxlength="140"></textarea>
+						        <div class="msgwriter-btm">
+							        <span class="msgwriter-count"><em class="num">0</em><em>/140</em></span>
+						        </div>
+					        </div>
+		    			</div>
+					</ul>
+					<div class="step1 next steps" data-page="step2" id="toxia">下一步</div>					
+				</div>				
+			</div>
+			<div class="step" data-page="step2">
+				<div class="header">
+					<span class="tips changeStep" data-page="step1"><i></i>返回</span>
+					<span class="title">竞争店发布</span>
+				</div>
+				<div class="step2">
+					<div class="count ">
+						<p>预估</p>
+						<div class="step2-box">
+							<div><span>预估日商</span><input type="number" id="rishang" class="pirce inp"><i class="ti">元</i></div>
+							<div><span>预估租金</span><input type="number" id="zujin" class="pirce inp"><i class="ti">元</i></div>
+							<div><span>预估客流</span><input type="number" id="keliu" class="pirce inp"><i class="ti">人</i></div>
+						</div>
+						<p>基盘分析</p>
+						<div class="step2-box">
+							<div onclick="" id="signDate"><span>签约日期</span><i class="izi siteList">请选择</i><span class="rarrow"></span></div>
+							<div onclick="" id="openingDate"><span>开店日期</span><i class="izi siteList">请选择</i><span class="rarrow"></span></div>
+							<div onclick="" id="closingDate"><span>闭店日期</span><i class="izi viewList">请选择</i><span class="rarrow"></span></div>
+							<div onclick="carparkListShow()"><span>店铺现状</span><i class="izi carparkList">请选择</i><span class="rarrow"></span></div>
+							<div onclick="txfxListShow()"><span>可否卖烟</span><i class="izi txfxList">请选择</i><span class="rarrow"></span></div>
+							<div onclick="marketTypeListShow()"><span>主商圈</span><i class="izi marketTypeList">请选择</i><span class="rarrow"></span></div>
+							<div onclick="subMarketTypeListShow()"><span>副商圈</span><i class="izi subMarketTypeList">请选择</i><span class="rarrow"></span></div>					
+							<div class="next step3 steps" data-page="step3" id="infoComplete">下一步</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="step" data-page="step3">
+				<div class="header">
+					<span class="tips changeStep" data-page="step2"><i></i>返回</span>
+					<span class="title">竞争店发布</span>
+				</div>
+				<p>二楼正面全景</p>
+				<div id="uploader1">
+					<img src="../../../img/common/add.png" class="imgstyle" id="f1"/>
+    				<input id="filePicker" type="file" class="filePicker1" name="image" accept="image/*">
+				</div>
+				<p>店铺对面</p>
+				<div id="uploader1">
+					<img src="../../../img/common/add.png" class="imgstyle" id="f2"/>
+    				<input id="filePicker1" class="filePicker2" type="file" name="image" accept="image/*" >
+				</div>
+				<p>顺向50米</p>
+				<div id="uploader1">
+					<img src="../../../img/common/add.png" class="imgstyle" id="f3"/>
+    				<input id="filePicker2" class="filePicker3" type="file" name="image" accept="image/*" >
+				</div>
+				<p>逆向50米</p>
+				<div id="uploader1">
+					<img src="../../../img/common/add.png" class="imgstyle" id="f4"/>
+    				<input id="filePicker3" type="file" class="filePicker4" name="image" accept="image/*" >
+				</div>
+				<p>证件照</p>
+				<div id="uploader1">
+					<img src="../../../img/common/add.png" class="imgstyle" id="f5"/>
+    				<input id="filePicker4" type="file" class="filePicker5" name="image" accept="image/*" >
+				</div>
+				<div class="next step4 steps" data-page="step4" id="complete">立即发布</div>
+			</div>
+			<div class="step" data-page="step4" style="background:#fff;">
+				<div class="header">
+					<span class="title" style="margin-right:-3rem;">基盘发布</span>
+					<a href="/sh/" class="site">完成</a>
+				</div>
+				<div id="step3">
+					<div class="sublist" data-mark="sublist">
+						<div class="suc">
+							<div class="icon_successpng"></div>
+							<p>竞争店发布成功，请回列表页查看</p>
+						</div>
+						<div>
+							<div class="next">
+								<a href="../../Opponents/opponent/opponent.html" target="_blank">查看列表</a>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<!--弹窗-->
+		<div class="bottom_layer" data-mark="bottom_layer">
+	        <div class="title">
+	            <span class="cancle" data-act="bottom_cancle">取消</span>
+	            <p data-mark="bottom_layer_title" id="bottom_layer_title"></p>
+	        </div>
+	        <div class="option_wrap" data-mark="option_wrap">
+	            <ul data-mark="layer_list" id="layer_list" data-act="choose_option" option-list="" option-list-dom=""></ul>
+	        </div>
+    	</div>
+		<div class="layer_fixed" data-mark="layer_fixed" style="display: none;"></div>
+		<!--弹窗-->
+	</section>	
+	<script src="../../../js/common/zepto.min.js" ></script>
+	<script src="../../../js/common/jquery-1.11.0.js"></script>
+	<script src="../../../js/widget/mui/mui.min.js"></script>
+	<!--<script src="../../../js/widget/mui/mui.picker.min.js"></script>-->
+	<script src="../../../js/common/gisbase.js" ></script>
+	<script src="modifyOpponent.js" ></script>
+	<script src="../../JP/addJP/upload.js"></script>
+	<script src="../../../js/widget/mdate/iScroll.js"></script>
+	<script src="../../../js/widget/mdate/Mdate.js"></script>
 	</body>
 </html>

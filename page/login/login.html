@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-title" content="全家gis">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="applicable-device" content="mobile">
+		<meta http-equiv="cleartype" content="on">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta http-equiv="Cache-Control" content="no-transform " />
+		<title>登录-全家gis</title>
+		<link href="/favicon.ico" type="image/x-icon" rel="icon">
+		<script type="text/javascript">
+			;(function(f,i){var b=i.documentElement;var e=f.navigator.appVersion;var g=e.match(/android/gi);var c=e.match(/iphone/gi);var k=f.devicePixelRatio;var j=1,d=1;if(c){if(k>=3){j=3}else{if(k>=2){j=2}else{j=1}}}else{j=1}d=1/j;var h=i.querySelector('meta[name="viewport"]');if(!h){h=i.createElement("meta");h.setAttribute("name","viewport");if(b.firstElementChild){b.firstElementChild.appendChild(h)}else{var a=i.createElement("div");a.appendChild(h);i.write(a.innerHTML)}}if(j){h.setAttribute("content","initial-scale="+d+", maximum-scale="+d+", minimum-scale="+d+", user-scalable=no,uc-fitscreen=yes");b.style.fontSize=16*j+"px"}window.DPR=j})(window,document);
+		</script>
+		<link rel="stylesheet" href="../../css/common/ljrem.css">
+		<!--动态样式内容-->
+		<link rel="stylesheet" href="login.css">
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="main_start" id="main_start">
+				<div id="loginType" show-captcha="false" show-sms="false" style="display: none">
+					<div id="captchaUrl" data-url="/freshCaptch"></div>
+					<div id="smsUrl" data-url="/sendSms?service=https%3A%2F%2Fm.lianjia.com%2Fmy%2Fchecklogin%3Fredirect%3D%252Fmy%252Findex"></div>
+				</div>
+				<!--页面-->
+				<!--TODO here-->
+				<section class="page page_user">
+			
+					<!--头部-->
+					<!--头部-->
+					<header class="header">
+						<div class="flexbox left">
+							<a href="javascript:history.back();" class="header_back"></a>
+							<a href="javascript:void(0);" class="city_wrap">
+								<span class="switch_city">
+									<em class="city">上海</em>
+									<i class="icon_pull"></i>
+								</span>
+							</a>
+						</div>
+						<a href="" class="logo_wrap center">
+							<span class=""></span>
+						</a>
+						<a href="" class="my right">
+							<i class="icon_user"></i>
+						</a>
+					</header>
+					<!--/头部-->
+					<!--/头部-->
+					<div class="content_area">
+						<div class="login_area">
+							<div class="login_header">
+								<a class="" href="javascript:history.go(-1)"></a>
+								<a class="register" data-act="register"></a>
+							</div>
+							<div class="login_desc">
+								<div class="login_type" id="login_type">账号密码登录</div>
+							</div>
+							<form action="" method="post" id="login_area_form">
+								<!-- <div class="hasErrors" style="display: none">
+									<span>用户名或密码错误</span>
+								</div> -->
+								<div class="input_area border">
+									<input type="text" id="user_id" placeholder="请输入工号" name="username" maxlength="11">
+									<div class="close" data-act="clear_input"></div>
+								</div>
+								<div class="input_area border">
+									<input name="password" id="password" type="password" placeholder="请输入密码" maxlength="20">
+									<div class="close" data-act="clear_input"></div>
+								</div>
+								<input type="hidden" name="lt" value="" />
+								<input type="hidden" name="execution" value="e12s2" />
+								<input type="hidden" name="_eventId" value="submit" />
+							</form>
+						</div>
+						<div class="btn_area">
+							<a class="btn btn_green post_ulog" data-evtid="10438" data-ulog="" id="submit">登录</a>
+						</div>
+						<div class="agree_protocol">
+							<sapn>全家gis</span>
+								
+						</div>
+			
+					</div>
+			
+				</section>
+				<!--/页面-->
+			</div>
+		</div>
+	</body>
+	<script src="../../js/common/zepto.min.js" ></script>
+	<script type="text/javascript" src="../../js/common/gisbase.js"></script>	
+	<script type="text/javascript" src="login.js"></script>			
+	</html>

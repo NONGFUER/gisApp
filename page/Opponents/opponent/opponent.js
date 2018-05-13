@@ -5,6 +5,9 @@ $(function(){
 	Echo.init({offset: 0,throttle: 0});//图片懒加载
 	tabToTop();//上拉tab-bar置顶
 	//topscroll()
+	$(".header_back").unbind("tap").bind("tap",function(){
+		window.location.href = base.url + "gisApp/page/home/home.html";
+	});
 });
 function getJPList(curpage,pagesize,timesort){
 	var url = base.basePath + "familymart.competitorshop.getlist?curPage="+curpage+"&pageSize="+pagesize;
@@ -21,7 +24,6 @@ function getJPList(curpage,pagesize,timesort){
 				var preData = {
 					"dtoName":sjpList[i].compName,
 					"imgpath":sjpList[i].img1,
-					"bprExpectRent":sjpList[i].bprExpectRent,
 					"bprShopArea":sjpList[i].bprShopArea,
 					"bprShopWidth":sjpList[i].bprShopWidth,
 					"areaName":areaName,
@@ -31,9 +33,12 @@ function getJPList(curpage,pagesize,timesort){
 					"bpmConfirmStatus":sjpList[i].bpmConfirmStatus,
 					"bprCustomerFlow":sjpList[i].customerFlow ?sjpList[i].customerFlow :"" ,
 					"bprExpectDaysales":sjpList[i].expectDaysales ? sjpList[i].expectDaysales : "",
-					"jpid":sjpList[i].id
+					"jpid":sjpList[i].id,
+					"brand":sjpList[i].brand,
+					"cigaretteFlag":sjpList[i].cigaretteFlag,
+					"tuName":sjpList[i].tuName,
 				}
-				$(".lists").append(strMoudle(preData));
+				$(".lists").append(strMoudleJZ(preData));
 			}
 			Echo.init({offset: 0,throttle: 0});//图片懒加载
 			var loadDom = $('<li class="loading_box"><i class="loading"></i><span>加载中…</span></li>');
@@ -62,19 +67,21 @@ function getJPList1(curpage,pagesize,timesort){
 				var preData = {
 					"dtoName":sjpList[i].compName,
 					"imgpath":sjpList[i].img1,
-					"bprExpectRent":sjpList[i].bprExpectRent,
 					"bprShopArea":sjpList[i].bprShopArea,
 					"bprShopWidth":sjpList[i].bprShopWidth,
 					"areaName":areaName,
-					"bprExpectRent":(sjpList[i].bprExpectRent == 0 ? "不详" : sjpList[i].bprExpectRent ),
-					"bprMarketType":DICTIONARY["bprMarketType"][sjpList[i].bprMarketType],
-					"bprViceMarketType":DICTIONARY["bprMarketType"][sjpList[i].bprViceMarketType],
+					"bprExpectRent":(sjpList[i].expectRent == 0 ? "不详" : sjpList[i].expectRent ),
+					"bprMarketType":DICTIONARY["bprMarketType"][sjpList[i].marketType],
+					"bprViceMarketType":DICTIONARY["bprMarketType"][sjpList[i].viceMarketType],
 					"bpmConfirmStatus":sjpList[i].bpmConfirmStatus,
-					"bprCustomerFlow":sjpList[i].bprCustomerFlow ?sjpList[i].bprCustomerFlow :"" ,
-					"bprExpectDaysales":sjpList[i].bprExpectDaysales ? sjpList[i].bprExpectDaysales : "",
-					"jpid":sjpList[i].id
+					"bprCustomerFlow":sjpList[i].customerFlow ?sjpList[i].customerFlow :"" ,
+					"bprExpectDaysales":sjpList[i].expectDaysales ? sjpList[i].expectDaysales : "",
+					"jpid":sjpList[i].id,
+					"brand":sjpList[i].brand,
+					"cigaretteFlag":sjpList[i].cigaretteFlag,
+					"tuName":sjpList[i].tuName,
 				}
-				$(".lists").append(strMoudle(preData));
+				$(".lists").append(strMoudleJZ(preData));
 			}
 			Echo.init({offset: 0,throttle: 0});//图片懒加载
 		}
@@ -83,7 +90,7 @@ function getJPList1(curpage,pagesize,timesort){
 
 //跳转到基盘添加
 $(".sort_bar_add").click(function(){
-	window.location.href = "../addJP/addJP.html"
+	window.location.href = "../addOpponent/addOpponent.html"
 });
 
 //上拉置顶

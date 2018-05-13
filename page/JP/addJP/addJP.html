@@ -18,7 +18,7 @@
 			<div class="list">
 				<div class="step stepon steps" data-page="step1">
 					<div class="header">
-						<span class="tips"><a href="../jipan/jipan.html"><i></i>返回</a></span>
+						<span class="tips" id="backpre"><a href="javascript:void(0)"><i></i>返回</a></span>
 						<span class="title">基盘发布</span>
 					</div>
 					<ul class="stepChange">
@@ -43,6 +43,17 @@
 						<li class="change"  data-page="menpai">
 							<div>基盘街道</div><input type="text" id="jpRoad" placeholder="请输入基盘街道"  style="width: 74%;">
 						</li>
+						<li class="change"  data-page="menpai">
+							<div>基盘描述</div>
+						</li>
+						<div class="msgwriter-layer">							
+					        <div class="msgwriter-txt-container">
+					        	<textarea id="question_content" class="msgwriter-txt" placeholder="描述一下基盘的具体信息、瑕疵、亮点" maxlength="140"></textarea>
+						        <div class="msgwriter-btm">
+							        <span class="msgwriter-count"><em class="num">0</em><em>/140</em></span>
+						        </div>
+					        </div>
+		    			</div>
 					</ul>
 					<div class="step1 next steps" data-page="step2" id="toxia">下一步</div>					
 				</div>				
@@ -105,7 +116,7 @@
 			<div class="step" data-page="step4" style="background:#fff;">
 				<div class="header">
 					<span class="title" style="margin-right:-3rem;">基盘发布</span>
-					<a href="/sh/" class="site">完成</a>
+					<a href="javascript:void(0)" class="site" id="finish">完成</a>
 				</div>
 				<div id="step3">
 					<div class="sublist" data-mark="sublist">
@@ -114,8 +125,8 @@
 							<p>基盘发布成功，请回列表页查看</p>
 						</div>
 						<div>
-							<div class="next">
-								<a href="http://www.lianjia.com/zhuanti/mobile" target="_blank">查看列表</a>
+							<div class="next" id="backjipan">
+								<a href="javascript:void(0)" target="_blank">查看列表</a>
 							</div>
 						</div>
 					</div>
@@ -138,6 +149,7 @@
 	</section>	
 	<script src="../../../js/common/zepto.min.js" ></script>
 	<script src="../../../js/common/jquery-1.11.0.js"></script>
+	<script src="../../../js/widget/mui/mui.min.js"></script>
 	<script src="../../../js/common/gisbase.js" ></script>
 	<script src="addJP.js" ></script>
 	<script src="upload.js"></script>

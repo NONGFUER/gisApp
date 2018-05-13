@@ -3084,3 +3084,10 @@ ul.lists li {
 	border-radius: 0;
 	background: #fff
 }
+.header_style{
+	position: fixed;
+	top: 0;
+}
+.margin_top50{
+	margin-top:50px ;
+}

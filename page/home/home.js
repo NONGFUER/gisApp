@@ -1,6 +1,5 @@
 $(function(){
-	//logingis("000005","000005");	
-	logingis("0209014","12345678");	   
+ 
   	var mySwiper = new Swiper ('.swiper-container', {
 	   	effect: 'coverflow',
 	   	loop:true,
@@ -21,39 +20,41 @@ $(function(){
 	getSjpList();
 	Echo.init({offset: 0,throttle: 0});
 	//跳转
-$("#devStore").unbind("tap").bind("tap",function(){
-	window.location.href = base.url + 'gisApp/page/JP/jipan/jipan.html'
-});
-$("#opponents").unbind("tap").bind("tap",function(){
-	window.location.href = base.url + "gisApp/page/Opponents/opponent/opponent.html"
-	
-});
-$("#stores").unbind("tap").bind("tap",function(){
-	window.location.href = base.url + "gisApp/page/Stores/store/store.html"
-});
-$("#agreements").unbind("tap").bind("tap",function(){
-	modelAlert("敬请期待");
-});
-$("#excels").unbind("tap").bind("tap",function(){
-	modelAlert("敬请期待");
-});
-$("#map").unbind("tap").bind("tap",function(){
-	modelAlert("敬请期待");
-});
-$("#deal").unbind("tap").bind("tap",function(){
-	modelAlert("敬请期待");
-});
-$("#devWiki").unbind("tap").bind("tap",function(){
-	window.location.href = base.url + 'gisApp/page/devWiki/devWiki.html'
-	//modelAlert("敬请期待");
-});
-
+	$("#devStore").unbind("tap").bind("tap",function(){
+		window.location.href = base.url + 'gisApp/page/JP/jipan/jipan.html'
+	});
+	$("#opponents").unbind("tap").bind("tap",function(){
+		window.location.href = base.url + "gisApp/page/Opponents/opponent/opponent.html"
+		
+	});
+	$("#stores").unbind("tap").bind("tap",function(){
+		window.location.href = base.url + "gisApp/page/Stores/store/store.html"
+	});
+	$("#agreements").unbind("tap").bind("tap",function(){
+		modelAlert("敬请期待");
+	});
+	$("#excels").unbind("tap").bind("tap",function(){
+		modelAlert("敬请期待");
+	});
+	$("#map").unbind("tap").bind("tap",function(){
+		modelAlert("敬请期待");
+	});
+	$("#deal").unbind("tap").bind("tap",function(){
+		modelAlert("敬请期待");
+	});
+	$("#devWiki").unbind("tap").bind("tap",function(){
+		window.location.href = base.url + 'gisApp/page/devWiki/devWiki.html'
+		//modelAlert("敬请期待");
+	});
+	$("#search").unbind("tap").bind("tap",function(){
+		window.location.href = base.url + 'gisApp/page/search/search.html'
+	});
 });
 //获取基盘
 function getSjpList(){
 	var url = base.basePath + "familymart.property.appbys";
 	$.reqGetAjaxs(url,"" ,function(data){
-		console.log(data);
+		//console.log(data);
 		if( data.statusCode == "200" ){
 			var sjpList = data.data;
 			for( var i = 0; i < sjpList.length; i++ ){
@@ -88,7 +89,7 @@ function strMoudle(data){
 	str += 			'<div class="media_main"><img src="'+base.imagePath+'loading1.gif" alt="" onerror="errorImg(this)" class="lazyload" data-echo="'+base.static+data.imgpath+'"></div>'
 	str += 		'</div>'
 	str += 		'<div class="item_list">'
-	str += 			'<div class="item_main">' + (data.dtoName ? data.dtoName : '即将开店' )+ '</div>'
+	str += 			'<div class="item_main">' + (data.dtoName ? data.dtoName : '--' )+ '</div>'
 	str += 			'<div class="item_other text_cut" title="">'+data.bprShopArea+'m²/店宽'+data.bprShopWidth+'m/人流'+data.bprCustomerFlow+'/日商'+data.bprExpectDaysales+'</div>'
 	str += 			'<div class="item_minor"><span class="price_total"><em>'+data.bprExpectRent+'</em><span class="unit">元/月</span></span><span class="unit_price"></span></div>'
 	str += 			'<div class="tag_box">'
