@@ -25,17 +25,17 @@
 			<div class="tab_bar flexbox" id="booth" >
 				<div class="tab_tit box_col q_district" id="booth_area">
 					<h2 class="tit">区域</h2><i class="icon_triangle_down"></i></div>
-				<div class="tab_tit box_col q_price" id="booth_price">
+				<div class="tab_tit box_col q_price" id="booth_brand">
 					<h2 class="tit">品牌</h2><i class="icon_triangle_down"></i></div>
-				<div class="tab_tit box_col q_frame" id="booth_model">
+				<div class="tab_tit box_col q_frame" id="booth_date">
 					<h2 class="tit">开店日期</h2><i class="icon_triangle_down"></i></div>
-				<div class="tab_tit box_col q_more" id="booth_more">
-					<h3 class="tit">更多</h3><i class="icon_triangle_down"></i></div>
+				<!-- <div class="tab_tit box_col q_more" id="booth_more">
+					<h3 class="tit">更多</h3><i class="icon_triangle_down"></i></div> -->
 			</div>
 			<!--/筛选条-->
 	
 			<div class="occupy" style="height: 89px;display: none;"></div>
-			<div class="sort_bar" id="btn_sort" style="bottom: 4.28rem;"><i class="icon_sort"></i><span>排序</span></div>
+			<!-- <div class="sort_bar" id="btn_sort" style="bottom: 4.28rem;"><i class="icon_sort"></i><span>排序</span></div> -->
 			<div class="sort_bar_add" id="btn_sort" style="bottom: 8.28rem;"><img src="../../../img/common/addJP.png" ></div>
 			<div class="mod_cont">
 				<ul class="lists">
@@ -43,356 +43,141 @@
 			</div>
 		</div>
 		
-		<section class="layer_fixed filter_box" style="display: none;" id="panel_box">
-			<!--头部筛选条-->
-			<header class="tab_bar flexbox">
-				<div class="tab_tit box_col" id="button_area"><span class="tit">区域</span><i class="icon_triangle_down"></i></div>
-				<div class="tab_tit box_col" id="button_price"><span class="tit">品牌</span><i class="icon_triangle_down"></i></div>
-				<div class="tab_tit box_col" id="button_model"><span class="tit">开店日期</span><i class="icon_triangle_down"></i></div>
-				<div class="tab_tit box_col" id="button_more"><span class="tit">更多</span><i class="icon_triangle_down"></i></div>
-			</header>
-			<!--/头部筛选条-->
-			<div class="content">
-				<!--区域-->
-				<div class="filter_item lists_area" id="panel_area">
-					<div class="area_list">
-						<div class="nav" id="level1">
-							<ul class="level1">
-								<li class="li" data-act="s1" data-info="id=district&amp;name=区域">区域</li>
-								<li class="li" data-act="s1" data-info="id=subway_line&amp;name=地铁">地铁</li>
-							</ul>
-						</div>
-						<div class="guide" id="level2">
-							<ul class="level2 active">
-		
-								<li class="li" data-act="s2" data-info="id=0&amp;res=&amp;name=区域&amp;jump=">
-									<a href="/sh/zufang/" title="不限租房">不限</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310115&amp;res=pudong&amp;name=浦东&amp;jump=">
-									<a href="/sh/zufang/pudong/" title="浦东租房">浦东</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310112&amp;res=minhang&amp;name=闵行&amp;jump=">
-									<a href="/sh/zufang/minhang/" title="闵行租房">闵行</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310113&amp;res=baoshan&amp;name=宝山&amp;jump=">
-									<a href="/sh/zufang/baoshan/" title="宝山租房">宝山</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310104&amp;res=xuhui&amp;name=徐汇&amp;jump=">
-									<a href="/sh/zufang/xuhui/" title="徐汇租房">徐汇</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310107&amp;res=putuo&amp;name=普陀&amp;jump=">
-									<a href="/sh/zufang/putuo/" title="普陀租房">普陀</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310110&amp;res=yangpu&amp;name=杨浦&amp;jump=">
-									<a href="/sh/zufang/yangpu/" title="杨浦租房">杨浦</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310105&amp;res=changning&amp;name=长宁&amp;jump=">
-									<a href="/sh/zufang/changning/" title="长宁租房">长宁</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310117&amp;res=songjiang&amp;name=松江&amp;jump=">
-									<a href="/sh/zufang/songjiang/" title="松江租房">松江</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310114&amp;res=jiading&amp;name=嘉定&amp;jump=">
-									<a href="/sh/zufang/jiading/" title="嘉定租房">嘉定</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310101&amp;res=huangpu&amp;name=黄浦&amp;jump=">
-									<a href="/sh/zufang/huangpu/" title="黄浦租房">黄浦</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310106&amp;res=jingan&amp;name=静安&amp;jump=">
-									<a href="/sh/zufang/jingan/" title="静安租房">静安</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310108&amp;res=zhabei&amp;name=闸北&amp;jump=">
-									<a href="/sh/zufang/zhabei/" title="闸北租房">闸北</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310109&amp;res=hongkou&amp;name=虹口&amp;jump=">
-									<a href="/sh/zufang/hongkou/" title="虹口租房">虹口</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310118&amp;res=qingpu&amp;name=青浦&amp;jump=">
-									<a href="/sh/zufang/qingpu/" title="青浦租房">青浦</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310120&amp;res=fengxian&amp;name=奉贤&amp;jump=">
-									<a href="/sh/zufang/fengxian/" title="奉贤租房">奉贤</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310116&amp;res=jinshan&amp;name=金山&amp;jump=">
-									<a href="/sh/zufang/jinshan/" title="金山租房">金山</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310230&amp;res=chongming&amp;name=崇明&amp;jump=">
-									<a href="/sh/zufang/chongming/" title="崇明租房">崇明</a>
-								</li>
-								<li class="li" data-act="s2" data-info="id=310333&amp;res=shanghaizhoubian&amp;name=上海周边&amp;jump=">
-									<a href="/sh/zufang/shanghaizhoubian/" title="上海周边租房">上海周边</a>
-								</li>
-		
-							</ul>
-						</div>
-						<div class="cont" id="level3" style="display: none;">
-							<ul class="level3">
-							</ul>
+		<section class="layer_fixed filter_box"  id="panel_box" style="display:none;">
+				<!--头部筛选条-->
+				<header class="tab_bar flexbox">
+					<div class="tab_tit box_col " id="button_area"><span class="tit">区域</span><i class="icon_triangle_down"></i></div>
+					<div class="tab_tit box_col " id="button_brand"><span class="tit">品牌</span><i class="icon_triangle_down"></i></div>
+					<div class="tab_tit box_col " id="button_date"><span class="tit">开店日期</span><i class="icon_triangle_down"></i></div>
+					<!-- <div class="tab_tit box_col" id="button_model"><span class="tit">房型</span><i class="icon_triangle_down"></i></div>
+					<div class="tab_tit box_col" id="button_more"><span class="tit">更多</span><i class="icon_triangle_down"></i></div> -->
+				</header>
+				<!--/头部筛选条-->
+			
+				<div class="content">
+					<!--区域-->
+					<div class="filter_item lists_area " id="panel_area">
+						<div class="area_list">
+							<div class="nav" id="level1">
+								<ul class="level1">
+									<li class="li active" data-act="s1" data-info="id=district&amp;name=区域">区域</li>
+									<!-- <li class="li" data-act="s1" data-info="id=subway_line&amp;name=地铁">地铁</li> -->
+								</ul>
+							</div>
+							<div class="guide" id="level2">
+								<ul class="level2 active">
+			
+									<li class="li" data-act="s2" onclick="filterClickCity(false)" >
+										<a href="javascript:void(0)" title="不限租房">不限</a>
+									</li>
+									<li class="li" data-act="s2" data-no="001" onclick="filterClickCity('001')">
+										<a href="javascript:void(0)" title="上海市">上海市</a>
+									</li>
+									<li class="li" data-act="s2" data-no="002" onclick="filterClickCity('002')">
+										<a href="javascript:void(0)" title="苏州市">苏州市</a>
+									</li>
+									<li class="li" data-act="s2" data-no="003" onclick="filterClickCity('003')">
+										<a href="javascript:void(0)" title="昆山市">昆山市</a>
+									</li>
+									<li class="li" data-act="s2" data-no="004" onclick="filterClickCity('004')">
+										<a href="javascript:void(0)" title="广州市">广州市</a>
+									</li>
+									<li class="li" data-act="s2" data-no="005" onclick="filterClickCity('005')">
+										<a href="javascript:void(0)" title="杭州市">杭州市</a>
+									</li>
+									<li class="li" data-act="s2" data-no="006" onclick="filterClickCity('006')">
+										<a href="javascript:void(0)" title="成都市">成都市</a>
+									</li>
+									<li class="li" data-act="s2" data-no="007" onclick="filterClickCity('007')">
+										<a href="javascript:void(0)" title="深圳市">深圳市</a>
+									</li>
+									<li class="li" data-act="s2" data-no="008" onclick="filterClickCity('008')">
+										<a href="javascript:void(0)" title="无锡市">无锡市</a>
+									</li>
+									<li class="li" data-act="s2" data-no="009" onclick="filterClickCity('009')">
+										<a href="javascript:void(0)" title="东莞市">东莞市</a>
+									</li>
+									<li class="li" data-act="s2" data-no="010" onclick="filterClickCity('010')">
+										<a href="javascript:void(0)" title="北京市">北京市</a>
+									</li>
+									<li class="li" data-act="s2" data-no="011" onclick="filterClickCity('011')">
+										<a href="javascript:void(0)" title="嘉兴市">嘉兴市</a>
+									</li>
+									<li class="li" data-act="s2" data-no="012" onclick="filterClickCity('012')">
+										<a href="javascript:void(0)" title="宁波市">宁波市</a>
+									</li>
+									<li class="li" data-act="s2" data-no="013" onclick="filterClickCity('013')">
+										<a href="javascript:void(0)" title="南京市">南京市</a>
+									</li>
+									
+									
+			
+								</ul>
+							</div>
+							<div class="cont" id="level3" style="display: none;">
+								<ul class="level3">
+								</ul>
+							</div>
 						</div>
 					</div>
+					<!--/区域-->
+			
+					<!--价格-->
+					<div class="filter_item lists_price " id="panel_brand">
+						<ul class="price_list ">
+							<li class="li" data-act="price" onclick="filterClickBrand(false)">
+								<a href="javascript:void(0)" title="">不限</a>
+							</li>
+							<li class="li" data-act="price" onclick="filterClickBrand('C-store')">
+								<a href="javascript:void(0)" title="" >喜士多</a>
+							</li>
+							<li class="li" data-act="price" onclick="filterClickBrand('KuaiKe')">
+								<a href="javascript:void(0)" title="">快客</a>
+							</li>
+							<li class="li" data-act="price" onclick="filterClickBrand('LiangYou')">
+								<a href="javascript:void(0)" title="">良友</a>
+							</li>
+							<li class="li" data-act="price" onclick="filterClickBrand('Brightdairy')">
+								<a href="javascript:void(0)" title="">光明</a>
+							</li>
+							<li class="li" data-act="price" onclick="filterClickBrand('LAWSON')">
+								<a href="javascript:void(0)" title="">罗森</a>
+							</li>
+							<li class="li" data-act="price" onclick="filterClickBrand('Seven-Eleven')">
+								<a href="javascript:void(0)" title="">7-11</a>
+							</li>
+							<li class="li" data-act="price" onclick="filterClickBrand('Kedi')">
+								<a href="javascript:void(0)" title="">可的</a>
+							</li>
+							<li class="li" data-act="price" onclick="filterClickBrand('Alldays')">
+								<a href="javascript:void(0)" title="">好德</a>
+							</li>
+						</ul>
+					</div>
+					<!--/价格-->
+					<!--价格-->
+					<div class="filter_item lists_price " id="panel_date">
+							<ul class="price_list ">
+								<li class="li" data-act="price" onclick="filterClickDate(false)">
+									<a href="javascript:void(0)" title="">不限</a>
+								</li>
+								<li class="li" data-act="price" onclick="filterClickDate('new')">
+									<a href="javascript:void(0)" title="" >新开店</a>
+								</li>
+								<li class="li" data-act="price" onclick="filterClickDate('old')">
+									<a href="javascript:void(0)" title="">既存店</a>
+								</li>
+								<li class="li" data-act="price" onclick="filterClickDate('newold')">
+									<a href="javascript:void(0)" title="">新既店</a>
+								</li>
+								
+								
+							</ul>
+						</div>
+				
 				</div>
-				<!--/区域-->
-		
-				<!--价格-->
-				<div class="filter_item lists_price" id="panel_price">
-					<ul class="price_list ">
-						<li class="li" data-act="price" data-info="id=0&amp;name=不限">
-							<a href="/sh/zufang/" title="上海不限租房">不限</a>
-						</li>
-						<li class="li" data-act="price" data-info="id=1&amp;name=1000元以下">
-							<a href="/sh/zufang/rp1/" title="上海1000元以下租房">1000元以下</a>
-						</li>
-						<li class="li" data-act="price" data-info="id=2&amp;name=1000-2000元">
-							<a href="/sh/zufang/rp2/" title="上海1000-2000元租房">1000-2000元</a>
-						</li>
-						<li class="li" data-act="price" data-info="id=3&amp;name=2000-4000元">
-							<a href="/sh/zufang/rp3/" title="上海2000-4000元租房">2000-4000元</a>
-						</li>
-						<li class="li" data-act="price" data-info="id=4&amp;name=4000-6000元">
-							<a href="/sh/zufang/rp4/" title="上海4000-6000元租房">4000-6000元</a>
-						</li>
-						<li class="li" data-act="price" data-info="id=5&amp;name=6000-8000元">
-							<a href="/sh/zufang/rp5/" title="上海6000-8000元租房">6000-8000元</a>
-						</li>
-						<li class="li" data-act="price" data-info="id=6&amp;name=8000-12000元">
-							<a href="/sh/zufang/rp6/" title="上海8000-12000元租房">8000-12000元</a>
-						</li>
-						<li class="li" data-act="price" data-info="id=7&amp;name=12000元以上">
-							<a href="/sh/zufang/rp7/" title="上海12000元以上租房">12000元以上</a>
-						</li>
-					</ul>
-					<div class="custom_price" data-info="id=other"><input type="number" class="input" placeholder="最低价格" id="minPrice_input" data-act="number_input"><em class="connect">-</em><input type="number" class="input" placeholder="最高价格" id="maxPrice_input" data-act="number_input">
-						<a href="javascript:;" class="btn btn_price" data-act="price" data-info="id=other">确定</a>
-					</div>
-				</div>
-				<!--/价格-->
-		
-				<!--房型-->
-				<div class="filter_item lists_more" id="panel_model">
-					<div class="more_list">
-						<dl class="item">
-							<dt class="item_tit">卧室</dt>
-							<dd class="item_cont">
-								<ul class="inline value_lists">
-									<li class="val" data-act="check" data-info="id=1&amp;name=一室&amp;key=l1">
-										<a href="/sh/zufang/l1/">一室</a>
-									</li>
-									<li class="val" data-act="check" data-info="id=1&amp;name=二室&amp;key=l2">
-										<a href="/sh/zufang/l2/">二室</a>
-									</li>
-									<li class="val" data-act="check" data-info="id=1&amp;name=三室&amp;key=l3">
-										<a href="/sh/zufang/l3/">三室</a>
-									</li>
-									<li class="val" data-act="check" data-info="id=1&amp;name=四室&amp;key=l4">
-										<a href="/sh/zufang/l4/">四室</a>
-									</li>
-									<li class="val" data-act="check" data-info="id=1&amp;name=五室&amp;key=l5">
-										<a href="/sh/zufang/l5/">五室</a>
-									</li>
-									<li class="val" data-act="check" data-info="id=1&amp;name=五室以上&amp;key=l6">
-										<a href="/sh/zufang/l6/">五室以上</a>
-									</li>
-								</ul>
-							</dd>
-						</dl>
-						<dl class="item">
-							<dt class="item_tit">卫生间</dt>
-							<dd class="item_cont">
-								<ul class="inline value_lists">
-									<li class="val" data-act="check" data-info="id=1&amp;name=独卫&amp;key=br1">
-										<a href="/sh/zufang/br1/">独卫</a>
-									</li>
-									<li class="val" data-act="check" data-info="id=1&amp;name=两卫&amp;key=br2">
-										<a href="/sh/zufang/br2/">两卫</a>
-									</li>
-									<li class="val" data-act="check" data-info="id=1&amp;name=三卫&amp;key=br3">
-										<a href="/sh/zufang/br3/">三卫</a>
-									</li>
-									<li class="val" data-act="check" data-info="id=1&amp;name=三卫以上&amp;key=br4">
-										<a href="/sh/zufang/br4/">三卫以上</a>
-									</li>
-								</ul>
-							</dd>
-						</dl>
-					</div>
-					<div class="opt_box">
-						<a href="javascript:;" class="btn btn_link" data-act="clear">重置</a>
-						<a href="javascript:;" class="btn btn_green q_button" data-act="submit">确定</a>
-					</div>
-				</div>
-				<!--/房型-->
-		
-				<!--更多-->
-				<div class="filter_item lists_more" id="panel_more">
-					<div class="more_list">
-						<dl class="item">
-							<dt class="item_tit">朝向</dt>
-							<dd class="item_cont">
-								<ul class="inline value_lists">
-									<li class="val   " data-act="check" data-info="id=1&amp;name=朝东&amp;key=f1">
-										<a href="/sh/zufang/f1/">朝东</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=朝南&amp;key=f2">
-										<a href="/sh/zufang/f2/">朝南</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=朝西&amp;key=f3">
-										<a href="/sh/zufang/f3/">朝西</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=朝北&amp;key=f4">
-										<a href="/sh/zufang/f4/">朝北</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=南北&amp;key=f5">
-										<a href="/sh/zufang/f5/">南北</a>
-									</li>
-								</ul>
-							</dd>
-						</dl>
-						<dl class="item">
-							<dt class="item_tit">建筑面积(平)</dt>
-							<dd class="item_cont">
-								<ul class="inline value_lists">
-									<li class="val   " data-act="check" data-info="id=1&amp;name=50平以下&amp;key=ra1">
-										<a href="/sh/zufang/ra1/">50平以下</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=50-70平&amp;key=ra2">
-										<a href="/sh/zufang/ra2/">50-70平</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=70-90平&amp;key=ra3">
-										<a href="/sh/zufang/ra3/">70-90平</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=90-110平&amp;key=ra4">
-										<a href="/sh/zufang/ra4/">90-110平</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=110-150平&amp;key=ra5">
-										<a href="/sh/zufang/ra5/">110-150平</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=150平以上&amp;key=ra6">
-										<a href="/sh/zufang/ra6/">150平以上</a>
-									</li>
-								</ul>
-							</dd>
-						</dl>
-						<dl class="item">
-							<dt class="item_tit">标签</dt>
-							<dd class="item_cont">
-								<ul class="inline value_lists">
-									<li class="val   " data-act="check" data-info="id=1&amp;name=近地铁&amp;key=su">
-										<a href="/sh/zufang/su1/">近地铁</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=精装修&amp;key=rd">
-										<a href="/sh/zufang/rd1/">精装修</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=新上房源&amp;key=tt2">
-										<a href="/sh/zufang/tt2/">新上房源</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=随时看房&amp;key=tt4">
-										<a href="/sh/zufang/tt4/">随时看房</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=有车位&amp;key=hc">
-										<a href="/sh/zufang/hc1/">有车位</a>
-									</li>
-								</ul>
-							</dd>
-						</dl>
-						<dl class="item">
-							<dt class="item_tit">楼层</dt>
-							<dd class="item_cont">
-								<ul class="inline value_lists">
-									<li class="val   " data-act="check" data-info="id=1&amp;name=低楼层&amp;key=lc1">
-										<a href="/sh/zufang/lc1/">低楼层</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=中楼层&amp;key=lc2">
-										<a href="/sh/zufang/lc2/">中楼层</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=高楼层&amp;key=lc3">
-										<a href="/sh/zufang/lc3/">高楼层</a>
-									</li>
-								</ul>
-							</dd>
-						</dl>
-						<dl class="item">
-							<dt class="item_tit">装修</dt>
-							<dd class="item_cont">
-								<ul class="inline value_lists">
-									<li class="val   " data-act="check" data-info="id=1&amp;name=精装修&amp;key=de1">
-										<a href="/sh/zufang/de1/">精装修</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=普通装修&amp;key=de2">
-										<a href="/sh/zufang/de2/">普通装修</a>
-									</li>
-									<li class="val   " data-act="check" data-info="id=1&amp;name=毛坯房&amp;key=de3">
-										<a href="/sh/zufang/de3/">毛坯房</a>
-									</li>
-								</ul>
-							</dd>
-						</dl>
-						<dl class="item">
-							<dt class="item_tit">供暖方式</dt>
-							<dd class="item_cont">
-								<ul class="inline value_lists">
-									<li class="val" data-act="tap" data-info="id=1&amp;key=hy">
-										<a href="/sh/zufang/hy1/">市政供暖</a>
-									</li>
-									<li class="val" data-act="tap" data-info="id=2&amp;key=hy">
-										<a href="/sh/zufang/hy2/">自供暖</a>
-									</li>
-								</ul>
-							</dd>
-						</dl>
-						<dl class="item">
-							<dt class="item_tit">电梯</dt>
-							<dd class="item_cont">
-								<ul class="inline value_lists">
-									<li class="val" data-act="tap" data-info="id=2&amp;key=ie">
-										<a href="/sh/zufang/ie2/">有电梯</a>
-									</li>
-									<li class="val" data-act="tap" data-info="id=1&amp;key=ie">
-										<a href="/sh/zufang/ie1/">无电梯</a>
-									</li>
-								</ul>
-							</dd>
-						</dl>
-						<dl class="item">
-							<dt class="item_tit">品牌</dt>
-							<dd class="item_cont">
-								<ul class="inline value_lists">
-									<li class="val" data-act="tap" data-info="id=0&amp;key=bd">
-										<a href="/sh/zufang/">全部品牌</a>
-									</li>
-									<li class="val" data-act="tap" data-info="id=1&amp;key=bd">
-										<a href="/sh/zufang/bd1/">链家</a>
-									</li>
-									<li class="val" data-act="tap" data-info="id=2&amp;key=bd">
-										<a href="/sh/zufang/bd2/">自如</a>
-									</li>
-								</ul>
-							</dd>
-						</dl>
-						<dl class="item">
-							<dt class="item_tit">方式</dt>
-							<dd class="item_cont">
-								<ul class="inline value_lists">
-									<li class="val" data-act="tap" data-info="id=0&amp;key=rt">
-										<a href="/sh/zufang/">不限</a>
-									</li>
-									<li class="val" data-act="tap" data-info="id=1&amp;key=rt">
-										<a href="/sh/zufang/rt1/">整租</a>
-									</li>
-									<li class="val" data-act="tap" data-info="id=2&amp;key=rt">
-										<a href="/sh/zufang/rt2/">合租</a>
-									</li>
-								</ul>
-							</dd>
-						</dl>
-					</div>
-					<div class="opt_box">
-						<a href="javascript:;" class="btn btn_link" data-act="clear">重置</a>
-						<a href="javascript:;" class="btn btn_green q_button" data-act="submit">确定</a>
-					</div>
-				</div>
-				<!--/更多-->
-			</div>
-		</section>
+			
+			</section>
 		
 	<script src="../../../js/common/zepto.min.js" ></script>
 	<script src="../../../js/common/gisbase.js" ></script>

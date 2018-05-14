@@ -54,5 +54,20 @@ var DICTIONARY = {
 		"01":"单向道",
 		"02":"两车道",
 		"03":"护栏/四车道",
+	},
+	"brand":{
+		"C-store":"喜士多",
+		"KuaiKe":"快客",
+		"LiangYou":"良友",
+		"Brightdairy":"光明",
+		"LAWSON":"罗森",
+		"Seven-Eleven":"7-11",
+		"Alldays":"好德",
+		"Kedi":"可的"
+	},
+	"datetype":{
+		"new":"新开店",
+		"old":"既存店",
+		"newold":"新既店"
 	}
 }

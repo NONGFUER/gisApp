@@ -34,52 +34,37 @@ function getJPInfo(bpmId){
 	} );	
 }
 
-function handleData(jzData){
-	$("#jzName").html(jzData.compName);						//竞争店名称//compName
-	$("#rishang").html(jzData.expectDaysales);				//日商//expectDaysales日商
-	$("#zujin").html(jzData.expectRent+"元");				//租金//expectRent 租金
-	$("#keliu").html(jzData.customerFlow);					//客流//customerFlow
-	$(".marketTypeList").html(jzData.marketType);			//marketType
-	$(".subMarketTypeList").html(jzData.viceMarketType);	//viceMarketType副商圈
-	$(".areaList").html();
-	//address
-	//area
-	//brand
-	//cigaretteFlag
-	//city
-	//closingDate
+function handleData(jzdata){
+	$("#jzName").html(jzdata.compName);						//竞争店名称//compName
+	$("#rishang").html(jzdata.expectDaysales);				//日商//expectDaysales日商
+	$("#zujin").html(jzdata.expectRent+"元");				//租金//expectRent 租金
+	$("#keliu").html(jzdata.customerFlow);					//客流//customerFlow
+	$(".marketTypeList").html(DICTIONARY["bprMarketType"][jzdata.marketType]);			//marketType
+	$(".subMarketTypeList").html(DICTIONARY["bprMarketType"][jzdata.viceMarketType]);	//viceMarketType副商圈
+	$(".areaList").html(jzdata.brand);
+	$(".accuracyList").html(jzdata.province+""+jzdata.area);
+	$("#brand").html(jzdata.brand);
+	$("#jpAdress").html(jzdata.address);//地址
+	$("#jpRoad").html(jzdata.street);//街道
+	$("#jzms").html(jzdata.gsItemDescription ? jzdata.gsItemDescription : "暂无描述");
+
+	$("#signDate").html(timeFormatDate(jzdata.firstSignupDate,"yyyy-MM-dd"));//签约日期
+	$("#openingDate").html(timeFormatDate(jzdata.openingDate,"yyyy-MM-dd"));//开店日期
+	$("#closingDate").html(timeFormatDate(jzdata.closingDate,"yyyy-MM-dd"));//闭店日期	
+	$("#status").html(jzdata.status == "10" ? "开店":"闭店")
+	$("#cigarette").html(jzdata.cigaretteFlag == "Y" ? "可" : "否")
 	
-	//createDate
-	//createUserId
-	
-	//email
-	
-	
-	//firstLease
-	//firstSignupDate
-	//gsItemCode
-	//gsItemDescription
-	//gsType
-	
-	//openingDate
-	//orgName
-	//phone
-	//profileImg证件照
-	//province
-	//status
-	//storeFcType
-	//street
-	//tuEmail
-	//tuName
-	//undertake
-	//updateDate
-	//updateUserId
-	
-	var img1 = $('<div class="swiper-slide" style="background-image:url('+base.static + jzData.img1+')"></div>');
-	var img2 = $('<div class="swiper-slide" style="background-image:url('+base.static + jzData.img2+')"></div>');
-	var img3 = $('<div class="swiper-slide" style="background-image:url('+base.static + jzData.img3+')"></div>');
-	var img4 = $('<div class="swiper-slide" style="background-image:url('+base.static + jzData.img4+')"></div>');		
-	var img5 = $('<div class="swiper-slide" style="background-image:url('+base.static + jzData.profileImg+')"></div>');//证件照
+	$("#marketTypeList").html(DICTIONARY["bprMarketType"][jzdata.marketType])
+
+	$("#subMarketTypeList").html(DICTIONARY["bprMarketType"][jzdata.viceMarketType])
+	$("#province").html(jzdata.province)
+	$("#area").html(jzdata.area)
+
+	var img1 = $('<div class="swiper-slide" style="background-image:url('+base.basePath + jzdata.img1+')"></div>');
+	var img2 = $('<div class="swiper-slide" style="background-image:url('+base.basePath + jzdata.img2+')"></div>');
+	var img3 = $('<div class="swiper-slide" style="background-image:url('+base.basePath + jzdata.img3+')"></div>');
+	var img4 = $('<div class="swiper-slide" style="background-image:url('+base.basePath + jzdata.img4+')"></div>');		
+	var img5 = $('<div class="swiper-slide" style="background-image:url('+base.basePath + jzdata.profileImg+')"></div>');//证件照
 	$(".swiper-wrapper").append(img1).append(img2).append(img3).append(img4).append(img5);
 }
 //跳转到基盘添加

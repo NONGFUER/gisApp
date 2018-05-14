@@ -1,4 +1,8 @@
 var domLists = {};
+var addressX = localStorage.getItem("addressX_jp");
+var addressY = localStorage.getItem("addressY_jp");
+var addressName = localStorage.getItem("addressName_jp");
+addressName && $("#jpAdress").val(addressName);
 
 $(function(){	
 	$(".msgwriter-txt").unbind("input").bind("input",function(){
@@ -30,44 +34,64 @@ $(function(){
 	$("#backpre,#backjipan,#finish").click(function(){
 		window.location.href = base.url + "gisApp/page/JP/jipan/jipan.html";
 	});
+	$("#jpAdress").click(function(){
+		window.location.href = base.url + "gisApp/page/search/ssjp.html"
+	});
 	
 });
 
 /*获取表单信息*/
 function getFormData(){
 	var jpName    = $("#jpName").val();//基盘名称 
-	if($.isNull(jpName)){alert("基盘名称为空 ！")};
+	if($.isNull(jpName)){modelAlert("基盘名称为空 ！");return false;};
 	var accuracy  = $(".accuracyList").html();//确度
-	if($.isNull(accuracy)){alert("确度为空 ！")};
+	if($.isNull(accuracy)){modelAlert("请选择确度 ！");return false;};
 	var jpType    = $(".JPTypeList").attr("select-value");//基盘类型
+	if($.isNull(jpType)){modelAlert("请选择基盘确度 ！");return false;};
 	var cityValue = $(".cityList").attr("select-value");//城市
 	var areaValue = $(".areaList").attr("select-value");			//区
 	var cityName  = $(".cityList").html();//城市
 	var areaName  = $(".areaList").html();			//区
+	if($.isNull(cityValue)){modelAlert("请先选择城市 ！");return false;};
+	if($.isNull(cityName)){modelAlert("请先选择城市 ！");return false;};
+	if($.isNull(areaValue)){modelAlert("请先选择地区 ！");return false;};
+	if($.isNull(areaName)){modelAlert("请先选择地区 ！");return false;};
 	var jpAdress  = $("#jpAdress").val();//基盘地址
+	if($.isNull(jpAdress)){modelAlert("请先填写基盘地址 ！");return false;};
 	var jpRoad    = $("#jpRoad").val();  //基盘街道
+	if($.isNull(jpRoad)){modelAlert("请先填写基盘街道 ！");return false;};
 	var jpRemark  = $("#question_content").val(); //基盘描述
+	if($.isNull(jpRemark)){modelAlert("请先填写基盘描述 ！");return false;};
 	
 	var rishang   = $("#rishang").val()//预估日商
+	if($.isNull(rishang)){modelAlert("请先填写预估日商 ！");return false;};
 	var zujin     = $("#zujin").val()//预估租金
-	
+	if($.isNull(zujin)){modelAlert("请先填写预估租金 ！");return false;};
+	var keliu = $("#keliu").val()//预估客流
+	if($.isNull(keliu)){modelAlert("请先填写预估客流 ！");return false;};
+
 	var mianji    = $("#mianji").val();//面积
+	if($.isNull(mianji)){modelAlert("请先填写面积 ！");return false;};
 	var dwidth    = $("#dwidth").val();//店宽	
+	if($.isNull(dwidth)){modelAlert("请先填写店宽 ！");return false;};
 	var siteValue = $(".siteList").attr("select-value");//立地
+	if($.isNull(siteValue)){modelAlert("请先选择立地 ！");return false;};
 	var viewValue = $(".viewList").attr("select-value");//视野
+	if($.isNull(viewValue)){modelAlert("请先选择视野 ！");return false;};
 	var markType  = $(".marketTypeList").attr("select-value");//主商圈
+	if($.isNull(markType)){modelAlert("请先选择视野 ！");return false;};
 	var subType   = $(".subMarketTypeList").attr("select-value");//副商圈
 	var carPark   = $(".carparkList").attr("select-value");//车辆停靠
 	var txfx      = $(".txfxList").attr("select-value");//通行方向
 	var waywidth  = $(".waywidthList").attr("select-value");//路宽类型
 	
-	var img1      = $(".filePicker1").attr("data-img");
+	var img1      = $(".filePicker1").attr("data-img");//二楼正面全景照
 	if($.isNull(img1)){modelAlert("请先上传二楼正面全景照！");return false;}
-	var img2      = $(".filePicker2").attr("data-img");
+	var img2      = $(".filePicker2").attr("data-img");//店铺对面照
 	if($.isNull(img2)){modelAlert("请先上传店铺对面照！");return false;}
-	var img3      = $(".filePicker3").attr("data-img");
+	var img3      = $(".filePicker3").attr("data-img");//顺向50米照
 	if($.isNull(img3)){modelAlert("请先上传顺向50米照！");return false;}
-	var img4      = $(".filePicker4").attr("data-img");
+	var img4      = $(".filePicker4").attr("data-img");//逆向50米照
 	if($.isNull(img4)){modelAlert("请先上传逆向50米照！");return false;}
 	
 	
@@ -83,6 +107,9 @@ function getFormData(){
 	bpPropertyMaster.bpmCounty        = areaValue;//区域Id
 	bpPropertyMaster.areaCn           = areaName;//区域名
 	bpPropertyMaster.bpmAddress       = jpAdress;//基盘地址
+	bpPropertyMaster.lng             	  = addressX; 		 
+	bpPropertyMaster.lat             	  = addressY;
+	if(!addressX){modelAlert("请先选择地址！");return false;}
 	bpPropertyMaster.bpmStreet        = jpRoad;//基盘街道
 	bpPropertyRpt.bprRemark           = jpRemark;//基盘描述
 	
@@ -90,6 +117,7 @@ function getFormData(){
 	
 	bpPropertyRpt.bprExpectRent       = zujin;//预估租金
 	bpPropertyRpt.bprExpectDaysales   = rishang;//预估日商
+	bpPropertyRpt.bprCustomerFlow     = keliu; //预估客流
 	
 	bpPropertyRpt.bprShopArea         = mianji;//面积
 	bpPropertyRpt.bprShopWidth        = dwidth;//店宽 
@@ -121,6 +149,9 @@ function createJipan(){
 	$.reqPostAjaxs( url, reqData, function(data){
 		if( data.statusCode == "200" ){
 			shownext("step4")
+			localStorage.removeItem("addressX_jz");
+        	localStorage.removeItem("addressY_jz");
+        	localStorage.removeItem("addressName_jz");
 		}else{
 			modelAlert(data.message);
 		}

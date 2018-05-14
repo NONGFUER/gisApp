@@ -1,5 +1,8 @@
 var domLists = {};
-
+var addressX = localStorage.getItem("addressX_jz");
+var addressY = localStorage.getItem("addressY_jz");
+var addressName = localStorage.getItem("addressName_jz");
+addressName && $("#jpAdress").val(addressName);
 $(function(){	
 	$(".msgwriter-txt").unbind("input").bind("input",function(){
 		$(".num").text($(this).val().length)
@@ -23,30 +26,41 @@ $(function(){
 	$(".cancle").click(function(){
 		bottomCancle();
 	});
+	$("#jpAdress").click(function(){
+		window.location.href = base.url + "gisApp/page/search/ss.html"
+	});
+	var now = new Date();
+	var year = now.getFullYear();
+	var month = now.getMonth() +1;
+	var day = now.getDate();
+	$.selectDate("#signDate", {
+		start: 1994,
+		end: 2118,
+		select: [year, month, day],
+		title: '选择签约日期'
+	}, function(data) {
+		console.log(data);
+		$("#signDate").attr("data-value",data.year + "-" + data.month + "-" + data.day);
+	});
 	
-	new Mdate("signDate",{
-		beginYear: "1976",//此项为Mdate的初始年份，不填写默认为2000
-		beginMonth: "1",//此项为Mdate的初始月份，不填写默认为1
-		beginDay: "1",//此项为Mdate的初始日期，不填写默认为1
-		endYear: "2118",//此项为Mdate的结束年份，不填写默认为当年
-		endMonth: "12",//此项为Mdate的结束月份，不填写默认为当月
-		endDay: "31",//此项为Mdate的结束日期，不填写默认为当天
+	$.selectDate("#closingDate", {
+		start: 1994,
+		end: 2118,
+		select: [year, month, day],
+		title: '选择闭店日期'
+	}, function(data) {
+		console.log(data);
+		$("#closingDate").attr("data-value",data.year + "-" + data.month + "-" + data.day);
 	});
-	new Mdate("closingDate",{
-		beginYear: "1976",//此项为Mdate的初始年份，不填写默认为2000
-		beginMonth: "1",//此项为Mdate的初始月份，不填写默认为1
-		beginDay: "1",//此项为Mdate的初始日期，不填写默认为1
-		endYear: "2118",//此项为Mdate的结束年份，不填写默认为当年
-		endMonth: "12",//此项为Mdate的结束月份，不填写默认为当月
-		endDay: "31",//此项为Mdate的结束日期，不填写默认为当天
-	});
-	new Mdate("openingDate",{
-		beginYear: "1976",//此项为Mdate的初始年份，不填写默认为2000
-		beginMonth: "1",//此项为Mdate的初始月份，不填写默认为1
-		beginDay: "1",//此项为Mdate的初始日期，不填写默认为1
-		endYear: "2118",//此项为Mdate的结束年份，不填写默认为当年
-		endMonth: "12",//此项为Mdate的结束月份，不填写默认为当月
-		endDay: "31",//此项为Mdate的结束日期，不填写默认为当天
+	
+	$.selectDate("#openingDate", {
+		start: 1994,
+		end: 2118,
+		select: [year, month, day],
+		title: '选择开店日期'
+	}, function(data) {
+		console.log(data);
+		$("#openingDate").attr("data-value",data.year + "-" + data.month + "-" + data.day);
 	});
 
 });
@@ -75,10 +89,16 @@ function getFormData(){
 	if($.isNull(rishang)){modelAlert("请填写预估日商 ！");return false;}
 	if($.isNull(zujin)){modelAlert("请填写预估租金！");return false;}
 	if($.isNull(keliu)){modelAlert("请填写预估客流！");return false;}
+	var signDate    = $("#signDate").attr("data-value");
+	var openingDate =  $("#openingDate").attr("data-value");
+	var closingDate =  $("#closingDate").attr("data-value");
 	var carPark   = $(".carparkList").attr("select-value");//店铺现状
 	var txfx      = $(".txfxList").attr("select-value");//可否卖烟
 	var markType  = $(".marketTypeList").attr("select-value");//主商圈
 	var subType   = $(".subMarketTypeList").attr("select-value");//副商圈	
+	if($.isNull(signDate)){modelAlert("请选择签约日期！");return false;}
+	if($.isNull(openingDate)){modelAlert("请选择开店日期！");return false;}
+	if($.isNull(closingDate)){modelAlert("请选择闭店日期 ！");return false;}
 	if($.isNull(carPark)){modelAlert("请选择店铺现状！");return false;}
 	if($.isNull(txfx)){modelAlert("请选择可否卖烟！");return false;}
 	if($.isNull(markType)){modelAlert("请选择主商圈 ！");return false;}
@@ -104,16 +124,20 @@ function getFormData(){
 	gisCompetitor.status          = carPark;//店铺现状
 	gisCompetitor.brand           = brandType;//品牌
 	gisCompetitor.address         = jpAdress;
+	gisCompetitor.lng             = addressX; 		 
+	gisCompetitor.lat             = addressY;
+	if(!addressX){modelAlert("请先选择地址！");return false;}
 	gisCompetitor.street          = jpRoad;
+	gisCompetitor.gsItemDescription = jzRemark;
 	gisCompetitor.cigaretteFlag   = txfx;//可否买烟
 	gisCompetitor.marketType      = markType;//主商圈
 	gisCompetitor.viceMarketType  = subType;//副商圈
 	gisCompetitor.expectDaysales  = rishang;//日商
 	gisCompetitor.customerFlow    = keliu;//客流
 	gisCompetitor.expectRent      = zujin;//租金
-	gisCompetitor.firstSignupDate = "2017-04-05"//firstSignupDate;//签约日期
-	gisCompetitor.openingDate     =  "2017-04-05"//openingDate;
-	gisCompetitor.closingDate     =  "2018-04-05"//closingDate;
+	gisCompetitor.firstSignupDate = signDate//firstSignupDate;//签约日期
+	gisCompetitor.openingDate     =  openingDate//openingDate;
+	gisCompetitor.closingDate     =  closingDate//closingDate;
 	
 	gisCompetitor.img1 			  = img1;
 	gisCompetitor.img2            = img2;
@@ -131,8 +155,14 @@ function createJipan(){
 	$.reqPostAjaxs( url, reqData, function(data){
 		if(data.statusCode == "200"){
 			shownext("step4");
+			localStorage.removeItem("addressX_jz");
+        	localStorage.removeItem("addressY_jz");
+        	localStorage.removeItem("addressName_jz");
 		}else{
 			modelAlert(data.message)
+			localStorage.removeItem("addressX_jz");
+        	localStorage.removeItem("addressY_jz");
+        	localStorage.removeItem("addressName_jz");
 		}
 	} );
 }

@@ -4,6 +4,7 @@ localStorage.setItem('$jzid',jzId);
 $(function(){	
 //	getImages("SH18438526");
 //	imageHandle();
+	getJPInfo(jzId);
 	$(".msgwriter-txt").unbind("input").bind("input",function(){
 		$(".num").text($(this).val().length)
 	});
@@ -26,31 +27,43 @@ $(function(){
 	$(".cancle").click(function(){
 		bottomCancle();
 	});
+	$("#jpAdress").click(function(){
+		window.location.href = base.url + "gisApp/page/search/ssjzm.html"
+	});
+	var now = new Date();
+	var year = now.getFullYear();
+	var month = now.getMonth() +1;
+	var day = now.getDate();
+	$.selectDate(".signDate", {
+		start: 1994,
+		end: 2118,
+		select: [year, month, day],
+		title: '选择签约日期'
+	}, function(data) {
+		console.log(data);
+		$(".signDate").attr("data-value",data.year + "-" + data.month + "-" + data.day);
+	});
 	
-	new Mdate("signDate",{
-		beginYear: "1976",//此项为Mdate的初始年份，不填写默认为2000
-		beginMonth: "1",//此项为Mdate的初始月份，不填写默认为1
-		beginDay: "1",//此项为Mdate的初始日期，不填写默认为1
-		endYear: "2118",//此项为Mdate的结束年份，不填写默认为当年
-		endMonth: "12",//此项为Mdate的结束月份，不填写默认为当月
-		endDay: "31",//此项为Mdate的结束日期，不填写默认为当天
+	$.selectDate(".closingDate", {
+		start: 1994,
+		end: 2118,
+		select: [year, month, day],
+		title: '选择闭店日期'
+	}, function(data) {
+		console.log(data);
+		$(".closingDate").attr("data-value",data.year + "-" + data.month + "-" + data.day);
 	});
-	new Mdate("closingDate",{
-		beginYear: "1976",//此项为Mdate的初始年份，不填写默认为2000
-		beginMonth: "1",//此项为Mdate的初始月份，不填写默认为1
-		beginDay: "1",//此项为Mdate的初始日期，不填写默认为1
-		endYear: "2118",//此项为Mdate的结束年份，不填写默认为当年
-		endMonth: "12",//此项为Mdate的结束月份，不填写默认为当月
-		endDay: "31",//此项为Mdate的结束日期，不填写默认为当天
+	
+	$.selectDate(".openingDate", {
+		start: 1994,
+		end: 2118,
+		select: [year, month, day],
+		title: '选择开店日期'
+	}, function(data) {
+		console.log(data);
+		$(".openingDate").attr("data-value",data.year + "-" + data.month + "-" + data.day);
 	});
-	new Mdate("openingDate",{
-		beginYear: "1976",//此项为Mdate的初始年份，不填写默认为2000
-		beginMonth: "1",//此项为Mdate的初始月份，不填写默认为1
-		beginDay: "1",//此项为Mdate的初始日期，不填写默认为1
-		endYear: "2118",//此项为Mdate的结束年份，不填写默认为当年
-		endMonth: "12",//此项为Mdate的结束月份，不填写默认为当月
-		endDay: "31",//此项为Mdate的结束日期，不填写默认为当天
-	});
+
 
 });
 //获取图片
@@ -62,8 +75,8 @@ function getImages(bpmId){
 	} );
 }
 
-function getJPInfo(bpmId){
-	var url = base.basePath + "familymart.competitorshop.get?id="+bpmId;
+function getJPInfo(jzId){
+	var url = base.basePath + "familymart.competitorshop.get?id="+jzId;
 	$.reqGetAjaxs( url, "", function(data){
 		if(data.statusCode == "200"){
 			var jzData = data.data;
@@ -74,6 +87,105 @@ function getJPInfo(bpmId){
 	} );	
 }
 
+function handleData(jzdata){
+	$("#jzName").val(jzdata.compName);//竞争店名称
+	$(".brandList").html(jzdata.brand);//竞争品牌
+	$(".cityList").html(jzdata.province)//竞争店所在城市
+	$(".cityList").attr("select-value",jzdata.city)//竞争店所在城市
+	$(".areaList").html(jzdata.area)//竞争店所在区
+	
+	var addressName = localStorage.getItem("addressName_jzm");
+	if(addressName){ 
+		$("#jpAdress").val(addressName);
+	}else{
+		$("#jpAdress").val(jzdata.address);//地址
+		$("#jpAdress").attr("data-lng",jzdata.lng)
+		$("#jpAdress").attr("data-lat",jzdata.lat)
+	}
+	
+	$("#jpRoad").val(jzdata.street);//街道
+	$(".msgwriter-txt").val(jzdata.gsItemDescription);//竞争店描述
+
+	$("#rishang").val(jzdata.expectDaysales);//"expectDaysales": 20000, 日商
+	$("#zujin").val(jzdata.expectRent);//"expectRent": 30000, 租金
+	$("#keliu").val(jzdata.customerFlow);//"customerFlow": 100, 客流
+
+	$(".signDate").html(timeFormatDate(jzdata.firstSignupDate,"yyyy-MM-dd"));//签约日期
+	$(".openingDate").html(timeFormatDate(jzdata.openingDate,"yyyy-MM-dd"));//开店日期
+	$(".closingDate").html(timeFormatDate(jzdata.closingDate,"yyyy-MM-dd"));//闭店日期	
+	$(".signDate").attr("data-value",timeFormatDate(jzdata.firstSignupDate,"yyyy-MM-dd"));//签约日期
+	$(".openingDate").attr("data-value",timeFormatDate(jzdata.openingDate,"yyyy-MM-dd"));//开店日期
+	$(".closingDate").attr("data-value",timeFormatDate(jzdata.closingDate,"yyyy-MM-dd"));//闭店日期
+	$(".carparkList").attr("select-value",jzdata.status)//店铺现状
+	$(".carparkList").html(jzdata.status == "10" ? "开店":"闭店")
+	$(".txfxList").attr("select-value",jzdata.cigaretteFlag)//可否买烟
+	$(".txfxList").html(jzdata.cigaretteFlag == "Y" ? "可" : "否")
+	$(".marketTypeList").attr("select-value",jzdata.marketType)//主商圈
+	$(".marketTypeList").html(DICTIONARY["bprMarketType"][jzdata.marketType])
+	$(".subMarketTypeList").attr("select-value",jzdata.viceMarketType)//副商圈
+	$(".subMarketTypeList").html(DICTIONARY["bprMarketType"][jzdata.viceMarketType])
+	
+	$("#f1").attr("src",base.basePath + jzdata.img1);
+	$(".filePicker1").attr("data-img",jzdata.img1)
+	$("#f2").attr("src",base.basePath + jzdata.img2);
+	$(".filePicker2").attr("data-img",jzdata.img2)
+	$("#f3").attr("src",base.basePath + jzdata.img3);
+	$(".filePicker3").attr("data-img",jzdata.img3)
+	$("#f4").attr("src",base.basePath + jzdata.img4);
+	$(".filePicker4").attr("data-img",jzdata.img4)
+	$("#f5").attr("src",base.basePath + jzdata.profileImg);
+	$(".filePicker5").attr("data-img",jzdata.profileImg)
+	var json = 
+	{"statusCode": 200, 
+    "message": "执行成功", 
+    "dataFlag": 0, 
+    "data": {
+        "id": 523, 
+        //"province": "上海市", 
+        //"city": "001", 
+        //"area": "嘉定区", 
+        //"street": "申霞路", 
+        "email": null, 
+        "phone": null, 
+        //"address": "上海市嘉定区申霞路369号", 
+        //"compName": "考考", 
+        //"brand": "喜士多", 
+        "lng": 121.28244383921754, 
+        "lat": 31.37423969656414, 
+        //"status": 10, 
+        //"img1": "/images/237a4253-4884-41e5-9d35-908394dbb623.jpg", 
+       // "img2": "/images/56837817-01f6-4a6e-bb4a-505433fb1fe1.jpg", 
+        //"img3": "/images/d46a4bd6-fc10-403b-95c9-096ab80fa834.jpg", 
+       // "img4": "/images/aaa71e45-0bbd-45ec-822c-1c114acb9b9c.jpg", 
+        "auditResult": 1, 
+        "createUserId": "000005", 
+        "createDate": 1526230117000, 
+        "updateUserId": null, 
+        "updateDate": null, 
+        //"firstSignupDate": 1491350400000, 
+        "firstLease": null, 
+        "storeFcType": null, 
+        "gsType": null, 
+        "gsItemCode": null, 
+        "gsItemDescription": null, 
+        "tuName": "测试账号", 
+        "orgName": "五部开发一课", 
+        "tuEmail": null, 
+        "tuMp": null, 
+        //"marketType": "03", 
+       // "viceMarketType": "03", 
+        //"expectDaysales": 20000, 
+       // "expectRent": 30000, 
+       // "customerFlow": 100, 
+       // "cigaretteFlag": "Y", 
+        "undertake": "000005", 
+        //"openingDate": 1491350400000, 
+        //"closingDate": 1522886400000, 
+        //"profileImg": "/images/fbf2caea-f49e-4859-95be-6840803f2db0.jpg"
+    	}
+	}
+}
+
 /*获取表单信息*/
 function getFormData(){
 	var jzName    = $("#jzName").val();//竞争店名称 
@@ -82,8 +194,8 @@ function getFormData(){
 	if($.isNull(brandType)){modleAlert("请选择品牌 ！");return false;};	
 	var cityValue = $(".cityList").attr("select-value");//城市
 	if($.isNull(cityValue)){modleAlert("请选择城市 ！");return false;};	
-	var areaValue = $(".areaList").attr("select-value");			//区
-	if($.isNull(areaValue)){modelAlert("请选择区域 ！");return false;};	
+	//var areaValue = $(".areaList").attr("select-value");			//区
+	//if($.isNull(areaValue)){modelAlert("请选择区域 ！");return false;};	
 	var cityName  = $(".cityList").html();//城市
 	var areaName  = $(".areaList").html();			//区
 	var jpAdress  = $("#jpAdress").val();//竞争店地址
@@ -98,10 +210,16 @@ function getFormData(){
 	if($.isNull(rishang)){modelAlert("请填写预估日商 ！");return false;}
 	if($.isNull(zujin)){modelAlert("请填写预估租金！");return false;}
 	if($.isNull(keliu)){modelAlert("请填写预估客流！");return false;}
+	var signDate    = $(".signDate").attr("data-value");
+	var openingDate =  $(".openingDate").attr("data-value");
+	var closingDate =  $(".closingDate").attr("data-value");
 	var carPark   = $(".carparkList").attr("select-value");//店铺现状
 	var txfx      = $(".txfxList").attr("select-value");//可否卖烟
 	var markType  = $(".marketTypeList").attr("select-value");//主商圈
 	var subType   = $(".subMarketTypeList").attr("select-value");//副商圈	
+	if($.isNull(signDate)){modelAlert("请选择签约日期！");return false;}
+	if($.isNull(openingDate)){modelAlert("请选择开店日期！");return false;}
+	if($.isNull(closingDate)){modelAlert("请选择闭店日期 ！");return false;}
 	if($.isNull(carPark)){modelAlert("请选择店铺现状！");return false;}
 	if($.isNull(txfx)){modelAlert("请选择可否卖烟！");return false;}
 	if($.isNull(markType)){modelAlert("请选择主商圈 ！");return false;}
@@ -127,16 +245,24 @@ function getFormData(){
 	gisCompetitor.status          = carPark;//店铺现状
 	gisCompetitor.brand           = brandType;//品牌
 	gisCompetitor.address         = jpAdress;
+	var addressX = localStorage.getItem("addressX_jzm");
+	if(!addressX){ addressX =  $("#jpAdress").attr("data-lng")  }
+	var addressY = localStorage.getItem("addressY_jzm");
+	if(!addressY){ addressY =   $("#jpAdress").attr("data-lat") }
+	gisCompetitor.lng = addressX;
+	gisCompetitor.lat = addressY;
+
 	gisCompetitor.street          = jpRoad;
+	gisCompetitor.gsItemDescription      = jzRemark;//竞争店描述
 	gisCompetitor.cigaretteFlag   = txfx;//可否买烟
 	gisCompetitor.marketType      = markType;//主商圈
 	gisCompetitor.viceMarketType  = subType;//副商圈
 	gisCompetitor.expectDaysales  = rishang;//日商
 	gisCompetitor.customerFlow    = keliu;//客流
 	gisCompetitor.expectRent      = zujin;//租金
-	gisCompetitor.firstSignupDate = "2017-04-05"//firstSignupDate;//签约日期
-	gisCompetitor.openingDate     =  "2017-04-05"//openingDate;
-	gisCompetitor.closingDate     =  "2018-04-05"//closingDate;
+	gisCompetitor.firstSignupDate = signDate//firstSignupDate;//签约日期
+	gisCompetitor.openingDate     = openingDate//openingDate;
+	gisCompetitor.closingDate     = closingDate//closingDate;
 	
 	gisCompetitor.img1 			  = img1;
 	gisCompetitor.img2            = img2;
@@ -151,9 +277,13 @@ function getFormData(){
 function modifyJipan(){
 	var url = base.basePath + "familymart.competitorshop.newapplyupdate"
 	var reqData = getFormData();
+	if(!reqData){return false;}
 	$.reqPostAjaxs( url, reqData, function(data){
 		if(data.statusCode == "200"){
 			shownext("step4");
+			localStorage.removeItem("addressX_jzm");
+        	localStorage.removeItem("addressY_jzm");
+        	localStorage.removeItem("addressName_jzm");
 		}else{
 			modelAlert(data.message)
 		}

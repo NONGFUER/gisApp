@@ -29,6 +29,9 @@ $(function(){
 	$("#backpre,#backjipan,#finish").click(function(){
 		window.location.href = base.url + "gisApp/page/JP/jpDetail/jpDetail.html?jpid="+bmpId;
 	});
+	$("#jpAdress").click(function(){
+		window.location.href = base.url + "gisApp/page/search/ssjpm.html"
+	});
 	
 });
 //获取
@@ -78,7 +81,15 @@ function handleData(jpData){
 	$(".cityList").attr("select-value",bpPropertyMaster.bpmCity);//基盘所在市
 	$(".areaList").html(bpPropertyMaster.areaCn);//基盘所在区
 	$(".areaList").attr("select-value",bpPropertyMaster.bpmCounty);//基盘所在区
-	$("#jpAdress").val(bpPropertyMaster.bpmAddress);//基盘地址
+	var addressName = localStorage.getItem("addressName_jpm");
+	if(addressName){
+		$("#jpAdress").val(addressName);
+	 }else{
+		$("#jpAdress").val(bpPropertyMaster.bpmAddress);//基盘地址
+		$("#jpAdress").attr("data-lng",bpPropertyMaster.lng)
+		$("#jpAdress").attr("data-lat",bpPropertyMaster.lat)
+	}
+	
 	$("#jpRoad").val(bpPropertyMaster.bpmStreet);//基盘街道
 	$("#question_content").val(bpPropertyRpt.bprRemark);
 	if(bpPropertyRpt.bprRemark){
@@ -162,6 +173,13 @@ function getFormData(){
 	bpPropertyMaster.areaCn           = areaName;//区域名
 	bpPropertyMaster.bpmAddress       = jpAdress;//基盘地址
 	bpPropertyMaster.bpmStreet        = jpRoad;//基盘街道
+	var addressX = localStorage.getItem("addressX_jpm");
+	if(!addressX){ addressX =  $("#jpAdress").attr("data-lng")  }
+	var addressY = localStorage.getItem("addressY_jpm");
+	if(!addressY){ addressY =   $("#jpAdress").attr("data-lat") }
+	bpPropertyMaster.lng = addressX;
+	bpPropertyMaster.lat = addressY;
+
 	bpPropertyRpt.bprRemark           = jpRemark;//基盘描述
 	
 	bpPropertyRpt.bprExpectRent       = zujin;//预估租金
@@ -198,8 +216,14 @@ function createJipan(){
 		console.log(data);
 		if(data.statusCode == "200"){
 			shownext("step4");
+			localStorage.removeItem("addressX_jpm");
+        	localStorage.removeItem("addressY_jpm");
+        	localStorage.removeItem("addressName_jpm");
 		}else{
 			modelAlert(data.message);
+			localStorage.removeItem("addressX_jpm");
+        	localStorage.removeItem("addressY_jpm");
+        	localStorage.removeItem("addressName_jpm");
 		}
 	} );
 }

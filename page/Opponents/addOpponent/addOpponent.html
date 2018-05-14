@@ -8,7 +8,9 @@
 	    <script>    	
 			;(function(f,i){var b=i.documentElement;var e=f.navigator.appVersion;var g=e.match(/android/gi);var c=e.match(/iphone/gi);var k=f.devicePixelRatio;var j=1,d=1;if(c){if(k>=3){j=3}else{if(k>=2){j=2}else{j=1}}}else{j=1}d=1/j;var h=i.querySelector('meta[name="viewport"]');if(!h){h=i.createElement("meta");h.setAttribute("name","viewport");if(b.firstElementChild){b.firstElementChild.appendChild(h)}else{var a=i.createElement("div");a.appendChild(h);i.write(a.innerHTML)}}if(j){h.setAttribute("content","initial-scale="+d+", maximum-scale="+d+", minimum-scale="+d+", user-scalable=no,uc-fitscreen=yes");b.style.fontSize=16*j+"px"}window.DPR=j})(window,document);	
 	    </script>    
-	    	    <link rel="stylesheet" href="../../../css/widget/mdate/Mdate.css"  />
+				<!-- <link rel="stylesheet" href="../../../css/widget/mdate/Mdate.css"  /> -->
+		<!-- <link rel="stylesheet" href="../../../css/widget/mui/mui.min.css"/> -->
+		<link rel="stylesheet" href="../../../js/widget/date/mobileSelect.css" />
 	    <link rel="stylesheet" href="../../../css/common/ljrem.css" />
 	    <link rel="stylesheet" href="../../JP/addJP/addJP.css" />
 	    <link rel="stylesheet" href="../../../css/common/popup.css" />
@@ -74,9 +76,9 @@
 						</div>
 						<p>基盘分析</p>
 						<div class="step2-box">
-							<div onclick="" id="signDate"><span>签约日期</span><i class="izi siteList">请选择</i><span class="rarrow"></span></div>
-							<div onclick="" id="openingDate"><span>开店日期</span><i class="izi siteList">请选择</i><span class="rarrow"></span></div>
-							<div onclick="" id="closingDate"><span>闭店日期</span><i class="izi viewList">请选择</i><span class="rarrow"></span></div>
+							<div onclick="" ><span>签约日期</span><i class="izi siteList" id="signDate">请选择</i><span class="rarrow"></span></div>
+							<div onclick=""><span>开店日期</span><i class="izi siteList" id="openingDate">请选择</i><span class="rarrow"></span></div>
+							<div onclick="" ><span>闭店日期</span><i class="izi viewList" id="closingDate">请选择</i><span class="rarrow"></span></div>
 							<div onclick="carparkListShow()"><span>店铺现状</span><i class="izi carparkList">请选择</i><span class="rarrow"></span></div>
 							<div onclick="txfxListShow()"><span>可否卖烟</span><i class="izi txfxList">请选择</i><span class="rarrow"></span></div>
 							<div onclick="marketTypeListShow()"><span>主商圈</span><i class="izi marketTypeList">请选择</i><span class="rarrow"></span></div>
@@ -121,7 +123,7 @@
 			<div class="step" data-page="step4" style="background:#fff;">
 				<div class="header">
 					<span class="title" style="margin-right:-3rem;">基盘发布</span>
-					<a href="/sh/" class="site">完成</a>
+					<a href="../../Opponents/opponent/opponent.html" class="site">完成</a>
 				</div>
 				<div id="step3">
 					<div class="sublist" data-mark="sublist">
@@ -131,7 +133,7 @@
 						</div>
 						<div>
 							<div class="next">
-								<a href="../../Opponents/opponent/opponent.html" target="_blank">查看列表</a>
+								<a href="../../Opponents/opponent/opponent.html" >查看列表</a>
 							</div>
 						</div>
 					</div>
@@ -157,9 +159,11 @@
 	<script src="../../../js/widget/mui/mui.min.js"></script>
 	<!--<script src="../../../js/widget/mui/mui.picker.min.js"></script>-->
 	<script src="../../../js/common/gisbase.js" ></script>
+	<script src="../../../js/widget/date/mobileSelect.js"></script>
+	<script src="../../../js/widget/date/selectDate.js"></script>
 	<script src="addOpponent.js" ></script>
 	<script src="../../JP/addJP/upload.js"></script>
-	<script src="../../../js/widget/mdate/iScroll.js"></script>
-	<script src="../../../js/widget/mdate/Mdate.js"></script>
-	</body>
+	<!-- <script src="../../../js/widget/mdate/iScroll.js"></script>
+	<script src="../../../js/widget/mdate/Mdate.js"></script> -->
+</body>
 </html>

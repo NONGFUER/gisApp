@@ -3093,3 +3093,16 @@ ul.lists li {
 .margin_top50{
 	margin-top:3.125rem ;
 }
+#l-map{height:18.75rem;width:100%;}
+#r-result{width:100%;}
+#flag{
+	width: 0.1875rem;
+	height: 0.1875rem;
+	border: 0rem;
+	position: absolute;
+	top: 12.875rem;
+	left:13.125rem;
+}
+h5 {
+	margin: 0.3125rem 0.4375rem;
+}

@@ -1,8 +1,8 @@
 var base = {
 		url : window.location.protocol+"//"+window.location.host+"/",
 		//url : "http://172.16.0.83/",
-		//basePath:"http://172.16.0.83:8090/fmgis/v1.0/",
-		basePath:"http://172.16.101.112:8090/fmgis/v1.0/",
+		basePath:"http://172.16.0.83:8090/fmgis/v1.0/",
+		//basePath:"http://172.16.101.112:8090/fmgis/v1.0/",
 		imagePath : window.location.protocol+"//"+window.location.host+"/gisApp/img/common/", // 图片路径
 		static:"http://172.16.0.83:8090/fmgis/v1.0/"
 };
@@ -371,3 +371,20 @@ function getUrlQueryString(names, urls) {
 function toIndex(){
 	window.location.href = base.url + "gisApp/page/home/home.html";
 }
+// 毫秒数转化为指定格式日期
+// alert(format(new Date().getTime(), 'yyyy-MM-dd HH:mm:ss'));
+var timeFormatDate = function(time, format) {
+	var x = new Date(time);
+	var z = {
+		y : x.getFullYear(),
+		M : x.getMonth() + 1,
+		d : x.getDate(),
+		H : x.getHours(),
+		m : x.getMinutes(),
+		s : x.getSeconds()
+	};
+	return format.replace(/(y+|M+|d+|H+|m+|s+)/g, function(v) {
+		return ((v.length > 1 ? "0" : "") + eval('z.' + v.slice(-1)))
+				.slice(-(v.length > 2 ? v.length : 2));
+	});
+};

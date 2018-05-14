@@ -15,12 +15,12 @@
 		<header class="header header_white ">
 			<div class="flexbox left">
 				<a href="javascript:void(0);" class="header_back" id="header_back"></a>
-				<a href="" class="city_wrap">
+				<a href="javascript:void(0)" class="city_wrap">
 					<span class="switch_city"><em class="city">上海</em><i class="icon_pull"></i></span>
 				</a>
 			</div>
-			<a href="" class="logo_wrap center"><span class=""></span></a>
-			<a href="" class="my right"><i class="icon_user"></i></a>
+			<a href="javascript:void(0)" class="logo_wrap center"><span class=""></span></a>
+			<a href="javascript:void(0)" class="my right"><i class="icon_user"></i></a>
 		</header>
 		<div class="mod_box house_lists ">
 			<!--筛选条-->
@@ -61,69 +61,56 @@
 					<div class="nav" id="level1">
 						<ul class="level1">
 							<li class="li active" data-act="s1" data-info="id=district&amp;name=区域">区域</li>
-							<li class="li" data-act="s1" data-info="id=subway_line&amp;name=地铁">地铁</li>
+							<!-- <li class="li" data-act="s1" data-info="id=subway_line&amp;name=地铁">地铁</li> -->
 						</ul>
 					</div>
 					<div class="guide" id="level2">
 						<ul class="level2 active">
 	
-							<li class="li" data-act="s2" data-info="id=0&amp;res=&amp;name=区域&amp;jump=">
-								<a href="" title="不限租房">不限</a>
+							<li class="li" data-act="s2" onclick="filterClickCity(false)" >
+								<a href="javascript:void(0)" title="不限租房">不限</a>
 							</li>
-							<li class="li" data-act="s2" data-info="id=310115&amp;res=pudong&amp;name=浦东&amp;jump=">
-								<a href="" title="浦东租房">浦东</a>
+							<li class="li" data-act="s2" data-no="001" onclick="filterClickCity('001')">
+								<a href="javascript:void(0)" title="上海市">上海市</a>
 							</li>
-							<li class="li" data-act="s2" data-info="id=310112&amp;res=minhang&amp;name=闵行&amp;jump=">
-								<a href="" title="闵行租房">闵行</a>
+							<li class="li" data-act="s2" data-no="002" onclick="filterClickCity('002')">
+								<a href="javascript:void(0)" title="苏州市">苏州市</a>
 							</li>
-							<li class="li" data-act="s2" data-info="id=310113&amp;res=baoshan&amp;name=宝山&amp;jump=">
-								<a href="" title="宝山租房">宝山</a>
+							<li class="li" data-act="s2" data-no="003" onclick="filterClickCity('003')">
+								<a href="javascript:void(0)" title="昆山市">昆山市</a>
 							</li>
-							<li class="li" data-act="s2" data-info="id=310104&amp;res=xuhui&amp;name=徐汇&amp;jump=">
-								<a href="/sh/zufang/xuhui/" title="徐汇租房">徐汇</a>
+							<li class="li" data-act="s2" data-no="004" onclick="filterClickCity('004')">
+								<a href="javascript:void(0)" title="广州市">广州市</a>
 							</li>
-							<li class="li" data-act="s2" data-info="id=310107&amp;res=putuo&amp;name=普陀&amp;jump=">
-								<a href="/sh/zufang/putuo/" title="普陀租房">普陀</a>
+							<li class="li" data-act="s2" data-no="005" onclick="filterClickCity('005')">
+								<a href="javascript:void(0)" title="杭州市">杭州市</a>
 							</li>
-							<li class="li" data-act="s2" data-info="id=310110&amp;res=yangpu&amp;name=杨浦&amp;jump=">
-								<a href="/sh/zufang/yangpu/" title="杨浦租房">杨浦</a>
+							<li class="li" data-act="s2" data-no="006" onclick="filterClickCity('006')">
+								<a href="javascript:void(0)" title="成都市">成都市</a>
 							</li>
-							<li class="li" data-act="s2" data-info="id=310105&amp;res=changning&amp;name=长宁&amp;jump=">
-								<a href="/sh/zufang/changning/" title="长宁租房">长宁</a>
+							<li class="li" data-act="s2" data-no="007" onclick="filterClickCity('007')">
+								<a href="javascript:void(0)" title="深圳市">深圳市</a>
 							</li>
-							<li class="li" data-act="s2" data-info="id=310117&amp;res=songjiang&amp;name=松江&amp;jump=">
-								<a href="/sh/zufang/songjiang/" title="松江租房">松江</a>
+							<li class="li" data-act="s2" data-no="008" onclick="filterClickCity('008')">
+								<a href="javascript:void(0)" title="无锡市">无锡市</a>
 							</li>
-							<li class="li" data-act="s2" data-info="id=310114&amp;res=jiading&amp;name=嘉定&amp;jump=">
-								<a href="/sh/zufang/jiading/" title="嘉定租房">嘉定</a>
+							<li class="li" data-act="s2" data-no="009" onclick="filterClickCity('009')">
+								<a href="javascript:void(0)" title="东莞市">东莞市</a>
 							</li>
-							<li class="li" data-act="s2" data-info="id=310101&amp;res=huangpu&amp;name=黄浦&amp;jump=">
-								<a href="/sh/zufang/huangpu/" title="黄浦租房">黄浦</a>
+							<li class="li" data-act="s2" data-no="010" onclick="filterClickCity('010')">
+								<a href="javascript:void(0)" title="北京市">北京市</a>
 							</li>
-							<li class="li" data-act="s2" data-info="id=310106&amp;res=jingan&amp;name=静安&amp;jump=">
-								<a href="/sh/zufang/jingan/" title="静安租房">静安</a>
+							<li class="li" data-act="s2" data-no="011" onclick="filterClickCity('011')">
+								<a href="javascript:void(0)" title="嘉兴市">嘉兴市</a>
 							</li>
-							<li class="li" data-act="s2" data-info="id=310108&amp;res=zhabei&amp;name=闸北&amp;jump=">
-								<a href="/sh/zufang/zhabei/" title="闸北租房">闸北</a>
+							<li class="li" data-act="s2" data-no="012" onclick="filterClickCity('012')">
+								<a href="javascript:void(0)" title="宁波市">宁波市</a>
 							</li>
-							<li class="li" data-act="s2" data-info="id=310109&amp;res=hongkou&amp;name=虹口&amp;jump=">
-								<a href="/sh/zufang/hongkou/" title="虹口租房">虹口</a>
+							<li class="li" data-act="s2" data-no="013" onclick="filterClickCity('013')">
+								<a href="javascript:void(0)" title="南京市">南京市</a>
 							</li>
-							<li class="li" data-act="s2" data-info="id=310118&amp;res=qingpu&amp;name=青浦&amp;jump=">
-								<a href="/sh/zufang/qingpu/" title="青浦租房">青浦</a>
-							</li>
-							<li class="li" data-act="s2" data-info="id=310120&amp;res=fengxian&amp;name=奉贤&amp;jump=">
-								<a href="/sh/zufang/fengxian/" title="奉贤租房">奉贤</a>
-							</li>
-							<li class="li" data-act="s2" data-info="id=310116&amp;res=jinshan&amp;name=金山&amp;jump=">
-								<a href="/sh/zufang/jinshan/" title="金山租房">金山</a>
-							</li>
-							<li class="li" data-act="s2" data-info="id=310230&amp;res=chongming&amp;name=崇明&amp;jump=">
-								<a href="/sh/zufang/chongming/" title="崇明租房">崇明</a>
-							</li>
-							<li class="li" data-act="s2" data-info="id=310333&amp;res=shanghaizhoubian&amp;name=上海周边&amp;jump=">
-								<a href="/sh/zufang/shanghaizhoubian/" title="上海周边租房">上海周边</a>
-							</li>
+							
+							
 	
 						</ul>
 					</div>
@@ -138,26 +125,26 @@
 			<!--价格-->
 			<div class="filter_item lists_price " id="panel_degree">
 				<ul class="price_list ">
-					<li class="li" data-act="price">
-						<a href="" title="">不限</a>
+					<li class="li" data-act="price" onclick="filterClickDegree(false)">
+						<a href="javascript:void(0)" title="">不限</a>
 					</li>
-					<li class="li" data-act="price" >
-						<a href="" title="">S</a>
+					<li class="li" data-act="price" onclick="filterClickDegree('S')">
+						<a href="javascript:void(0)" title="" >S</a>
 					</li>
-					<li class="li" data-act="price">
-						<a href="" title="">H</a>
+					<li class="li" data-act="price" onclick="filterClickDegree('H')">
+						<a href="javascript:void(0)" title="">H</a>
 					</li>
-					<li class="li" data-act="price" >
-						<a href="" title="">A</a>
+					<li class="li" data-act="price" onclick="filterClickDegree('A')">
+						<a href="javascript:void(0)" title="">A</a>
 					</li>
-					<li class="li" data-act="price" >
-						<a href="" title="">B</a>
+					<li class="li" data-act="price" onclick="filterClickDegree('B')">
+						<a href="javascript:void(0)" title="">B</a>
 					</li>
-					<li class="li" data-act="price">
-						<a href="" title="">C</a>
+					<li class="li" data-act="price" onclick="filterClickDegree('C')">
+						<a href="javascript:void(0)" title="">C</a>
 					</li>
-					<li class="li" data-act="price" >
-						<a href="" title="">D</a>
+					<li class="li" data-act="price" onclick="filterClickDegree('D')">
+						<a href="javascript:void(0)" title="">D</a>
 					</li>
 					
 				</ul>
