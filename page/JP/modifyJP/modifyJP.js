@@ -43,7 +43,7 @@ function getJPInfo(bpmId){
 			var jpData = data.data;
 			handleData(jpData)
 		}else{
-			
+			modelAlert(data.message);
 		}
 		
 	} );

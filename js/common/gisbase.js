@@ -155,6 +155,9 @@ $.ajaxPreventChannel = function() {
 function modelAlert(message, describe, method) {
 	/**--android alert黑屏问题 --*/
 	if(message == "请重新登录"){
+		localStorage.removeItem("$auth_token")
+        localStorage.removeItem('$user_id')
+        localStorage.removeItem('$user_password')
 		window.location.href = base.url +"gisApp/page/login/login.html"
 	}
 	if(!describe){

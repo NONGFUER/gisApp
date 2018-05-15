@@ -5,6 +5,7 @@ localStorage.removeItem("addressX_jzm");
 localStorage.removeItem("addressY_jzm");
 localStorage.removeItem("addressName_jzm");
 var count =1;
+var yflag = true;
 var cityFlag = false;
 var brandFlag = false;
 var dateFlag = false;
@@ -134,31 +135,38 @@ function getJPList1(curpage,pagesize){
 		url += "&date="+dateFlag;
 	}
 	$.reqPostAjaxs(url,reqData ,function(data){
-		console.log(data);
+		//console.log(data);
 		if( data.statusCode == "200" ){
+
 			var sjpList = data.data;
-			for( var i = 1; i < sjpList.length; i++ ){
-				var areaName = (sjpList[i].city ? sjpList[i].city : '') +''+(sjpList[i].area ? sjpList[i].area : '') ;
-				var preData = {
-					"dtoName":sjpList[i].compName,
-					"imgpath":sjpList[i].img1,
-					"bprShopArea":sjpList[i].bprShopArea,
-					"bprShopWidth":sjpList[i].bprShopWidth,
-					"areaName":areaName,
-					"bprExpectRent":(sjpList[i].expectRent == 0 ? "不详" : sjpList[i].expectRent ),
-					"bprMarketType":DICTIONARY["bprMarketType"][sjpList[i].marketType],
-					"bprViceMarketType":DICTIONARY["bprMarketType"][sjpList[i].viceMarketType],
-					"bpmConfirmStatus":sjpList[i].bpmConfirmStatus,
-					"bprCustomerFlow":sjpList[i].customerFlow ?sjpList[i].customerFlow :"" ,
-					"bprExpectDaysales":sjpList[i].expectDaysales ? sjpList[i].expectDaysales : "",
-					"jpid":sjpList[i].id,
-					"brand":sjpList[i].brand,
-					"cigaretteFlag":sjpList[i].cigaretteFlag,
-					"tuName":sjpList[i].tuName,
+			if(sjpList.length != 0 ){
+				for( var i = 1; i < sjpList.length; i++ ){
+					var areaName = (sjpList[i].city ? sjpList[i].city : '') +''+(sjpList[i].area ? sjpList[i].area : '') ;
+					var preData = {
+						"dtoName":sjpList[i].compName,
+						"imgpath":sjpList[i].img1,
+						"bprShopArea":sjpList[i].bprShopArea,
+						"bprShopWidth":sjpList[i].bprShopWidth,
+						"areaName":areaName,
+						"bprExpectRent":(sjpList[i].expectRent == 0 ? "不详" : sjpList[i].expectRent ),
+						"bprMarketType":DICTIONARY["bprMarketType"][sjpList[i].marketType],
+						"bprViceMarketType":DICTIONARY["bprMarketType"][sjpList[i].viceMarketType],
+						"bpmConfirmStatus":sjpList[i].bpmConfirmStatus,
+						"bprCustomerFlow":sjpList[i].customerFlow ?sjpList[i].customerFlow :"" ,
+						"bprExpectDaysales":sjpList[i].expectDaysales ? sjpList[i].expectDaysales : "",
+						"jpid":sjpList[i].id,
+						"brand":sjpList[i].brand,
+						"cigaretteFlag":sjpList[i].cigaretteFlag,
+						"tuName":sjpList[i].tuName,
+					}
+					$(".lists").append(strMoudleJZ(preData));
 				}
-				$(".lists").append(strMoudleJZ(preData));
+				Echo.init({offset: 0,throttle: 0});//图片懒加载
+			}else{
+				yflag = false 
 			}
-			Echo.init({offset: 0,throttle: 0});//图片懒加载
+		}else{
+			modelAlert(data.message);
 		}
 	} );
 }
@@ -194,11 +202,12 @@ function tabToTop(){
 			}
 			if (getScrollTop() + getClientHeight() == getScrollHeight()) { 
 				$(".loading_box").show()
-				setTimeout(function(){
-					getJPList1(++count,10);//获取基盘列表
+				if(!yflag){
 					$(".loading_box").hide()
-				},1500)
-					
+				}else{
+					getJPList1(++count,10);//获取基盘列表
+					$(".loading_box").hide()			
+				}
 			}
 	});
 }

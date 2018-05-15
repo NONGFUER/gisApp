@@ -165,6 +165,8 @@ function getJPList1(curpage,pagesize,timesort,confirmStatus){
 				$(".lists").append(strMoudle(preData));
 			}
 			Echo.init({offset: 0,throttle: 0});//图片懒加载
+		}else{
+			modelAlert(data.message);
 		}
 	} );
 }

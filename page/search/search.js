@@ -56,12 +56,19 @@ function searchGis(curpage,pagesize,city,keyword,type){
    var url = base.basePath + "familymart.index.app.getsearchresult?curPage="+curpage+"&pageSize="+pagesize+"&cityId="+city+"&search="+keyword+"&type="+type;
     $.reqPostAjaxs(url,"" ,function(data){
        // strMoudle(data.data.masterList)
-       if( $("#search_type").attr("data-type") == "jipan" ){
-            jipanlist(data.data.masterList)
+       if( data.statusCode == "200" ){
+       		if( $("#search_type").attr("data-type") == "jipan" ){
+            	jipanlist(data.data.masterList)
+       		}else if($("#search_type").attr("data-type") == "opponent"){
+           		console.log(data.data.gcomList)
+            	opponentList(data.data.gcomList);
+       		}else if($("#search_type").attr("data-type") == "store"){
+				storelist(data.data.mstoreList);
+			}
        }else{
-           console.log(data.data.gcomList)
-            opponentList(data.data.gcomList);
+       		modelAlert(data.message)
        }
+       
       
     });
 }
@@ -133,6 +140,36 @@ function opponentList(sjpList){
         }
 }
 
+function storelist(sjpList){
+	if(sjpList && sjpList.length != 0){
+			for( var i = 0; i < sjpList.length; i++ ){
+				var areaName = (sjpList[i].city ? sjpList[i].city : '') +''+(sjpList[i].area ? sjpList[i].area : '') ;
+				var preData = {
+					"spStoreName":sjpList[i].spStoreName,
+					"areaName":areaName,
+					"closingDate":sjpList[i].closingDate,
+					"openingDate":sjpList[i].openingDate,
+					"spStoreStatus":sjpList[i].spStoreStatus,
+					"tcAvg":sjpList[i].tcAvg,
+					"tuName":sjpList[i].tuName,
+					"undertakeName":sjpList[i].undertakeName,
+					"profileImg":sjpList[i].profileImg,
+					"spAddr":sjpList[i].spAddr,
+					"spPhone":sjpList[i].spPhone,
+					"spStoreId":sjpList[i].spStoreId,		
+				}
+				$(".lists").append(strMoudleMD(preData));
+			}
+			Echo.init({offset: 0,throttle: 0});//图片懒加载
+			var loadDom = $('<li class="loading_box"><i class="loading"></i><span>加载中…</span></li>');
+			$(".mod_cont").append(loadDom);
+			setTimeout(function(){
+				$(".loading_box").hide()
+			},1500);
+	}else{
+		yflag = false
+	}
+}
 //上拉置顶
 function tabToTop(){	
 	$(document).scroll(function() {

@@ -61,5 +61,7 @@ function getUserInfoCallback(data){
         }
         parentId && city && $("#city").text(city)
 	    position && orgName && $("#jigou").text(position +" | "+ orgName);
+	}else{
+		modelAlert(data.message)
 	}
 }

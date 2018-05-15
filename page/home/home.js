@@ -77,6 +77,8 @@ function getSjpList(){
 				}
 				$(".lists").append(strMoudle(preData));
 			}
+		}else{
+			modelAlert(data.message);
 		}
 	} );
 }

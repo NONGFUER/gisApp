@@ -37,6 +37,7 @@ function handleData(jpData){
 	$("#jpAdress").html(bpPropertyMaster.bpmAddress);//基盘地址
 	$("#jpRoad").html(bpPropertyMaster.bpmStreet);//基盘街道	
 	$("#dwidth").html(bpPropertyRpt.bprShopWidth+"m");//店宽
+	$("#location").attr("src","//api.map.baidu.com/staticimage?center="+bpPropertyMaster.lng+","+bpPropertyMaster.lat+"&width=375&height=253&markers="+bpPropertyMaster.lng+","+bpPropertyMaster.lat+"|"+bpPropertyMaster.lng+","+bpPropertyMaster.lat+"&zoom=15")
 	//立地
 	$("#siteList").html(DICTIONARY["bprPosition"][bpPropertyRpt.bprPosition]);
 	//视野

@@ -1,7 +1,7 @@
 var bpmId = getUrlQueryString("mdid");
 $(function(){
 	bpmId = getUrlQueryString("mdid");
-	//getJPInfo(bpmId);
+	getJPInfo(bpmId);
 	// var mySwiper = new Swiper ('.swiper-container', {
 	//    	loop:true,
 	//     grabCursor: true,
@@ -24,46 +24,83 @@ function getJPInfo(bpmId){
 			var jpData = data.data;
 			handleData(jpData);
 		}else{
-			//modelAlert(data.message,"",toIndex);	
+			modelAlert(data.message);	
 		}		
 	} );	
 }
 
-function handleData(jpData){
-	var bpPropertyMaster = jpData.bpPropertyMaster;
-	var bpPropertyRpt = jpData.bpPropertyRpt;
-	$("#jpName").html(bpPropertyMaster.bpmPropertyName);//基盘名称
-	$("#rishang").html(bpPropertyRpt.bprExpectDaysales);//预估日商
-	$("#zujin").html((bpPropertyRpt.bprExpectRent/10000)+"万元");//预估租金
-	$("#mianji").html(bpPropertyRpt.bprShopArea+"m²");//面积
-	$(".accuracyList").html(bpPropertyMaster.bpmConfirmStatus);//确度
-	$(".marketTypeList").html(DICTIONARY["bprMarketType"][bpPropertyRpt.bprMarketType]);
-	$(".subMarketTypeList").html(DICTIONARY["bprMarketType"][bpPropertyRpt.bprViceMarketType]);
-	$(".areaList").html(bpPropertyMaster.city+''+bpPropertyMaster.areaCn);
-	$("#areaList").html(bpPropertyMaster.city+''+bpPropertyMaster.areaCn);
-	$(".JPTypeList").html(DICTIONARY["bprObjectType"][bpPropertyRpt.bprObjectType]);//基盘类别
-	$("#jpAdress").html(bpPropertyMaster.bpmAddress);//基盘地址
-	$("#jpRoad").html(bpPropertyMaster.bpmStreet);//基盘街道	
-	$("#dwidth").html(bpPropertyRpt.bprShopWidth+"m");//店宽
-	//立地
-	$("#siteList").html(DICTIONARY["bprPosition"][bpPropertyRpt.bprPosition]);
-	//视野
-	$("#viewList").html(DICTIONARY["bprViewType"][bpPropertyRpt.bprViewType]);
-	//主商圈
-	$("#marketTypeList").html(DICTIONARY["bprMarketType"][bpPropertyRpt.bprMarketType]);
-	//副商圈
-	$("#subMarketTypeList").html(DICTIONARY["bprMarketType"][bpPropertyRpt.bprViceMarketType]);
-	//车辆停靠
-	$("#carparkList").html(DICTIONARY["bprCarStop"][bpPropertyRpt.bprCarStop]);
-	//通行方向
-	$("#txfxList").html(DICTIONARY["bprCarWay"][bpPropertyRpt.bprCarWay]);
-	//路宽类型
-	$("#waywidthList").html(DICTIONARY["bprRoadType"][bpPropertyRpt.bprRoadType]);
-	$(".house_intro_mod_cont").html(bpPropertyRpt.bprRemark);
-	var img1 = $('<div class="swiper-slide" style="background-image:url('+base.static + bpPropertyMaster.img1+')"></div>');
-	var img2 = $('<div class="swiper-slide" style="background-image:url('+base.static + bpPropertyMaster.img2+')"></div>');
-	var img3 = $('<div class="swiper-slide" style="background-image:url('+base.static + bpPropertyMaster.img3+')"></div>');
-	var img4 = $('<div class="swiper-slide" style="background-image:url('+base.static + bpPropertyMaster.img4+')"></div>');
-	$(".swiper-wrapper").append(img1).append(img2).append(img3).append(img4);
-	$("#complete").attr("data-id",bpPropertyMaster.bpmPropertyId);
+function handleData(storeData){	
+	$("#storeName").html(storeData.spStoreName);//基盘名称
+	$(".citytag").html(storeData.city+""+storeData.area);
+	$("#keliu").html(storeData.tcAvg);
+	$("#rishang").html(storeData.daily_Prfm_Amt_Avg);
+	$("#storeCity").html(storeData.city);
+	$("#storeArea").html(storeData.area);
+	$("#storeAdress").html(storeData.spAddr);
+	$("#storePhone").html(storeData.spPhone);
+	$("#tel").attr("href","tel:"+storeData.spPhone);
+	$("#location").attr("src","//api.map.baidu.com/staticimage?center="+storeData.lng+","+storeData.lat+"&width=375&height=253&markers="+storeData.lng+","+storeData.lat+"|"+storeData.lng+","+storeData.lat+"&zoom=15")
+}
+var json = {
+	area: "徐汇",
+	city: "上海市",
+	cityName: null,
+	closingDate: null,
+	daily_Prfm_Amt_Avg: null,//日商
+	lat: 31.188758970326788,
+	lng: 121.43276095450896,
+	openingDate: null,
+	orgName: null,
+	profileImg: null,
+	spAccountant: "NM",
+	spAddr: "中山西路2006号110室-1",
+	spBangerFlag: "1",
+	spBusinessFirstDate: null,
+	spBusinessLastDate: null,
+	spCompanyId: "1100",
+	spCreateDate: 1415175935000,
+	spCreateUserId: "0510013",
+	spCurrentDeveloper: "0906037",
+	spCurrentDeveloperName: null,
+	spEndDate: 1415721600000,
+	spForeignCigaretteFlag: "1",
+	spHqEffectiveDate: 1415721600000,
+	spHqPoFlag: "1",
+	spInchargeDept: "1S5000",
+	spInchargeDistrict: "001",
+	spInchargeRegion: "10",
+	spInchargeSector: "1S5005",
+	spIsHeadOffice: null,
+	spLevel: null,
+	spLocalCigaretteFlag: "1",
+	spMarketType: "04",
+	spMedicineFlag: "1",
+	spObjectType: null,
+	spOriginDeveloper: null,
+	spOriginStartDate: 1285430400000,
+	spPhone: "34281226",
+	spPhoneRegion: null,
+	spRackQty: null,
+	spRsvDatetime1: null,
+	spRsvDatetime2: null,
+	spRsvStatus1: null,
+	spRsvStatus2: "0",
+	spScale: "0",
+	spStartDate: 1302969600000,
+	spStatus: null,
+	spStoreEffectiveDate: 1415721600000,
+	spStoreId: "20148801",
+	spStoreId4: null,
+	spStoreName: "中山西路二店",
+	spStoreStatus: "99",
+	spType: "23",
+	spUpdateDate: 1522728000000,
+	spUpdateUserId: "0510013",
+	spViceMarketType: null,
+	spZipcode: null,
+	tcAvg: null,
+	tuEmail: null,
+	tuMp: null,
+	tuName: null,
+	undertake: "15120015"
 }

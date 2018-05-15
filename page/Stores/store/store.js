@@ -1,9 +1,13 @@
+var yflag = true;
 $(function(){
 	appendStyle();//添加下拉筛选样式
 	getJPList(1,10,"desc");//获取基盘列表
 	Echo.init({offset: 0,throttle: 0});//图片懒加载
 	tabToTop();//上拉tab-bar置顶
 	//topscroll()
+	$(".header_back").click(function(){
+		window.location.href = base.url + "gisApp/page/home/home.html"
+	});
 });
 function getJPList(curpage,pagesize,timesort){
 	var url = base.basePath + "familymart.mastore.app.getlist?curPage="+curpage+"&pageSize="+pagesize;
@@ -15,7 +19,7 @@ function getJPList(curpage,pagesize,timesort){
 		console.log(data);
 		if( data.statusCode == "200" ){
 			var sjpList = data.data;
-			for( var i = 0; i < sjpList.length-1; i++ ){
+			for( var i = 0; i < sjpList.length; i++ ){
 				var areaName = (sjpList[i].city ? sjpList[i].city : '') +''+(sjpList[i].area ? sjpList[i].area : '') ;
 				var preData = {
 					"spStoreName":sjpList[i].spStoreName,
@@ -55,25 +59,31 @@ function getJPList1(curpage,pagesize,timesort){
 		console.log(data);
 		if( data.statusCode == "200" ){
 			var sjpList = data.data;
-			for( var i = 0; i < sjpList.length-1; i++ ){
-				var areaName = (sjpList[i].city ? sjpList[i].city : '') +''+(sjpList[i].area ? sjpList[i].area : '') ;
-				var preData = {
-					"spStoreName":sjpList[i].spStoreName,
-					"areaName":areaName,
-					"closingDate":sjpList[i].closingDate,
-					"openingDate":sjpList[i].openingDate,
-					"spStoreStatus":sjpList[i].spStoreStatus,
-					"tcAvg":sjpList[i].tcAvg,
-					"tuName":sjpList[i].tuName,
-					"undertakeName":sjpList[i].undertakeName,
-					"profileImg":sjpList[i].profileImg,
-					"spAddr":sjpList[i].spAddr,
-					"spPhone":sjpList[i].spPhone,
-					"spStoreId":sjpList[i].spStoreId,					
+			if(sjpList.length != 0){
+				for( var i = 0; i < sjpList.length; i++ ){
+					var areaName = (sjpList[i].city ? sjpList[i].city : '') +''+(sjpList[i].area ? sjpList[i].area : '') ;
+					var preData = {
+						"spStoreName":sjpList[i].spStoreName,
+						"areaName":areaName,
+						"closingDate":sjpList[i].closingDate,
+						"openingDate":sjpList[i].openingDate,
+						"spStoreStatus":sjpList[i].spStoreStatus,
+						"tcAvg":sjpList[i].tcAvg,
+						"tuName":sjpList[i].tuName,
+						"undertakeName":sjpList[i].undertakeName,
+						"profileImg":sjpList[i].profileImg,
+						"spAddr":sjpList[i].spAddr,
+						"spPhone":sjpList[i].spPhone,
+						"spStoreId":sjpList[i].spStoreId,					
+					}
+					$(".lists").append(strMoudleMD(preData));
 				}
-				$(".lists").append(strMoudleMD(preData));
+				Echo.init({offset: 0,throttle: 0});//图片懒加载
+			}else{
+				yflag = false 
 			}
-			Echo.init({offset: 0,throttle: 0});//图片懒加载
+		}else{
+			modelAlert(data.message)
 		}
 	} );
 }
@@ -109,76 +119,15 @@ function tabToTop(){
 			}
 			if (getScrollTop() + getClientHeight() == getScrollHeight()) { 
 				$(".loading_box").show()
-				setTimeout(function(){
+				if(!yflag){
+					$(".loading_box").hide()
+				}else{	
 					getJPList1(1,10,"desc");//获取基盘列表
 					$(".loading_box").hide()
-				},1500)
+				}
 					
 			}
 	});
 }
 
 
-var json = {
-	area: "徐汇",
-	city: "上海市",
-	cityName: null,
-	closingDate: null,
-	daily_Prfm_Amt_Avg: null,//日商
-	lat: 31.188758970326788,
-	lng: 121.43276095450896,
-	openingDate: null,
-	orgName: null,
-	profileImg: null,
-	spAccountant: "NM",
-	spAddr: "中山西路2006号110室-1",
-	spBangerFlag: "1",
-	spBusinessFirstDate: null,
-	spBusinessLastDate: null,
-	spCompanyId: "1100",
-	spCreateDate: 1415175935000,
-	spCreateUserId: "0510013",
-	spCurrentDeveloper: "0906037",
-	spCurrentDeveloperName: null,
-	spEndDate: 1415721600000,
-	spForeignCigaretteFlag: "1",
-	spHqEffectiveDate: 1415721600000,
-	spHqPoFlag: "1",
-	spInchargeDept: "1S5000",
-	spInchargeDistrict: "001",
-	spInchargeRegion: "10",
-	spInchargeSector: "1S5005",
-	spIsHeadOffice: null,
-	spLevel: null,
-	spLocalCigaretteFlag: "1",
-	spMarketType: "04",
-	spMedicineFlag: "1",
-	spObjectType: null,
-	spOriginDeveloper: null,
-	spOriginStartDate: 1285430400000,
-	spPhone: "34281226",
-	spPhoneRegion: null,
-	spRackQty: null,
-	spRsvDatetime1: null,
-	spRsvDatetime2: null,
-	spRsvStatus1: null,
-	spRsvStatus2: "0",
-	spScale: "0",
-	spStartDate: 1302969600000,
-	spStatus: null,
-	spStoreEffectiveDate: 1415721600000,
-	spStoreId: "20148801",
-	spStoreId4: null,
-	spStoreName: "中山西路二店",
-	spStoreStatus: "99",
-	spType: "23",
-	spUpdateDate: 1522728000000,
-	spUpdateUserId: "0510013",
-	spViceMarketType: null,
-	spZipcode: null,
-	tcAvg: null,
-	tuEmail: null,
-	tuMp: null,
-	tuName: null,
-	undertake: "15120015"
-}

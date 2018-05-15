@@ -39,7 +39,7 @@ function handleData(jzdata){
 	$("#jpAdress").html(jzdata.address);//地址
 	$("#jpRoad").html(jzdata.street);//街道
 	$("#jzms").html(jzdata.gsItemDescription ? jzdata.gsItemDescription : "暂无描述");
-
+	$("#location").attr("src","//api.map.baidu.com/staticimage?center="+jzdata.lng+","+jzdata.lat+"&width=375&height=253&markers="+jzdata.lng+","+jzdata.lat+"|"+jzdata.lng+","+jzdata.lat+"&zoom=15")
 	$("#signDate").html(timeFormatDate(jzdata.firstSignupDate,"yyyy-MM-dd"));//签约日期
 	$("#openingDate").html(timeFormatDate(jzdata.openingDate,"yyyy-MM-dd"));//开店日期
 	$("#closingDate").html(timeFormatDate(jzdata.closingDate,"yyyy-MM-dd"));//闭店日期	
