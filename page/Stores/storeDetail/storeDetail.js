@@ -1,16 +1,16 @@
 var bpmId = getUrlQueryString("mdid");
 $(function(){
 	bpmId = getUrlQueryString("mdid");
-	getJPInfo(bpmId);
-	var mySwiper = new Swiper ('.swiper-container', {
-	   	loop:true,
-	    grabCursor: true,
-	    centeredSlides: true,
-	    slidesPerView: 'auto',
-	    pagination: {
-	       el: '.swiper-pagination',
-	    },
-  	})     
+	//getJPInfo(bpmId);
+	// var mySwiper = new Swiper ('.swiper-container', {
+	//    	loop:true,
+	//     grabCursor: true,
+	//     centeredSlides: true,
+	//     slidesPerView: 'auto',
+	//     pagination: {
+	//        el: '.swiper-pagination',
+	//     },
+  	// })     
   	$("#header_back").click(function(){
   		window.location.href = base.url + "gisApp/page/Stores/store/store.html"
   	});

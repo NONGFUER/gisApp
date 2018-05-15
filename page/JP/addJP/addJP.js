@@ -146,7 +146,7 @@ function createJipan(){
 	var url = base.basePath + "familymart.property.applycreate"
 	var reqData = getFormData();
 	if(!reqData){return false;}
-	$.reqPostAjaxs( url, reqData, function(data){
+	$.reqPostAjaxsTrue( url, reqData, function(data){
 		if( data.statusCode == "200" ){
 			shownext("step4")
 			localStorage.removeItem("addressX_jz");

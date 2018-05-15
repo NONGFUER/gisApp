@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>全家-gis登录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="format-detection" content="telephone=no" />
+		<script>    	
+			;(function(f,i){var b=i.documentElement;var e=f.navigator.appVersion;var g=e.match(/android/gi);var c=e.match(/iphone/gi);var k=f.devicePixelRatio;var j=1,d=1;if(c){if(k>=3){j=3}else{if(k>=2){j=2}else{j=1}}}else{j=1}d=1/j;var h=i.querySelector('meta[name="viewport"]');if(!h){h=i.createElement("meta");h.setAttribute("name","viewport");if(b.firstElementChild){b.firstElementChild.appendChild(h)}else{var a=i.createElement("div");a.appendChild(h);i.write(a.innerHTML)}}if(j){h.setAttribute("content","initial-scale="+d+", maximum-scale="+d+", minimum-scale="+d+", user-scalable=no,uc-fitscreen=yes");b.style.fontSize=16*j+"px"}window.DPR=j})(window,document);	
+	    </script>
+		<link rel="stylesheet" href="../../css/common/ljrem.css" />
+		<link rel="stylesheet" href="person.css" />
+	</head>
+
+	<body>
+        <div class="wrapper" >
+            <div class="main_start" >
+                <!--页面-->
+                <!--TODO here-->
+
+                <section class="page page_user">
+                    <input type="hidden" value="1" data-mark="isLogin">
+                    <div class="user_comp">
+                        <!--头部-->
+                        <!--头部-->
+                        <header class="header">
+                            <div class="flexbox left">
+                                <a href="javascript:history.back();" class="header_back"></a>
+                                <a href="javascript:;" class="city_wrap">
+                                    <span class="switch_city">
+                                        <em class="city" id="city"></em>
+                                        <i class="icon_pull"></i>
+                                    </span>
+                                </a>
+                            </div>
+                            <a href="javascript:;" class="logo_wrap center">
+                                <span class=""></span>
+                            </a>
+                            <a href="javascript:;" class="my right">
+                                <i class="icon_user"></i>
+                            </a>
+                        </header>
+                        <!--/头部-->
+                        <!--/头部-->
+                        <img src="../../img/common/mine_head.png" alt="" class="img_head">
+                        <div class="user_num user_info">
+                            <span id="tuname"></span>
+                            <span></span>
+                        </div>
+                        <div class="user_num user_info">
+                                <span id="jigou"></span>
+                                <span></span>
+                        </div>
+                    </div>
+
+
+                    <div class="content_area">
+                        <!-- <div class="page_list">
+                            <ul data-mark="link_list">
+                                <li data-info="needlogin=1&amp;url=/my/favorHouse/">
+                                    <a href="javascript:;">我关注的二手房</a>
+                                    <span class="list_item"></span>
+                                    <span class="right_arrow"></span>
+                                </li>
+                                <li data-info="needlogin=1&amp;url=/my/favorCommunity/">
+                                    <a href="javascript:;">我关注的小区</a>
+                                    <span class="list_item item_focus_community"></span>
+                                    <span class="right_arrow"></span>
+                                </li>
+                                <li data-info="needlogin=1&amp;url=/my/favorNewHouse/">
+                                    <a href="javascript:;">我关注的新房</a>
+                                    <span class="list_item item_focus_new_house"></span>
+                                    <span class="right_arrow"></span>
+                                </li>
+                                <li data-info="needlogin=0&amp;url=https://www.lianjia.com/zhuanti/miandarao">
+                                    <a href="javascript:;">免电话营销</a>
+                                    <span class="list_item item_shiled"></span>
+                                    <span class="right_arrow"></span>
+                                </li>
+                            </ul>
+                        </div> -->
+
+                        <a id="logout" class="logout" >退出登录</a>
+                    </div>
+
+                </section>
+                <!--/页面-->
+            </div>
+        </div>
+        <script src="../../js/common/zepto.min.js" ></script>
+        <script type="text/javascript" src="../../js/common/gisbase.js"></script>	
+        <script type="text/javascript" src="login.js"></script>			
+    </body>
+</html>

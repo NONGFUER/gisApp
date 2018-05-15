@@ -2,15 +2,7 @@ var bpmId = getUrlQueryString("jzid");
 $(function(){
 	bpmId = getUrlQueryString("jzid");
 	getJPInfo(bpmId);
-	var mySwiper = new Swiper ('.swiper-container', {
-	   	loop:true,
-	    grabCursor: true,
-	    centeredSlides: true,
-	    slidesPerView: 'auto',
-	    pagination: {
-	       el: '.swiper-pagination',
-	    },
-	})     
+	
   	$("#header_back").click(function(){
   		window.location.href = base.url + "gisApp/page/Opponents/opponent/opponent.html"
   	});
@@ -66,6 +58,15 @@ function handleData(jzdata){
 	var img4 = $('<div class="swiper-slide" style="background-image:url('+base.basePath + jzdata.img4+')"></div>');		
 	var img5 = $('<div class="swiper-slide" style="background-image:url('+base.basePath + jzdata.profileImg+')"></div>');//证件照
 	$(".swiper-wrapper").append(img1).append(img2).append(img3).append(img4).append(img5);
+		var mySwiper = new Swiper ('.swiper-container', {
+			loop:true,
+		grabCursor: true,
+		centeredSlides: true,
+		slidesPerView: 'auto',
+		pagination: {
+			el: '.swiper-pagination',
+		},
+	})     
 }
 //跳转到基盘添加
 $(".sort_bar_add").click(function(){

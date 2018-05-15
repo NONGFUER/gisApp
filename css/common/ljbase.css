@@ -1732,7 +1732,15 @@ ul.lists li {
 	-webkit-transform: none;
 	transform: none
 }
-
+.header .logo{
+	font-size: 0;
+	display: inline-block;
+	background-image: url("../../img/common/logo.svg");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	-webkit-transform: none;
+	transform: none
+}
 .header .header_back {
 	display: block;
 	height: 100%;
@@ -1753,7 +1761,8 @@ ul.lists li {
 	width: 67.2px;
 	height: 100%;
 	background-size: 67.2px;
-	background-position: 0 -168.2px
+	/*background-position: 0 -168.2px*/
+	transform: scale(1.5);
 }
 
 .header .icon_user {

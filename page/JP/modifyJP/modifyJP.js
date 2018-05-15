@@ -37,7 +37,7 @@ $(function(){
 //获取
 function getJPInfo(bpmId){
 	var url = base.basePath + "familymart.property.app.getbp?id="+bpmId;
-	$.reqPostAjaxs( url, "", function(data){
+	$.reqPostAjaxsTrue( url, "", function(data){
 		//console.log(data);
 		if(data.statusCode = "200"){
 			var jpData = data.data;
@@ -322,7 +322,14 @@ function cityListShow(){
 }
 //展示区域
 function areaListShow(){
-	var areaList = getAreaList();//区列表
+	var cityId = $(".areaList").attr("cityid");
+	if(cityId){
+		var areaList = getAreaList(cityId);//区列表
+	}else{
+		modelAlert("请先选择城市!");
+		return false;
+	}
+	
 	var areaListDom = [];
 	for(var i = 1; i < areaList.length; i++) {
 		var x = "<li select_data=" + areaList[i][1] + " onclick='choose_option(this)'>" + areaList[i][0] + "</li>";

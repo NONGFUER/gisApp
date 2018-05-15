@@ -36,8 +36,8 @@
 	position: relative;
 	line-height: 41px;
 	padding: 0 8px;
-	border-right: 1px solid #c9c9c9;
-	border-left: 1px solid #c9c9c9
+	/* border-right: 1px solid #c9c9c9;
+	border-left: 1px solid #c9c9c9 */
 }
 
 .page_search .history_list {

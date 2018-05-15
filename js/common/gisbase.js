@@ -59,7 +59,38 @@ $.reqPostAjaxs = function(url, requestData, callBack){
 		},
 		dataType: "json",	
 		data : requestJson,		
-		timeout : 30000,
+		timeout : 60000,
+		success : function(data) {
+			$(".ajax_prevent_channel").remove();
+			if (!$.isNull(callBack)) {
+				callBack(data);
+			}
+		},
+		error : function(data) {
+			$(".ajax_prevent_channel").remove();
+			modelAlert("网络好像开小差了呢，请设置给力一点儿网络吧！");
+		},
+		beforeSend : function(xhr) {
+			$(".ajax_prevent_channel").remove();
+			$.ajaxPreventChannel();
+		},
+		async : false
+	});
+}
+//post请求
+$.reqPostAjaxsTrue = function(url, requestData, callBack){
+	var requestJson = !$.isNull(requestData) ? JSON.stringify(requestData) : '';
+	var token = localStorage.getItem('$auth_token');
+	$.ajax({
+		type: "POST",
+		contentType: "application/json",
+		url: url,
+		headers: {
+			"token": token//token
+		},
+		dataType: "json",	
+		data : requestJson,		
+		timeout : 60000,
 		success : function(data) {
 			$(".ajax_prevent_channel").remove();
 			if (!$.isNull(callBack)) {
@@ -123,6 +154,9 @@ $.ajaxPreventChannel = function() {
 
 function modelAlert(message, describe, method) {
 	/**--android alert黑屏问题 --*/
+	if(message == "请重新登录"){
+		window.location.href = base.url +"gisApp/page/login/login.html"
+	}
 	if(!describe){
 		var describe = "温馨提示";
 	}
@@ -139,6 +173,7 @@ function modelAlert(message, describe, method) {
 }	
 //登录
 function logingis(userId,password){
+	localStorage.setItem('$user_password', password);
 	var password1 = toBase64(password);
 	var data = {
 		userId: userId,
@@ -303,7 +338,7 @@ function strMoudleMD(data){
 	str += 		'<div class="item_list">'
 	str += 			'<div class="item_main">' + (data.spStoreName ? data.spStoreName : '--' )+ '</div>'
 	str += 			'<div class="item_other text_cut" title="">'+(data.brand ? data.brand : '--')+'/客流'+(data.bprCustomerFlow ? data.bprCustomerFlow : '--' )+'/日商'+(data.bprExpectDaysales ? data.bprExpectDaysales : '--' )+'</div>'
-	str += 			'<div class="item_minor"><span class="price_total"><em>'+data.bprExpectRent+'</em><span class="unit">元/月</span></span><span class="unit_price"></span></div>'
+	str += 			'<div class="item_minor"><span class="price_total"><em>'+(data.bprExpectRent ? data.bprExpectRent :'--')+'</em><span class="unit">元/月</span></span><span class="unit_price"></span></div>'
 	str += 			'<div class="tag_box">'	
 	
 	str += 			data.bprMarketType ? '<span class="tag" style="color:rgb(89,171,253);background-color:rgba(89,171,253,0.15);" title="">'+data.bprMarketType+'</span>':''
@@ -388,3 +423,8 @@ var timeFormatDate = function(time, format) {
 				.slice(-(v.length > 2 ? v.length : 2));
 	});
 };
+$(".my").click(function(){
+	window.location.href = base.url + "gisApp/page/login/person.html"
+}
+
+)

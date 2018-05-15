@@ -2,15 +2,7 @@ var bpmId = getUrlQueryString("jpid");
 $(function(){
 	bpmId = getUrlQueryString("jpid");
 	getJPInfo(bpmId);
-	var mySwiper = new Swiper ('.swiper-container', {
-	   	loop:true,
-	    grabCursor: true,
-	    centeredSlides: true,
-	    slidesPerView: 'auto',
-	    pagination: {
-	       el: '.swiper-pagination',
-	    },
-  	})     
+	
   	$("#header_back").click(function(){
   		window.location.href = base.url + "gisApp/page/JP/jipan/jipan.html"
   	});
@@ -66,6 +58,15 @@ function handleData(jpData){
 	var img4 = $('<div class="swiper-slide" style="background-image:url('+base.static + bpPropertyMaster.img4+')"></div>');
 	$(".swiper-wrapper").append(img1).append(img2).append(img3).append(img4);
 	$("#complete").attr("data-id",bpPropertyMaster.bpmPropertyId);
+	var mySwiper = new Swiper ('.swiper-container', {
+		loop:true,
+	 grabCursor: true,
+	 centeredSlides: true,
+	 slidesPerView: 'auto',
+	 pagination: {
+		el: '.swiper-pagination',
+	 },
+   })     
 }
 //跳转到基盘添加
 $(".sort_bar_add").click(function(){

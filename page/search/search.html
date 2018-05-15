@@ -12,30 +12,65 @@
 
 	<body>
 		<section class="page page_search">
+				
 			<div class="content_area">
-				<div class="search_form flexbox">
-					<a class="back" href="javascript:history.back();"><span class="icon_fanhui"></span></a>
+				<header class="header header_white header_style">
+					<div class="flexbox left">
+						<a href="javascript:history.back();" class="header_back"></a>
+							<!-- <a href="" class="city_wrap">
+								<span class="switch_city"><em class="city">上海</em><i class="icon_pull"></i></span>
+							</a> -->
+					</div>
+					<a href="javascript:void(0)" class="logo_wrap center"><span class="logo"> 首页</span></a>
+					<a href="javascript:void(0)" class="my right"><i class="icon_user"></i></a>
+				</header>
+				<div class="search_form flexbox margin_top50">
 					<div class="tab_tit" style="" data-mark="search_panel">
-						<span class="tit" data-mark="search_type">基盘</span>
+							<span class="tit" data-city="001"  id="search_city">上海</span>
+							<i class="icon_triangle_down"></i>
+							<ul class="dropdown" id="dropdown_city_panel" style="display: none;">
+								<li data-act="action_select" class="city" data-city="001" >上海</li>
+								<li data-act="action_select"class="city"  data-city="002" >苏州</li>
+								<li data-act="action_select" class="city" data-city="003" >昆山</li>
+								<li data-act="action_select" class="city" data-city="004" >广州</li>
+								<li data-act="action_select" class="city" data-city="005" >杭州</li>
+								<li data-act="action_select" class="city" data-city="006" >成都</li>
+								<li data-act="action_select" class="city" data-city="007" >深圳</li>
+								<li data-act="action_select" class="city" data-city="008" >无锡</li>
+								<li data-act="action_select" class="city" data-city="009" >东莞</li>
+								<li data-act="action_select" class="city" data-city="010" >北京</li>
+								<li data-act="action_select" class="city" data-city="011" >嘉兴</li>
+								<li data-act="action_select" class="city" data-city="012" >宁波</li>
+								<li data-act="action_select" class="city" data-city="013" >南京</li>
+						</ul>
+					</div>
+					<!-- <a class="back" href="javascript:history.back();"><span class="icon_fanhui"></span></a> -->
+					<div class="tab_tit" style="" id="search_panel">
+						<span class="tit" data-type="jipan" id="search_type">基盘</span>
 						<i class="icon_triangle_down"></i>
-						<ul class="dropdown" data-mark="dropdown_panel" style="display: none;">
-							<li data-act="action_select" data-query="channel_id=ershoufang&amp;city_id=310000">基盘</li>
-							<li data-act="action_select" data-query="channel_id=zufang&amp;city_id=310000">店铺</li>
-							<li data-act="action_select" data-query="channel_id=xinfang&amp;city_id=310000">竞争店</li>
+						<ul class="dropdown" id="dropdown_panel" style="display: none;">
+							<li data-act="action_select" class="type" data-type="jipan" >基盘</li>
+							<li data-act="action_select" class="type" data-type="opponent">竞争店</li>						
+							<!-- <li data-act="action_select" class="type" data-type="store">店铺</li> -->
 						</ul>
 					</div>
 					<div class="search_box search_a box_col">
-						<form action=""><input type="text" data-mark="search_input" class="input" placeholder="请输入小区或商圈名称"><span class="divide"></span><i class="icon_search" data-act="action_search"></i></form>
+						<form action=""><input type="text" id="search_input" class="input" placeholder="请输入小区或商圈名称"><span class="divide"></span><i class="icon_search" id="action_search"></i></form>
 					</div>
 				</div>
-				<div style="display: none;" class="history_title" data-mark="clearHistory_panel"><span class="">历史搜索</span>
-					<a href="javascript:void(0);" class="deleta_history" data-act="action_clearHistory"><i class="icon_delete"></i></a>
-				</div>
-				<div class="mod_box ">
-					<ul class="item_lists" data-mark="history_list"></ul>
+				<div class="mod_box house_lists">
+						<div class="mod_cont">
+								<ul class="lists">
+					</ul></div>
 				</div>
 			</div>
 		</section>
+		<script src="../../js/common/zepto.min.js"></script>
+		<script src="../../js/widget/mui/mui.min.js"></script>
+		<script src="../../js/common/gisbase.js"></script>
+		<script src="../../js/common/dictionary.js"></script>
+		<script src="../../js/common/echo.js"></script>
+		<script src="search.js"></script>
 	</body>
 
 </html>

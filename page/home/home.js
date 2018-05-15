@@ -28,8 +28,8 @@ $(function(){
 		
 	});
 	$("#stores").unbind("tap").bind("tap",function(){
-		modelAlert("敬请期待");
-		//window.location.href = base.url + "gisApp/page/Stores/store/store.html"
+		//modelAlert("敬请期待");
+		window.location.href = base.url + "gisApp/page/Stores/store/store.html"
 	});
 	$("#agreements").unbind("tap").bind("tap",function(){
 		modelAlert("敬请期待");
@@ -47,7 +47,7 @@ $(function(){
 		//window.location.href = base.url + 'gisApp/page/devWiki/devWiki.html'
 		modelAlert("敬请期待");
 	});
-	$("#search").unbind("tap").bind("tap",function(){
+	$("#search").click(function(){
 		window.location.href = base.url + 'gisApp/page/search/search.html'
 	});
 });
