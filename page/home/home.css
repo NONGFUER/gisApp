@@ -103,6 +103,7 @@ input, textarea {
 	background-size: cover;
 	width: 300px;
 	height: 150px;
-	border-radius: 10px;
+    border-radius: 10px;
+    margin:0 10px
 }
    
